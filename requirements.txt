@@ -6,5 +6,4 @@ langchain-huggingface==0.0.3
 chromadb==0.4.22
 pdfminer.six==20221105
 nltk==3.8.1
-spacy==3.7.4
 rapidfuzz==3.5.2
