@@ -49,16 +49,16 @@ def handle_greetings(user_input):
         "who are you": "I'm a bot. I will help you with your questions. Please ask your query.",
         "what your name": "My name is Momo. I will help you with your query.",
         "who made you": "Miss Janki Chauhan made me to help with your queries.",
-        "what are you doing":"I'm a chatbot. I'm here to help you with your queries. Please ask your query."
+       
     }
     
     for key, response in greetings.items():
-        if fuzz.partial_ratio(user_input.lower(), key) > 80:  # Improved fuzzy matching
+        if fuzz.partial_ratio(user_input.lower(), key) > 80:# Improved fuzzy matching
             return response
     return None  # Continue normal processing if no greeting is detected
 
 # Check if the chatbot's response is relevant
-def is_relevant_response(user_input, assistant_response, threshold=60):
+def is_relevant_response(user_input, assistant_response, threshold=80):
     """
     Checks if the assistant's response is relevant to the user's question.
     If similarity is low, consider it an unanswered question.

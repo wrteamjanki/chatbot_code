@@ -1,7 +1,7 @@
 import os
 import json
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from pdfminer.high_level import extract_text
 
