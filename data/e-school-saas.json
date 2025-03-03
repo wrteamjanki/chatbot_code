@@ -1,5 +1,5 @@
 {
-    "name": "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
+    "name": "eSchool SaaS - School Management System with Student | Parents Flutter App | Laravel Admin Panel",
     "user-roles": [
         "Super admin",
         "School admin",
@@ -8,48 +8,48 @@
         "Parent",
         "Student"
     ],
-    "short-description": "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
+    "short-description": "It is a SaaS-based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
     "full-description": [
-        "It has two mobile applications, Web panel, Saas Website and School Website. One application for Students & Parents and another for Teachers, Staffs and School Admin.",
-        "Super admin, School admin, Teachers, Staffs will use the web panel.",
-        "Student and Parents will use the Student & Parent mobile app.",
-        "Teachers, Staffs and School admin will use the Teacher & Staff mobile app.",
-        "Saas website will be used by general public to know about the system and its services.",
-        "School website will be used by general public to know about the school and other activities of the school.",
-        "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features."
+        "It has two mobile applications, a web panel, a SaaS website, and a school website.",
+        "One application is for Students & Parents and another for Teachers, Staff, and School Admin.",
+        "Super admin, School admin, Teachers, and Staff will use the web panel.",
+        "Students and Parents will use the Student & Parent mobile app.",
+        "Teachers, Staff, and School Admin will use the Teacher & Staff mobile app.",
+        "The SaaS website will be used by the general public to learn about the system and its services.",
+        "The School website will be used by the general public to learn about the school and other activities.",
+        "Super admin (SaaS Owner) can create various types of packages based on given features and provide them to schools. School admin will subscribe to the packages and get access to the features."
     ],
-    "techonology-used": [
-        "Following Technologies, Framework and Tools are used in this project",
-        "Flutter(Dart) - To build the mobile apps",
-        "Laravel(PHP) - To build the web panel and APIs",
-        "MySQL - To store the data. It is a relational database",
-        "HTML, CSS, JavaScript - To build the web paneles, Saas website and School website",
-        "Firebase - To manage the push notifications",
-        "Stripe - To manage the payments",
-        "Razorpay - To manage the payments"
+    "technology-used": [
+        "Flutter (Dart) - To build the mobile apps",
+        "Laravel (PHP) - To build the web panel and APIs",
+        "MySQL - To store the data (relational database)",
+        "HTML, CSS, JavaScript - To build the web panel, SaaS website, and School website",
+        "Firebase - To manage push notifications",
+        "Stripe - To manage payments",
+        "Razorpay - To manage payments"
     ],
     "prerequisites": [
         "Basic knowledge of Flutter",
         "Basic knowledge of Laravel",
         "Basic knowledge of PHP",
         "Basic knowledge of MySQL",
-        "Fireabse account",
-        "Stripe account if you want to use Stripe",
-        "Razorpay account if you want to use Razorpay",
-        "VPS or Dedicated Server with minimum 2 core cpu and root database access",
+        "Firebase account",
+        "Stripe account (if you want to use Stripe)",
+        "Razorpay account (if you want to use Razorpay)",
+        "VPS or Dedicated Server with minimum 2 core CPU and root database access",
         "SMTP server",
-        "Google play consoleaccount if you want to publish the app on google play store",
-        "Apple store account if you want to publish the app on apple store"
+        "Google Play Console account (if you want to publish the app on Google Play Store)",
+        "Apple Store account (if you want to publish the app on Apple Store)"
     ],
     "essential-features": [
         "School Management",
-        "Packages and add-ons",
-        "Saas website",
+        "Packages and Add-ons",
+        "SaaS Website",
         "Student Management",
         "Academics Management",
         "Slider Management",
         "Teacher Management",
-        "Session year Management",
+        "Session Year Management",
         "Holiday Management",
         "Timetable Management",
         "Attendance Management",
@@ -62,25 +62,25 @@
         "Staff Leave Management",
         "Fee Management",
         "School Gallery",
-        "ID Card and Cerificate Generation",
-        "School website",
+        "ID Card and Certificate Generation",
+        "School Website",
         "Chat between Students and Teachers",
-        "Chat between Teachers and Staffs",
+        "Chat between Teachers and Staff",
         "Chat between Parents and Teachers"
     ],
     "super-admin-features": [
         {
             "manage-packages": {
                 "information": [
-                    "Super admin can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
-                    "There are total 20 features that can be added to the packages. From that 4 features are default. Rest 16 features can be used to create the various packages.",
-                    "Each package can be subscribed by multiple schools. So, Super admin can create multiple packages for different schools.",
-                    "There will two type of package prepaid and postpaid.",
-                    "To create the prepaid pacakge, Super admin will need to provide the following information. Name, Description, Tagline, Days, Number of Active Students, Number of Active Staffs, Charges or Price.",
-                    "To create the postpaid package, Super admin will need to provide the following information. Name, Description, Tagline, Days, Per Active Student Charges, Per Active Staff Charges",
-                    "While creating the perpaid or postpaid package, super admin can highlight the package. If it is mark as highlight then it will be shown in the Saas website",
-                    "Default features are as follows, Academics Management, Session Year Management, Student Management, Session Year Management",
-                    "16 featuares that can be added to the packages are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management"
+                    "Super admin can create various types of packages based on given features and provide them to schools. School admin will subscribe to the packages and get access to the features.",
+                    "There are a total of 20 features that can be added to the packages. Out of these, 4 features are default. The remaining 16 features can be used to create various packages.",
+                    "Each package can be subscribed to by multiple schools. So, the Super admin can create multiple packages for different schools.",
+                    "There are two types of packages: prepaid and postpaid.",
+                    "To create a prepaid package, the Super admin will need to provide the following information: Name, Description, Tagline, Days, Number of Active Students, Number of Active Staff, Charges or Price.",
+                    "To create a postpaid package, the Super admin will need to provide the following information: Name, Description, Tagline, Days, Per Active Student Charge, Per Active Staff Charge.",
+                    "While creating a prepaid or postpaid package, the Super admin can highlight the package. If marked as a highlight, it will be shown on the SaaS website.",
+                    "Default features: Academics Management, Session Year Management, Student Management, Session Year Management.",
+                    "16 additional features that can be added: Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management."
                 ],
                 "questions": [
                     {
@@ -112,18 +112,24 @@
                         "answers": [
                             "Yes, you can edit or delete a package by navigating to the package management section and selecting the desired package."
                         ]
+                    },
+                    {
+                        "title": "What is SaaS?",
+                        "answers": [
+                            "SaaS (Software as a Service) is a software model where the application is provided as a service to users, rather than being installed and maintained on their own devices."
+                        ]
                     }
                 ]
             }
         },
         {
             "school-management": {
-                "information": ""
+                "information": "School admins can manage student enrollment, attendance, exams, and academic records."
             }
         },
         {
             "add-ons": {
-                "information": ""
+                "information": "Additional features can be purchased separately to enhance the school management experience."
             }
         }
     ],
