@@ -10,7 +10,7 @@ from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
 
-# 🔧 Fix: Force Python to use pysqlite3 (for ChromaDB)
+# Fix: Force Python to use pysqlite3 (for ChromaDB)
 os.environ["PYTHONPATH"] = "/home/adminuser/venv/lib/python3.12/site-packages"
 os.environ["LD_LIBRARY_PATH"] = "/home/adminuser/venv/lib/python3.12/site-packages"
 sys.modules["sqlite3"] = __import__("pysqlite3")
@@ -168,7 +168,7 @@ st.markdown(
 # Display Title Button
 st.markdown('<button class="title-button">E-LMS RAG CHATBOT</button>', unsafe_allow_html=True)
 
-# 🛠 Initialize Session State
+# Initialize Session State
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = load_chat_history()
 
@@ -183,7 +183,7 @@ for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# 📝 User Chat Input
+# User Chat Input
 user_input = st.chat_input("I am your AI assistant, Ask me anything ...")
 
 if user_input:
