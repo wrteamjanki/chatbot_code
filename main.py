@@ -77,7 +77,7 @@ st.markdown(
 )
 
 # Display Title
-st.markdown("# E-LMS AI ASSISTANT")
+st.markdown("# AI Assistant")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
