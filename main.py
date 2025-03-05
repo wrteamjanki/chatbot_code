@@ -6,7 +6,10 @@ try:
 except ImportError:
     import sqlite3
     from packaging import version
-    if version.parse(sqlite3.sqlite_version)
+    if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
+        raise RuntimeError(
+            "Your system sqlite3 version is too old. Please install pysqlite3-binary."
+        )
 
 import os
 import json
@@ -34,12 +37,10 @@ if os.path.exists(config_path):
         config_data = json.load(f)
         os.environ["GROQ_API_KEY"] = config_data.get("GROQ_API_KEY", "")
 
-
 # Cached Vector Store Setup
 @st.cache_resource
 def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
-
 
 # Function to Create Chat Chain
 def chat_chain(vectorstore):
@@ -58,7 +59,6 @@ def chat_chain(vectorstore):
         verbose=True,
         return_source_documents=True,
     )
-
 
 # Streamlit Page Configuration
 st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
