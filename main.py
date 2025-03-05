@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import pickle
 import streamlit as st
@@ -9,7 +10,12 @@ from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
 
-# Directories
+# 🔧 Fix: Force Python to use pysqlite3 (for ChromaDB)
+os.environ["PYTHONPATH"] = "/home/adminuser/venv/lib/python3.12/site-packages"
+os.environ["LD_LIBRARY_PATH"] = "/home/adminuser/venv/lib/python3.12/site-packages"
+sys.modules["sqlite3"] = __import__("pysqlite3")
+
+# 📂 Directories
 DATA_DIR = "data"
 VECTORIZE_SCRIPT = "vectorized_documents.py"
 VECTOR_DB_DIR = "vectordb"
@@ -18,13 +24,12 @@ HISTORY_FILE = "chat_history.pkl"
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# Load API Key
+# 🔑 Load API Key from config.json
 config_path = "config.json"
 if os.path.exists(config_path):
     with open(config_path, "r") as f:
         config_data = json.load(f)
         os.environ["GROQ_API_KEY"] = config_data.get("GROQ_API_KEY", "")
-
 
 # Function to Load Chat History
 def load_chat_history():
@@ -32,8 +37,7 @@ def load_chat_history():
         with open(HISTORY_FILE, "rb") as f:
             return pickle.load(f)
     except (EOFError, pickle.UnpicklingError, FileNotFoundError):
-        return []  # If file is corrupted or missing, return empty list
-
+        return []
 
 # Function to Save Chat History
 def save_chat_history():
@@ -42,19 +46,20 @@ def save_chat_history():
         pickle.dump(st.session_state.chat_history, f)
     os.replace(temp_file, HISTORY_FILE)  # Atomic write
 
-
 # Cached Vector Store Setup
 @st.cache_resource
 def setup_vectorstore():
-    return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
-
+    try:
+        return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
+    except Exception as e:
+        st.error(f"Error initializing ChromaDB: {e}")
+        return None
 
 # Function to List Available Documents
 def list_documents():
     return [
         f for f in os.listdir(DATA_DIR) if os.path.isfile(os.path.join(DATA_DIR, f))
     ]
-
 
 # Function to Run the Vectorization Script
 def update_vector_db():
@@ -64,9 +69,7 @@ def update_vector_db():
         )
         st.success("Vectorization Completed!")
         st.text(result.stdout)
-    # Update the vectorstore after vectorization
     st.session_state.vectorstore = setup_vectorstore()
-
 
 # Function to Delete Documents
 def delete_documents(file_names):
@@ -79,17 +82,19 @@ def delete_documents(file_names):
             st.sidebar.error(f"File {file_name} not found.")
     update_vector_db()
 
-
 # Function to Create Chat Chain
 def chat_chain(vectorstore):
+    if not vectorstore:
+        st.error("Vector store not initialized!")
+        return None
+
     llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
     retriever = vectorstore.as_retriever()
 
-    # ✅ Fix: Explicitly set output_key="answer"
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
         return_messages=True,
-        output_key="answer",  # Fix: Specifies which key to store in memory
+        output_key="answer",
     )
 
     return ConversationalRetrievalChain.from_llm(
@@ -101,16 +106,15 @@ def chat_chain(vectorstore):
         return_source_documents=True,
     )
 
-
 # Streamlit Page Configuration
 st.set_page_config(page_title="Multi-Doc RAG Chatbot", page_icon="📚", layout="wide")
 
 # Sidebar for Document Management
-st.sidebar.title("📂 Available Documents")
+st.sidebar.title("Available Documents")
 documents = list_documents()
 selected_docs = st.sidebar.multiselect("Select Documents", documents, default=documents)
 
-# Upload New Document
+# 📤 Upload New Document
 uploaded_file = st.sidebar.file_uploader("Upload a Document", type=["pdf", "json"])
 if uploaded_file:
     file_path = os.path.join(DATA_DIR, uploaded_file.name)
@@ -130,7 +134,7 @@ if documents:
         delete_documents(files_to_delete)
         st.rerun()
 
-# Custom CSS for Styling
+# 🎨 Custom CSS for Styling
 st.markdown(
     """
     <style>
@@ -161,12 +165,10 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Display Title Button
-st.markdown(
-    '<button class="title-button">E-LMS RAG CHATBOT</button>', unsafe_allow_html=True
-)
+# 📌 Display Title Button
+st.markdown('<button class="title-button">E-LMS RAG CHATBOT</button>', unsafe_allow_html=True)
 
-# Initialize Session State
+# 🛠 Initialize Session State
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = load_chat_history()
 
@@ -181,7 +183,7 @@ for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# User Chat Input
+# 📝 User Chat Input
 user_input = st.chat_input("I am your AI assistant, Ask me anything ...")
 
 if user_input:
@@ -198,5 +200,4 @@ if user_input:
         st.session_state.chat_history.append(
             {"role": "assistant", "content": assistant_response}
         )
-        save_chat_history()  # Save chat history after every response
-
+        save_chat_history()  # 💾 Save chat history after every response
