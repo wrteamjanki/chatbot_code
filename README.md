@@ -6,8 +6,8 @@ This project is a Retrieval-Augmented Generation (RAG) chatbot that processes an
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/multi_documents_rag_chatbot.git
-   cd multi_documents_rag_chatbot
+   git clone https://github.com/wrteamjanki/chatbot_code.git
+   cd chatbot_code
    ```
 2. Create and activate a virtual environment:
    ```sh
@@ -46,5 +46,5 @@ This project is a Retrieval-Augmented Generation (RAG) chatbot that processes an
 - For memory issues, reduce `chunk_size` in `vectorized_documents.py`.
 
 ## License
-This project is open-source. You are free to modify and use it as needed.
+This project is not open-source.
 
