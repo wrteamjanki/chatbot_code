@@ -111,7 +111,7 @@
                     "Super admin can edit the package. Super admin can edit the all fields of the package.",
                     "In case of editing the prepaid package, If super admin update the Price, Number of students, Number of staffs, Days then it will take effect on the new subscriptions or renewals of the package. ",
                     "In case of editing the postpaid package, If super admin update the Per Active Student Charge, Per Active Staff Charge, Days then it will take effect on the new subscriptions or renewals of the package. ",
-                    "If super admin update the features, super admin choose to make changed features instantly available to all the existing subscriptions or not. If it is not selected then the features will be available only to the new subscriptions or renewals of the package.",
+                    "If super admin update the features, super admin choose to make changed features instantly available to all the existing subscriptions or not. If it is not selected then the features will be available only to the new subscriptions or renewals of the package."
                 ],
                 "questions": [
                     {
@@ -551,7 +551,7 @@
         {
             "question": "From where i can buy the script?",
             "answers": [
-                "You can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764",
+                "You can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764"
             ]
         },
         {
@@ -561,7 +561,7 @@
             ]
         },
         {
-            "question":
+            "question": ""
         },
         {
             "question": "How to update the script?",
@@ -612,12 +612,6 @@
             ]
         },
         {
-            "question": "What is the duration of the support?",
-            "answers": [
-                "In regular licence it is 6 months. In extended licence it is 12 months"
-            ]
-        },
-        {
             "question": "How to contact the support?",
             "answers": [
                 "We provide support on the following platforms",
@@ -626,7 +620,7 @@
                 "You can also contact us on whatsapp or email",
                 "Email address to get the support : support@wrteam.in",
                 "Whatsapp number to get support : +91 8849493106",
-                "Skype profie to get support : ",
+                "Skype profie to get support : https://join.skype.com/invite/u6fax2p0rsQL"
             ]
         },
         {
@@ -713,9 +707,29 @@
         {
             "question": "What is the support timing",
             "answers": [
-                "Support timing is 9 AM to 6 PM IST. Monday to Friday",
-                "It may take some time to get the support",
-                "Ideally we answer within 24 hours"
+                "To help our customers, we constantly be in touch with every customer if they need any assistance regarding our product.",
+                "We offer our customers a support from Monday to Friday 9.00 AM to 6.00 PM IST (GMT +5.30). We are a Team located in India – Asia. Typically we reply our customers for all the questions and queries within 24 hours of time via comments, support forum or emails."
+            ]
+        },
+        {
+            "question": "Is deployment of applications is part of the support?",
+            "answers": [
+                "No, It is not part of the support",
+                "To deploy the apps on google play store, please follow the given link. https://flutter.dev/docs/deployment/android",
+                "To deploy the apps on apple store, please follow the given link. https://flutter.dev/docs/deployment/ios",
+                "You can contact us for the deployment as well"
+            ]
+        },
+        {
+            "question": "Do you provide reskin services?",
+            "answers": [
+                "Yes,"
+            ]
+        },
+        {
+            "question": "Can i white label the script?",
+            "answers": [
+                "Yes, you can white label the script as per your requirements"
             ]
         }
     ]
