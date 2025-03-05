@@ -24,7 +24,7 @@ HISTORY_FILE = "chat_history.pkl"
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# 🔑 Load API Key from config.json
+# Load API Key from config.json
 config_path = "config.json"
 if os.path.exists(config_path):
     with open(config_path, "r") as f:
