@@ -15,6 +15,8 @@
         "Student and Parents will use the Student & Parent mobile app.",
         "Teachers, Staffs and School admin will use the Teacher & Staff mobile app.",
         "Saas website will be used by general public to know about the system and its services.",
+        "Student and Parents will not use the web panel",
+        "Super admin can not use the applications",
         "School website will be used by general public to know about the school and other activities of the school.",
         "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features."
     ],
@@ -26,7 +28,9 @@
         "HTML, CSS, JavaScript - To build the web paneles, Saas website and School website",
         "Firebase - To manage the push notifications",
         "Stripe - To manage the payments",
-        "Razorpay - To manage the payments"
+        "Razorpay - To manage the payments",
+        "Google reCAPTCHA - To prevent the spam registration and application form",
+        "This script will work with latest flutter version"
     ],
     "prerequisites": [
         "Basic knowledge of Flutter",
@@ -129,7 +133,8 @@
         {
             "authentication": {
                 "information": [
-                    "The default email and password for super admin are superadmin@gmail.com and 'superadmin', respectively. These can be changed later."
+                    "Default credentails of super admin are superadmin@gmail.com and superadmin",
+                    "Here superadmin@gmail.com is email and password is superadmin. These can be changed later."
                 ]
             }
         },
