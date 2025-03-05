@@ -3,20 +3,11 @@ import json
 import pickle
 import streamlit as st
 import subprocess
-import sys
-
 from langchain_chroma import Chroma
 from langchain_groq import ChatGroq
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
-
-# Fix for ChromaDB's SQLite dependency issue
-try:
-    import pysqlite3
-    sys.modules["sqlite3"] = pysqlite3
-except ImportError:
-    st.warning("pysqlite3 not found. Ensure 'pysqlite3-binary' is installed.")
 
 # Directories
 DATA_DIR = "data"
@@ -24,47 +15,48 @@ VECTORIZE_SCRIPT = "vectorized_documents.py"
 VECTOR_DB_DIR = "vectordb"
 HISTORY_FILE = "chat_history.pkl"
 
-# Ensure necessary directories exist
+# Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# Load API Key from config file
+# Load API Key
 config_path = "config.json"
 if os.path.exists(config_path):
     with open(config_path, "r") as f:
         config_data = json.load(f)
         os.environ["GROQ_API_KEY"] = config_data.get("GROQ_API_KEY", "")
 
-# Load Chat History
+
+# Function to Load Chat History
 def load_chat_history():
     try:
         with open(HISTORY_FILE, "rb") as f:
             return pickle.load(f)
     except (EOFError, pickle.UnpicklingError, FileNotFoundError):
-        return []
+        return []  # If file is corrupted or missing, return empty list
 
-# Save Chat History
+
+# Function to Save Chat History
 def save_chat_history():
     temp_file = HISTORY_FILE + ".tmp"
     with open(temp_file, "wb") as f:
         pickle.dump(st.session_state.chat_history, f)
-    os.replace(temp_file, HISTORY_FILE)
+    os.replace(temp_file, HISTORY_FILE)  # Atomic write
+
 
 # Cached Vector Store Setup
 @st.cache_resource
 def setup_vectorstore():
-    try:
-        return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
-    except Exception as e:
-        st.error(f"Error initializing vector store: {e}")
-        return None
+    return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
-# List Available Documents
+
+# Function to List Available Documents
 def list_documents():
     return [
         f for f in os.listdir(DATA_DIR) if os.path.isfile(os.path.join(DATA_DIR, f))
     ]
 
-# Run the Vectorization Script
+
+# Function to Run the Vectorization Script
 def update_vector_db():
     with st.spinner("Vectorizing documents... Please wait."):
         result = subprocess.run(
@@ -72,9 +64,11 @@ def update_vector_db():
         )
         st.success("Vectorization Completed!")
         st.text(result.stdout)
+    # Update the vectorstore after vectorization
     st.session_state.vectorstore = setup_vectorstore()
 
-# Delete Documents
+
+# Function to Delete Documents
 def delete_documents(file_names):
     for file_name in file_names:
         file_path = os.path.join(DATA_DIR, file_name)
@@ -85,19 +79,17 @@ def delete_documents(file_names):
             st.sidebar.error(f"File {file_name} not found.")
     update_vector_db()
 
-# Create Chat Chain
-def chat_chain(vectorstore):
-    if not vectorstore:
-        st.error("Vectorstore is not initialized! Please check your setup.")
-        return None
 
+# Function to Create Chat Chain
+def chat_chain(vectorstore):
     llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
     retriever = vectorstore.as_retriever()
 
+    # ✅ Fix: Explicitly set output_key="answer"
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
         return_messages=True,
-        output_key="answer",
+        output_key="answer",  # Fix: Specifies which key to store in memory
     )
 
     return ConversationalRetrievalChain.from_llm(
@@ -109,11 +101,12 @@ def chat_chain(vectorstore):
         return_source_documents=True,
     )
 
+
 # Streamlit Page Configuration
-st.set_page_config(page_title="Multi-Doc RAG Chatbot", layout="wide")
+st.set_page_config(page_title="Multi-Doc RAG Chatbot", page_icon="📚", layout="wide")
 
 # Sidebar for Document Management
-st.sidebar.title("Available Documents")
+st.sidebar.title("📂 Available Documents")
 documents = list_documents()
 selected_docs = st.sidebar.multiselect("Select Documents", documents, default=documents)
 
@@ -169,7 +162,9 @@ st.markdown(
 )
 
 # Display Title Button
-st.markdown('<button class="title-button">E-LMS RAG CHATBOT</button>', unsafe_allow_html=True)
+st.markdown(
+    '<button class="title-button">E-LMS RAG CHATBOT</button>', unsafe_allow_html=True
+)
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
@@ -195,16 +190,12 @@ if user_input:
         st.markdown(user_input)
 
     with st.chat_message("assistant"):
-        if st.session_state.conversational_chain:
-            response = st.session_state.conversational_chain.invoke(
-                {"question": user_input, "chat_history": st.session_state.chat_history}
-            )
-            assistant_response = response.get("answer", "I couldn't understand that.")
-        else:
-            assistant_response = "Error: Chatbot is not properly initialized."
-
+        response = st.session_state.conversational_chain.invoke(
+            {"question": user_input, "chat_history": st.session_state.chat_history}
+        )
+        assistant_response = response["answer"]
         st.markdown(assistant_response)
         st.session_state.chat_history.append(
             {"role": "assistant", "content": assistant_response}
         )
-        save_chat_history()
+        save_chat_history()  # Save chat history after every response
