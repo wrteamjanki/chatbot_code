@@ -61,7 +61,7 @@ def chat_chain(vectorstore):
     )
 
 # Streamlit Page Configuration
-st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
+st.set_page_config(page_title="E-LMS AI ASSISTANT", page_icon="💬", layout="centered")
 
 # Custom CSS for Minimalist Design
 st.markdown(
