@@ -16,7 +16,7 @@ import pickle
 import streamlit as st
 import subprocess
 from langchain_chroma import Chroma
-from langchain_groq import ChatGroq, RateLimitError  # Added RateLimitError
+from langchain_groq import ChatGroq  # Removed RateLimitError import
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
@@ -111,5 +111,9 @@ if user_input:
             st.session_state.chat_history.append(
                 {"role": "assistant", "content": assistant_response}
             )
-    except RateLimitError:
-        st.error("The Groq API rate limit has been reached. Please wait a moment and try again.")
+    except Exception as e:
+        # Check if error message indicates a rate limit error
+        if "rate limit" in str(e).lower():
+            st.error("The Groq API rate limit has been reached. Please wait a moment and try again.")
+        else:
+            raise e
