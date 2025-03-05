@@ -10,14 +10,13 @@ except ImportError:
         raise RuntimeError(
             "Your system sqlite3 version is too old. Please install pysqlite3-binary."
         )
-
 import os
 import json
 import pickle
 import streamlit as st
 import subprocess
 from langchain_chroma import Chroma
-from langchain_groq import ChatGroq
+from langchain_groq import ChatGroq, RateLimitError  # Added RateLimitError
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
@@ -61,7 +60,7 @@ def chat_chain(vectorstore):
     )
 
 # Streamlit Page Configuration
-st.set_page_config(page_title="E-LMS AI ASSISTANT", page_icon="💬", layout="centered")
+st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
 
 # Custom CSS for Minimalist Design
 st.markdown(
@@ -77,7 +76,7 @@ st.markdown(
 )
 
 # Display Title
-st.markdown("# AI Assistant")
+st.markdown("# AI ASSISTANT")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
@@ -102,12 +101,15 @@ if user_input:
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    with st.chat_message("assistant"):
-        response = st.session_state.conversational_chain.invoke(
-            {"question": user_input, "chat_history": st.session_state.chat_history}
-        )
-        assistant_response = response["answer"]
-        st.markdown(assistant_response)
-        st.session_state.chat_history.append(
-            {"role": "assistant", "content": assistant_response}
-        )
+    try:
+        with st.chat_message("assistant"):
+            response = st.session_state.conversational_chain.invoke(
+                {"question": user_input, "chat_history": st.session_state.chat_history}
+            )
+            assistant_response = response["answer"]
+            st.markdown(assistant_response)
+            st.session_state.chat_history.append(
+                {"role": "assistant", "content": assistant_response}
+            )
+    except RateLimitError:
+        st.error("The Groq API rate limit has been reached. Please wait a moment and try again.")
