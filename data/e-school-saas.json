@@ -1,5 +1,6 @@
 {
     "name": "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
+    "author": "WRTeam",
     "user-roles": [
         "Super admin",
         "School admin",
@@ -32,19 +33,35 @@
         "Google reCAPTCHA - To prevent the spam registration and application form",
         "This script will work with latest flutter version"
     ],
-    "prerequisites": [
-        "Basic knowledge of Flutter",
-        "Basic knowledge of Laravel",
-        "Basic knowledge of PHP",
-        "Basic knowledge of MySQL",
-        "Fireabse account",
-        "Stripe account if you want to use Stripe",
-        "Razorpay account if you want to use Razorpay",
-        "VPS or Dedicated Server with minimum 2 core cpu and root database access",
-        "SMTP server",
-        "Google play consoleaccount if you want to publish the app on google play store",
-        "Apple store account if you want to publish the app on apple store"
-    ],
+    "prerequisites-or-prerequirements": {
+        "information": [
+            "Basic knowledge of Flutter",
+            "Basic knowledge of Laravel",
+            "Basic knowledge of PHP",
+            "Basic knowledge of MySQL",
+            "Fireabse account",
+            "Stripe account if you want to use Stripe",
+            "Razorpay account if you want to use Razorpay",
+            "VPS or Dedicated Server with minimum 2 core cpu and root database access",
+            "SMTP server",
+            "Google play console account if you want to publish the app on google play store",
+            "Apple store account if you want to publish the app on apple store"
+        ],
+        "questions": [
+            {
+                "title": "What is the minimum requirements for the system?",
+                "answers": [
+                    "Minimum requirements for the system are as follows, Flutter(Dart) - To build the mobile apps, Laravel(PHP) - To build the web panel and APIs, MySQL - To store the data. It is a relational database, HTML, CSS, JavaScript - To build the web paneles, Firebase - To manage the push notifications, Stripe - To manage the payments, Razorpay - To manage the payments, Google reCAPTCHA - To prevent the spam registration and application form, This script will work with latest flutter version"
+                ]
+            },
+            {
+                "title": "Will shared hosting work for the system?",
+                "answers": [
+                    "No, shared hosting will not work for the system. It needs a dedicated VPS server with root database access."
+                ]
+            }
+        ]
+    },
     "essential-features": [
         "School Management",
         "Packages and add-ons",
@@ -84,7 +101,7 @@
                     "To create the prepaid pacakge, Super admin will need to provide the following information. Name, Description, Tagline, Days, Number of Active Students, Number of Active Staffs, Charges or Price.",
                     "To create the postpaid package, Super admin will need to provide the following information. Name, Description, Tagline, Days, Per Active Student Charges, Per Active Staff Charges",
                     "While creating the perpaid or postpaid package, super admin can highlight the package. If it is mark as highlight then it will be shown in the Saas website",
-                    "Default features are as follows, Academics Management, Session Year Management, Student Management, Session Year Management",
+                    "There are 4 Default features. Academics Management, Session Year Management, Student Management, Session Year Management.",
                     "16 featuares that can be added to the packages are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management",
                     "All packages will be in unpublished state by default. Super admin can publish the package by clicking on the publish button. Super admin can also unpublish the package by clicking on the unpublish button.",
                     "If the package is published then it will be visible to all the schools.",
@@ -94,7 +111,7 @@
                     "Super admin can edit the package. Super admin can edit the all fields of the package.",
                     "In case of editing the prepaid package, If super admin update the Price, Number of students, Number of staffs, Days then it will take effect on the new subscriptions or renewals of the package. ",
                     "In case of editing the postpaid package, If super admin update the Per Active Student Charge, Per Active Staff Charge, Days then it will take effect on the new subscriptions or renewals of the package. ",
-                    "If super admin update the features, super admin choose to make changed features instantly available to all the existing subscriptions or not. If it is not selected then the features will be available only to the new subscriptions or renewals of the package."
+                    "If super admin update the features, super admin choose to make changed features instantly available to all the existing subscriptions or not. If it is not selected then the features will be available only to the new subscriptions or renewals of the package.",
                 ],
                 "questions": [
                     {
@@ -272,6 +289,7 @@
         {
             "send-email-to-schools": {
                 "information": [
+                    "Super admin can send email to all the schools or selected schools.",
                     "Super Admin can send customized emails to schools, including updates, notifications, and announcements."
                 ]
             }
@@ -533,8 +551,17 @@
         {
             "question": "From where i can buy the script?",
             "answers": [
-                "You can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764"
+                "You can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764",
             ]
+        },
+        {
+            "question": "What is the price of the script?",
+            "answers": [
+                "Price of the script is $99.00"
+            ]
+        },
+        {
+            "question":
         },
         {
             "question": "How to update the script?",
@@ -570,6 +597,125 @@
             "question": "What will i get after buying the script?",
             "answers": [
                 "You will get the two application code, Web panel and API code. In this folder you will get the latest code of the script. You can use the PHP code to update the system."
+            ]
+        },
+        {
+            "question": "Is there any support available for the script?",
+            "answers": [
+                "Yes, Six month support is available for the script. You can contact us for the support."
+            ]
+        },
+        {
+            "question": "What is the duration of the support?",
+            "answers": [
+                "In regular licence it is 6 months. In extended licence it is 12 months"
+            ]
+        },
+        {
+            "question": "What is the duration of the support?",
+            "answers": [
+                "In regular licence it is 6 months. In extended licence it is 12 months"
+            ]
+        },
+        {
+            "question": "How to contact the support?",
+            "answers": [
+                "We provide support on the following platforms",
+                "Skype, Whatsapp and email",
+                "Skype is the main source of support. You may need to contact us on skype for the support",
+                "You can also contact us on whatsapp or email",
+                "Email address to get the support : support@wrteam.in",
+                "Whatsapp number to get support : +91 8849493106",
+                "Skype profie to get support : ",
+            ]
+        },
+        {
+            "question": "What is included in the support?",
+            "answers": []
+        },
+        {
+            "question": "What is extended licence?",
+            "answers": []
+        },
+        {
+            "question": "What are the benefits of extended licence?",
+            "answers": []
+        },
+        {
+            "question": "Can i modify the code?",
+            "answers": [
+                "Yes, you can modify the code as per requirements"
+            ]
+        },
+        {
+            "question": "What is the difference between regular and extended licence?",
+            "answers": [
+                "Regular licence is for personal use. Extended licence is for business use."
+            ]
+        },
+        {
+            "question": "Does it have free trial?",
+            "answers": [
+                ""
+            ]
+        },
+        {
+            "question": "What is the server requirements?",
+            "answers": [
+                ""
+            ]
+        },
+        {
+            "question": "How many payment gateways are supported?",
+            "answers": [
+                "Razorpay and Stripe are supported",
+                "Any other payment gateway not supported, we will be adding it soon other as per the demand"
+            ]
+        },
+        {
+            "question": "Does it support multiple languages?",
+            "answers": [
+                "Yes, it supports multiple languages",
+                "You can add as many languages as you want",
+                "It does support rtl and ltr languages"
+            ]
+        },
+        {
+            "question": "Does it support RTL?",
+            "answers": [
+                "Yes, it does support RTL"
+            ]
+        },
+        {
+            "question": "Is RTL enabled?",
+            "answers": [
+                "Yes, it is RTL enabled"
+            ]
+        },
+        {
+            "question": "Do you provide demo?",
+            "answers": [
+                ""
+            ]
+        },
+        {
+            "question": "Do you provide support after buying the script?",
+            "answers": [
+                ""
+            ]
+        },
+        {
+            "question": "After buying script, when will i get the source code of the script and how?",
+            "answers": [
+                ""
+            ]
+        },
+        {
+            "question": "What is the support timing",
+            "answers": [
+                "Support timing is 9 AM to 6 PM IST. Monday to Friday",
+                "It may take some time to get the support",
+                "Ideally we answer within 24 hours"
             ]
         }
     ]
