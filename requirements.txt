@@ -1,1 +1,13 @@
-
+pandas
+numpy
+nltk
+streamlit
+python-dotenv
+unstructured 
+langchain-groq
+langchain-huggingface
+langchain-text-splitters  
+langchain-chroma
+langchain_community
+pymupdf
+jq
