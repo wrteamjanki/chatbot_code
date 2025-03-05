@@ -11,7 +11,6 @@ from vectorized_documents import embeddings
 
 # Directories
 DATA_DIR = "data"
-VECTORIZE_SCRIPT = "vectorized_documents.py"
 VECTOR_DB_DIR = "vectordb"
 HISTORY_FILE = "chat_history.pkl"
 
@@ -26,72 +25,21 @@ if os.path.exists(config_path):
         os.environ["GROQ_API_KEY"] = config_data.get("GROQ_API_KEY", "")
 
 
-# Function to Load Chat History
-def load_chat_history():
-    try:
-        with open(HISTORY_FILE, "rb") as f:
-            return pickle.load(f)
-    except (EOFError, pickle.UnpicklingError, FileNotFoundError):
-        return []  # If file is corrupted or missing, return empty list
-
-
-# Function to Save Chat History
-def save_chat_history():
-    temp_file = HISTORY_FILE + ".tmp"
-    with open(temp_file, "wb") as f:
-        pickle.dump(st.session_state.chat_history, f)
-    os.replace(temp_file, HISTORY_FILE)  # Atomic write
-
-
 # Cached Vector Store Setup
 @st.cache_resource
 def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
 
-# Function to List Available Documents
-def list_documents():
-    return [
-        f for f in os.listdir(DATA_DIR) if os.path.isfile(os.path.join(DATA_DIR, f))
-    ]
-
-
-# Function to Run the Vectorization Script
-def update_vector_db():
-    with st.spinner("Vectorizing documents... Please wait."):
-        result = subprocess.run(
-            ["python", VECTORIZE_SCRIPT], capture_output=True, text=True
-        )
-        st.success("Vectorization Completed!")
-        st.text(result.stdout)
-    # Update the vectorstore after vectorization
-    st.session_state.vectorstore = setup_vectorstore()
-
-
-# Function to Delete Documents
-def delete_documents(file_names):
-    for file_name in file_names:
-        file_path = os.path.join(DATA_DIR, file_name)
-        if os.path.exists(file_path):
-            os.remove(file_path)
-            st.sidebar.success(f"Deleted {file_name}")
-        else:
-            st.sidebar.error(f"File {file_name} not found.")
-    update_vector_db()
-
-
 # Function to Create Chat Chain
 def chat_chain(vectorstore):
     llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
     retriever = vectorstore.as_retriever()
-
-    # ✅ Fix: Explicitly set output_key="answer"
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
         return_messages=True,
-        output_key="answer",  # Fix: Specifies which key to store in memory
+        output_key="answer",
     )
-
     return ConversationalRetrievalChain.from_llm(
         llm=llm,
         retriever=retriever,
@@ -103,34 +51,9 @@ def chat_chain(vectorstore):
 
 
 # Streamlit Page Configuration
-st.set_page_config(page_title="Multi-Doc RAG Chatbot", page_icon="📚", layout="wide")
+st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
 
-# Sidebar for Document Management
-st.sidebar.title("📂 Available Documents")
-documents = list_documents()
-selected_docs = st.sidebar.multiselect("Select Documents", documents, default=documents)
-
-# Upload New Document
-uploaded_file = st.sidebar.file_uploader("Upload a Document", type=["pdf", "json"])
-if uploaded_file:
-    file_path = os.path.join(DATA_DIR, uploaded_file.name)
-    with open(file_path, "wb") as f:
-        f.write(uploaded_file.getbuffer())
-    st.sidebar.success(f"Uploaded {uploaded_file.name}")
-    st.rerun()
-
-# Button to Trigger Vectorization
-if st.sidebar.button("Update Vector DB"):
-    update_vector_db()
-
-# Delete Documents
-if documents:
-    files_to_delete = st.sidebar.multiselect("Select Documents to Delete", documents)
-    if st.sidebar.button("Delete Selected Documents"):
-        delete_documents(files_to_delete)
-        st.rerun()
-
-# Custom CSS for Styling
+# Custom CSS for Minimalist Design
 st.markdown(
     """
     <style>
@@ -138,51 +61,31 @@ st.markdown(
         border-color: #4A90E2 !important;
         box-shadow: 0 0 5px #4A90E2 !important;
     }
-    .title-button {
-        display: block;
-        width: 100%;
-        padding: 15px;
-        text-align: center;
-        font-size: 32px;
-        font-weight: bold;
-        color: white;
-        background: linear-gradient(135deg, #4A90E2, #6B56E2);
-        border-radius: 10px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-    .title-button:hover {
-        background: linear-gradient(135deg, #6B56E2, #4A90E2);
-        transform: scale(1.02);
-    }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# Display Title Button
-st.markdown(
-    '<button class="title-button">E-LMS RAG CHATBOT</button>', unsafe_allow_html=True
-)
+# Display Title
+st.markdown("# AI ASSISTANT")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
-    st.session_state.chat_history = load_chat_history()
+    st.session_state.chat_history = []  # Do not load previous history on rerun
 
 if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = setup_vectorstore()
 
-if "conversational_chain" not in st.session_state or "vectorstore" in st.session_state:
+if "conversational_chain" not in st.session_state:
     st.session_state.conversational_chain = chat_chain(st.session_state.vectorstore)
 
-# Display Chat History
+# Display Chat History within the session
 for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # User Chat Input
-user_input = st.chat_input("I am your AI assistant, Ask me anything ...")
+user_input = st.chat_input("Ask me anything...")
 
 if user_input:
     st.session_state.chat_history.append({"role": "user", "content": user_input})
@@ -198,4 +101,3 @@ if user_input:
         st.session_state.chat_history.append(
             {"role": "assistant", "content": assistant_response}
         )
-        save_chat_history()  # Save chat history after every response
