@@ -15,7 +15,7 @@ os.environ["PYTHONPATH"] = "/home/adminuser/venv/lib/python3.12/site-packages"
 os.environ["LD_LIBRARY_PATH"] = "/home/adminuser/venv/lib/python3.12/site-packages"
 sys.modules["sqlite3"] = __import__("pysqlite3")
 
-# 📂 Directories
+# Directories
 DATA_DIR = "data"
 VECTORIZE_SCRIPT = "vectorized_documents.py"
 VECTOR_DB_DIR = "vectordb"
@@ -114,7 +114,7 @@ st.sidebar.title("Available Documents")
 documents = list_documents()
 selected_docs = st.sidebar.multiselect("Select Documents", documents, default=documents)
 
-# 📤 Upload New Document
+# Upload New Document
 uploaded_file = st.sidebar.file_uploader("Upload a Document", type=["pdf", "json"])
 if uploaded_file:
     file_path = os.path.join(DATA_DIR, uploaded_file.name)
@@ -134,7 +134,7 @@ if documents:
         delete_documents(files_to_delete)
         st.rerun()
 
-# 🎨 Custom CSS for Styling
+# Custom CSS for Styling
 st.markdown(
     """
     <style>
@@ -165,7 +165,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# 📌 Display Title Button
+# Display Title Button
 st.markdown('<button class="title-button">E-LMS RAG CHATBOT</button>', unsafe_allow_html=True)
 
 # 🛠 Initialize Session State
@@ -200,4 +200,4 @@ if user_input:
         st.session_state.chat_history.append(
             {"role": "assistant", "content": assistant_response}
         )
-        save_chat_history()  # 💾 Save chat history after every response
+        save_chat_history()  # Save chat history after every response
