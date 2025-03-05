@@ -1,7 +1,6 @@
 pandas
 numpy
 nltk
-streamlit
 python-dotenv
 unstructured
 langchain-groq
@@ -11,3 +10,5 @@ langchain-chroma
 langchain_community
 pymupdf
 jq
+streamlit==1.28.1
+chromadb==0.4.17
