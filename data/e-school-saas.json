@@ -111,7 +111,7 @@
                     "Super admin can edit the package. Super admin can edit the all fields of the package.",
                     "In case of editing the prepaid package, If super admin update the Price, Number of students, Number of staffs, Days then it will take effect on the new subscriptions or renewals of the package. ",
                     "In case of editing the postpaid package, If super admin update the Per Active Student Charge, Per Active Staff Charge, Days then it will take effect on the new subscriptions or renewals of the package. ",
-                    "If super admin update the features, super admin choose to make changed features instantly available to all the existing subscriptions or not. If it is not selected then the features will be available only to the new subscriptions or renewals of the package.",
+                    "If super admin update the features, super admin choose to make changed features instantly available to all the existing subscriptions or not. If it is not selected then the features will be available only to the new subscriptions or renewals of the package."
                 ],
                 "questions": [
                     {
@@ -551,7 +551,7 @@
         {
             "question": "From where i can buy the script?",
             "answers": [
-                "You can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764",
+                "You can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764"
             ]
         },
         {
@@ -561,7 +561,7 @@
             ]
         },
         {
-            "question":
+            "question":[]
         },
         {
             "question": "How to update the script?",
@@ -626,7 +626,7 @@
                 "You can also contact us on whatsapp or email",
                 "Email address to get the support : support@wrteam.in",
                 "Whatsapp number to get support : +91 8849493106",
-                "Skype profie to get support : ",
+                "Skype profie to get support : "
             ]
         },
         {
