@@ -199,4 +199,3 @@ if user_input:
             {"role": "assistant", "content": assistant_response}
         )
         save_chat_history()  # Save chat history after every response
-

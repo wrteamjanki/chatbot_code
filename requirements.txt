@@ -3,10 +3,10 @@ numpy
 nltk
 streamlit
 python-dotenv
-unstructured 
+unstructured
 langchain-groq
 langchain-huggingface
-langchain-text-splitters  
+langchain-text-splitters
 langchain-chroma
 langchain_community
 pymupdf
