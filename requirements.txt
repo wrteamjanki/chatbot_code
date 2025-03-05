@@ -11,3 +11,6 @@ langchain-chroma
 langchain_community
 pymupdf
 jq
+pysqlite3-binary
+chromadb
+
