@@ -1,3 +1,13 @@
+# Override sqlite3 with pysqlite3-binary
+try:
+    import pysqlite3
+    import sys
+    sys.modules["sqlite3"] = pysqlite3
+except ImportError:
+    import sqlite3
+    from packaging import version
+    if version.parse(sqlite3.sqlite_version)
+
 import os
 import json
 import pickle
