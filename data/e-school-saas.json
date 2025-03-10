@@ -561,12 +561,15 @@
             ]
         },
         {
-            "question":[]
-        },
-        {
             "question": "How to update the script?",
             "answers": [
                 "You can update the script by uploading the updated zip file. Super admin can download the latest zip file from codecanyon."
+            ]
+        },
+        {
+            "question": "How to get the latest source code?",
+            "answers": [
+                "User can get the code from the codecanyon in Profile -> Downloads section"
             ]
         },
         {
@@ -625,38 +628,106 @@
         },
         {
             "question": "What is included in the support?",
-            "answers": []
+            "answers": [
+                "Please refer to this offical codecanyon link for more information about the support,ś https://codecanyon.net/page/item_support_policy?srsltid=AfmBOooTNA4mMmyShxr571415zHFX9FhUGL_PPL6-4LF48Z8R5FhuEJ1",
+                "The support includes the following features",
+                "Pre sale queries",
+                "Understading of the script and its features",
+                "Will provide guideance on web setup and application setup",
+                "Will provide bug fixes in case of any issues",
+                "Follwoing features will be not included in the support",
+                "Customisation of the script",
+                "Server and web setup",
+                "Application setup",
+                "Deployment of the application on the app store and play store",
+                "Logo creation",
+                "Flutter setup in your computer",
+                "PHP and Laravel setup computer"
+            ]
         },
         {
-            "question": "What is extended licence?",
-            "answers": []
+            "question": "What is the extended licence price?",
+            "answers": [
+                "$499"
+            ]
         },
         {
             "question": "What are the benefits of extended licence?",
-            "answers": []
+            "answers": [
+                "Extended licence users will get the 1 year of support",
+                "Extended licence users will get priority support",
+                "Extended licence users will remote support through anydesk if needed",
+                "Extended licence users will get the API postman collection",
+                "We will setup the server and web setup for extended licence users"
+            ]
         },
         {
             "question": "Can i modify the code?",
             "answers": [
-                "Yes, you can modify the code as per requirements"
+                "Yes, you can modify the code as per requirements."
+            ]
+        },
+        {
+            "question": "Can i resell the code?",
+            "answers": [
+                "Users are not allowed to resell the source code with regular or extended licence"
+            ]
+        },
+        {
+            "question": "Can i have multiple domain with regular or extended licence?",
+            "answers": [
+                "No, user can not have multiple domain with regular or extended licence",
+                "User can have only one domain at a time with regular or extended licence"
+            ]
+        },
+        {
+            "question": "Can i use the code for commercial use?",
+            "answers": [
+                "Yes, you can use the code for commercial use"
             ]
         },
         {
             "question": "What is the difference between regular and extended licence?",
             "answers": [
-                "Regular licence is for personal use. Extended licence is for business use."
+                "In both licence users will get the script code and lifelong fee updates",
+                "In regular licence user will get the 6 months of support",
+                "In regular licence user will get the code of this script",
+                "In regular licence user can modify the code as per requirements",
+                "In extended licence user will get all the features of regular licence",
+                "Apart from the regular licence features, extended licence users will get the additional following features",
+                "Extended licence users will get the 1 year of support",
+                "Extended licence users will get priority support",
+                "Extended licence users will remote support through anydesk if needed",
+                "Extended licence users will get the API postman collection",
+                "We will setup the server and web setup for extended licence users"
             ]
         },
         {
             "question": "Does it have free trial?",
             "answers": [
-                ""
+                "Yes, it does have the free trial. Super admin can enable the free trial and it's features"
             ]
         },
         {
             "question": "What is the server requirements?",
             "answers": [
-                ""
+                "It requires VPS server with minimum 2 core cpu"
+            ]
+        },
+        {
+            "questions": [
+                "Where can i test this script?"
+            ],
+            "answers": [
+                "To  test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
+            ]
+        },
+        {
+            "question": "Do you provide any demo for this script?",
+            "answers": [
+                "Sorry, we don't provide any demo for this script",
+                "But you can check the demo mode of this script from this link https://eschool-saas.wrteam.me/login",
+                "User can only view the demo can not do any modification"
             ]
         },
         {
