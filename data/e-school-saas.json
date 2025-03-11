@@ -653,6 +653,90 @@
             }
         }
     ],
+    "school-admin-features": [
+        {
+            "school-registraiton": {
+                "information": [
+                    "School  can register the school by filling out the school registration form. Registration form will have School Name, School Email, School Mobile, School Address, Tagline and Emergency contact",
+                    "By filling this form, school will be created in the system. School admin account will be created along with the school.",
+                    "Default school admin account details are as follows. Email is registered school email, Password is School mobile number.",
+                    "On creating the school account, Verification link will be sent to the registered school email.",
+                    "On creating the school account, Account details of the school admin and school code will be sent to the registered school email.",
+                    "If super admin has enable the enquiry feature then on creating the school account enquiry will be generated.",
+                    "If school enquiry is in progress then school admin can not login in the system. When super admin accept the enquiry then school admin will be able to login in the system.",
+                    "When super admin approves the school enquiry, Verification link will be sent to the registered school email.",
+                    "When super admin approves the school enquiry, Account details of the school admin and school code will be sent to the registered school email.",
+                    "School can create the account and start the free trial.",
+                    "Registered school email will be used as a support email for the school",
+                    "If school admin has seleted the free trial option then on creating the school account free trial will be started."
+                ],
+                "questions": [
+                    {
+                        "title": "How to create the school account?",
+                        "answers": [
+                            "You can create the school account by clicking on the 'Add School' button."
+                        ]
+                    },
+                    {
+                        "title": "What are the details need to fill to create the school account?",
+                        "answers": [
+                            "Registration form will have School Name, School Email, School Mobile, School Address, Tagline and Emergency contact"
+                        ]
+                    },
+                    {
+                        "title": "Can school create the account and start the free trial?",
+                        "answers": [
+                            "Yes, school can create the account and start the free trial"
+                        ]
+                    },
+                    {
+                        "title": "What is the school code?",
+                        "answers": [
+                            "School code is the unique code of the school. It is generated after the school registration."
+                        ]
+                    },
+                    {
+                        "title": "What will be school admin's account details?",
+                        "answers": [
+                            "Registered school email and School Mobile number are the default account details of school admin."
+                        ]
+                    },
+                    {
+                        "title": "Can school admin change the default password?",
+                        "answers": [
+                            "Yes, school admin can change the default password"
+                        ]
+                    },
+                    {
+                        "title": "Can school admin change/update the school email?",
+                        "answers": [
+                            "Yes, school admin can not change or update the school email."
+                        ]
+                    },
+                    {
+                        "title": "Can school admin change/update the school code or not?",
+                        "answers": [
+                            "No, school admin can not change or update the school code."
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "school-admin-login": {
+                "information": [
+                    "School admin can login in the system by school admin email, password and school code.",
+                    "School admin need to verify the registered school email in order to login in the system.",
+                    "If school admin somehow miss the verification email then needs to contact super admin. Super admin can re-send the email verification link.",
+                    "In case of forgot password, school admin can get the password reset link by giving the school code and email",
+                    "After successful login, school admin can access the features of the free trial if school admin has the free trial.",
+                    "If school does not have the free trial then school admin can access the default features of the system.",
+                    "Following features are available for school admin in case of no free trial or any active package. Dashboard, Academics, Custome fields, Students, Teachers,System seteting, Support, Features and Subscription",
+                    "School admin can buy any subsciption package in order to access the features of the system"
+                ]
+            }
+        }
+    ],
     "faqs": [
         {
             "question": "From where i can buy the script?",
