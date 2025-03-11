@@ -658,7 +658,8 @@
                 "Extended licence users will get priority support",
                 "Extended licence users will remote support through anydesk if needed",
                 "Extended licence users will get the API postman collection",
-                "We will setup the server and web setup for extended licence users"
+                "We will setup the server and web setup for extended licence users",
+                "To know more about license please visit this link : https://codecanyon.net/licenses/faq#item-end-product-a"
             ]
         },
         {
@@ -699,7 +700,8 @@
                 "Extended licence users will get priority support",
                 "Extended licence users will remote support through anydesk if needed",
                 "Extended licence users will get the API postman collection",
-                "We will setup the server and web setup for extended licence users"
+                "We will setup the server and web setup for extended licence users",
+                "To know more about license please visit this link : https://codecanyon.net/licenses/faq#item-end-product-a"
             ]
         },
         {
@@ -711,12 +713,15 @@
         {
             "question": "What is the server requirements?",
             "answers": [
-                "It requires VPS server with minimum 2 core cpu"
+                "It requires VPS server with minimum 2 core cpu and root database access"
             ]
         },
         {
             "questions": [
-                "Where can i test this script?"
+                "Where can i test this script?",
+                "Where can i check the demo of this script?",
+                "Where can i check the live demo of this script?",
+                "I want to test the script and explore the features of the script. Where can i do that?"
             ],
             "answers": [
                 "To  test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
@@ -758,28 +763,30 @@
             ]
         },
         {
-            "question": "Do you provide demo?",
-            "answers": [
-                ""
-            ]
-        },
-        {
             "question": "Do you provide support after buying the script?",
             "answers": [
-                ""
+                "Yes, we do provide support after buying the script",
+                "We provide 6 month support for the script after the purchase"
             ]
         },
         {
             "question": "After buying script, when will i get the source code of the script and how?",
             "answers": [
-                ""
+                "Yes, user will get the source code of the script after the purchase",
+                "To get the code, go to codecanyon and login with your codecanyon account go to the profile and download the latest zip file"
             ]
         },
         {
-            "question": "What is the support timing",
+            "question": "What is the support timing?",
             "answers": [
                 "To help our customers, we constantly be in touch with every customer if they need any assistance regarding our product.",
                 "We offer our customers a support from Monday to Friday 9.00 AM to 6.00 PM IST (GMT +5.30). We are a Team located in India – Asia. Typically we reply our customers for all the questions and queries within 24 hours of time via comments, support forum or emails."
+            ]
+        },
+        {
+            "question": "What is the support response time?",
+            "answers": [
+                "We will respond to your support request within 24 hours of receiving your support request."
             ]
         },
         {
@@ -803,6 +810,17 @@
                 "Yes, you can white label the script as per your requirements"
             ]
         },
-        {}
+        {
+            "question": "Is there any hidden fees in the script?",
+            "answers": [
+                "No, there are no hidden fees in the script"
+            ]
+        },
+        {
+            "question": "Will i get both web panels and mobile application source code?",
+            "answers": [
+                "Yes, user will get the both web panels and mobile application source code along with API & Database Code"
+            ]
+        }
     ]
 }
