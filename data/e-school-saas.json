@@ -1,6 +1,10 @@
 {
     "name": "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
-    "author": "WRTeam",
+    "author": [
+        "WRTeam",
+        "WRTeam is, a software development company located in Bhuj - India, serving IT services & digital solutions around the globe.",
+        "To know more about us, visit https://wrteam.in"
+    ],
     "user-roles": [
         "Super admin",
         "School admin",
@@ -89,7 +93,65 @@
         "Chat between Teachers and Staffs",
         "Chat between Parents and Teachers"
     ],
-    "saas-website-features": [],
+    "saas-website-features": {
+        "information": [
+            "Super admin will be able to manage the features of the saas website",
+            "The Saas website will be the main website of the saas business. It will be use as marketing website for this business",
+            "This will be main entry point for the school to register and login to the website",
+            "Terms and Condition, Privacy policy of this systme will be displayed on the website",
+            "Features of the system will be displayed on the website",
+            "School package will be displayed on the website",
+            "Participated schools will be displayed on the website",
+            "FAQs will be displayed on the website",
+            "Added featured section by super admin will be displayed on the website, Such as student features, school features etc.",
+            "User can view the application link of the mobile application on the website",
+            "User can send the query to the super admin throug contact us form on the website",
+            "By visitng this website, School can enble the trail plan and get the free trail features",
+            "Default Saas website will look like this https://eschool-saas.wrteam.me. Super admin can manage the features of this website as per the requirements",
+            "This website supports RTL and LTR languages",
+            "It support RTL and LTR layout",
+            "Social media links related to the saas business will be displayed on the website",
+            "Saas website has the Google reCAPTCHA (V2) to prevent the spam registration and contact us form"
+        ],
+        "questions": [
+            {
+                "title": "Does the saas website support RTL and LTR languages?",
+                "answers": [
+                    "Yes, school website supports RTL and LTR languages"
+                ]
+            },
+            {
+                "title": "Does the saas website support RTL and LTR layout?",
+                "answers": [
+                    "Yes, school website supports RTL and LTR layout"
+                ]
+            },
+            {
+                "title": "Does it have contact us form?",
+                "answers": [
+                    "Yes, saas website has contact us form"
+                ]
+            },
+            {
+                "title": "Does it have any spam protection?",
+                "answers": [
+                    "Yes, it has google reCAPTCHA (V2) to prevent the spam registration and contact us form"
+                ]
+            },
+            {
+                "title": "Will schools register through the saas website?",
+                "answers": [
+                    "Yes, schools can register through the saas website"
+                ]
+            },
+            {
+                "title": "Will schools login through the saas website?",
+                "answers": [
+                    "Yes, schools can login through the saas website"
+                ]
+            }
+        ]
+    },
     "super-admin-features": [
         {
             "manage-packages": {
@@ -192,9 +254,53 @@
                         ]
                     },
                     {
+                        "title": "Can super admin assign any package to the school?",
+                        "answers": [
+                            "Yes, super admin can assign any package to the school"
+                        ]
+                    },
+                    {
+                        "title": "Can super admin update the school package?",
+                        "answers": [
+                            "Yes, super admin can update the school package"
+                        ]
+                    },
+                    {
+                        "title": "Can super admin canel the school's existing package?",
+                        "answers": [
+                            "Yes, super admin can cancel the school's existing package"
+                        ]
+                    },
+                    {
                         "title": "How to edit a school?",
                         "answers": [
                             "You can edit a school by clicking on the 'Edit School' button."
+                        ]
+                    },
+                    {
+                        "title": "Can schools have dedicated website?",
+                        "answers": [
+                            "Yes, schools can have dedicated website"
+                        ]
+                    },
+                    {
+                        "title": "Can schools can have dedicated mobile application?",
+                        "answers": [
+                            "No, schools can not have dedicated mobile application"
+                        ]
+                    },
+                    {
+                        "title": "Can school's website can have custom domain?",
+                        "answers": [
+                            "Yes, school's website can have custom domain"
+                        ]
+                    },
+                    {
+                        "title": "What will be the default domain of the school's website?",
+                        "answers": [
+                            "The default domain of the school's website will be the school name + main saas website domain",
+                            "Example, main  saas website domain is https://eschool-saas.wrteam.me. Schoool name is ABC",
+                            "So, the default domain of the school's website will be https://abc.eschool-saas.wrteam.me"
                         ]
                     }
                 ]
