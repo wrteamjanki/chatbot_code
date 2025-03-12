@@ -1,26 +1,13 @@
-# Override sqlite3 with pysqlite3-binary
-try:
-    import pysqlite3
-    import sys
-    sys.modules["sqlite3"] = pysqlite3
-except ImportError:
-    import sqlite3
-    from packaging import version
-    if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
-        raise RuntimeError(
-            "Your system sqlite3 version is too old. Please install pysqlite3-binary."
-        )
+import gemini_api
 import os
 import json
 import pickle
 import streamlit as st
-import subprocess
 from langchain_chroma import Chroma
-from langchain_groq import ChatGroq  # Removed RateLimitError import
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
-import toml
+import google.generativeai as genai
 
 # Directories
 DATA_DIR = "data"
@@ -30,12 +17,6 @@ HISTORY_FILE = "chat_history.pkl"
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# Load API Key from secret.toml
-# Make sure your secret file is located at .streamlit/secrets.toml
-secrets = toml.load(".streamlit/secrets.toml")
-# Here we assume you changed the key name to GEMIN_API_KEY in your secret file
-os.environ["GEMIN_API_KEY"] = secrets["general"]["GEMIN_API_KEY"]
-
 # Cached Vector Store Setup
 @st.cache_resource
 def setup_vectorstore():
@@ -43,21 +24,25 @@ def setup_vectorstore():
 
 # Function to Create Chat Chain
 def chat_chain(vectorstore):
-    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY is not set.")
+    
+    model = genai.GenerativeModel('gemini-1')  # Specify the correct model if different
     retriever = vectorstore.as_retriever()
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
         return_messages=True,
         output_key="answer",
     )
-    return ConversationalRetrievalChain.from_llm(
-        llm=llm,
-        retriever=retriever,
-        chain_type="stuff",
-        memory=memory,
-        verbose=True,
-        return_source_documents=True,
-    )
+    
+    # Custom chain for Gemini API
+    def custom_chain(question, chat_history):
+        prompt = f"{question}\nHistory: {chat_history}"
+        response = model.generate_content([prompt])
+        return {"answer": response.text}
+    
+    return custom_chain
 
 # Streamlit Page Configuration
 st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
@@ -80,7 +65,7 @@ st.markdown("# AI ASSISTANT")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []  # Do not load previous history on rerun
+    st.session_state.chat_history = []
 
 if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = setup_vectorstore()
@@ -88,7 +73,7 @@ if "vectorstore" not in st.session_state:
 if "conversational_chain" not in st.session_state:
     st.session_state.conversational_chain = chat_chain(st.session_state.vectorstore)
 
-# Display Chat History within the session
+# Display Chat History
 for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
@@ -103,17 +88,11 @@ if user_input:
 
     try:
         with st.chat_message("assistant"):
-            response = st.session_state.conversational_chain.invoke(
-                {"question": user_input, "chat_history": st.session_state.chat_history}
-            )
+            response = st.session_state.conversational_chain(user_input, st.session_state.chat_history)
             assistant_response = response["answer"]
             st.markdown(assistant_response)
             st.session_state.chat_history.append(
                 {"role": "assistant", "content": assistant_response}
             )
     except Exception as e:
-        # Check if error message indicates a rate limit error
-        if "rate limit" in str(e).lower():
-            st.error("The Groq API rate limit has been reached. Please wait a moment and try again.")
-        else:
-            raise e
+        st.error(f"An error occurred: {e}")
