@@ -1,10 +1,6 @@
 {
     "name": "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
-    "author": [
-        "WRTeam",
-        "WRTeam is, a software development company located in Bhuj - India, serving IT services & digital solutions around the globe.",
-        "To know more about us, visit https://wrteam.in"
-    ],
+    "author": "WRTeam",
     "user-roles": [
         "Super admin",
         "School admin",
@@ -93,65 +89,7 @@
         "Chat between Teachers and Staffs",
         "Chat between Parents and Teachers"
     ],
-    "saas-website-features": {
-        "information": [
-            "Super admin will be able to manage the features of the saas website",
-            "The Saas website will be the main website of the saas business. It will be use as marketing website for this business",
-            "This will be main entry point for the school to register and login to the website",
-            "Terms and Condition, Privacy policy of this systme will be displayed on the website",
-            "Features of the system will be displayed on the website",
-            "School package will be displayed on the website",
-            "Participated schools will be displayed on the website",
-            "FAQs will be displayed on the website",
-            "Added featured section by super admin will be displayed on the website, Such as student features, school features etc.",
-            "User can view the application link of the mobile application on the website",
-            "User can send the query to the super admin throug contact us form on the website",
-            "By visitng this website, School can enble the trail plan and get the free trail features",
-            "Default Saas website will look like this https://eschool-saas.wrteam.me. Super admin can manage the features of this website as per the requirements",
-            "This website supports RTL and LTR languages",
-            "It support RTL and LTR layout",
-            "Social media links related to the saas business will be displayed on the website",
-            "Saas website has the Google reCAPTCHA (V2) to prevent the spam registration and contact us form"
-        ],
-        "questions": [
-            {
-                "title": "Does the saas website support RTL and LTR languages?",
-                "answers": [
-                    "Yes, school website supports RTL and LTR languages"
-                ]
-            },
-            {
-                "title": "Does the saas website support RTL and LTR layout?",
-                "answers": [
-                    "Yes, school website supports RTL and LTR layout"
-                ]
-            },
-            {
-                "title": "Does it have contact us form?",
-                "answers": [
-                    "Yes, saas website has contact us form"
-                ]
-            },
-            {
-                "title": "Does it have any spam protection?",
-                "answers": [
-                    "Yes, it has google reCAPTCHA (V2) to prevent the spam registration and contact us form"
-                ]
-            },
-            {
-                "title": "Will schools register through the saas website?",
-                "answers": [
-                    "Yes, schools can register through the saas website"
-                ]
-            },
-            {
-                "title": "Will schools login through the saas website?",
-                "answers": [
-                    "Yes, schools can login through the saas website"
-                ]
-            }
-        ]
-    },
+    "saas-website-features": [],
     "super-admin-features": [
         {
             "manage-packages": {
@@ -254,53 +192,9 @@
                         ]
                     },
                     {
-                        "title": "Can super admin assign any package to the school?",
-                        "answers": [
-                            "Yes, super admin can assign any package to the school"
-                        ]
-                    },
-                    {
-                        "title": "Can super admin update the school package?",
-                        "answers": [
-                            "Yes, super admin can update the school package"
-                        ]
-                    },
-                    {
-                        "title": "Can super admin canel the school's existing package?",
-                        "answers": [
-                            "Yes, super admin can cancel the school's existing package"
-                        ]
-                    },
-                    {
                         "title": "How to edit a school?",
                         "answers": [
                             "You can edit a school by clicking on the 'Edit School' button."
-                        ]
-                    },
-                    {
-                        "title": "Can schools have dedicated website?",
-                        "answers": [
-                            "Yes, schools can have dedicated website"
-                        ]
-                    },
-                    {
-                        "title": "Can schools can have dedicated mobile application?",
-                        "answers": [
-                            "No, schools can not have dedicated mobile application"
-                        ]
-                    },
-                    {
-                        "title": "Can school's website can have custom domain?",
-                        "answers": [
-                            "Yes, school's website can have custom domain"
-                        ]
-                    },
-                    {
-                        "title": "What will be the default domain of the school's website?",
-                        "answers": [
-                            "The default domain of the school's website will be the school name + main saas website domain",
-                            "Example, main  saas website domain is https://eschool-saas.wrteam.me. Schoool name is ABC",
-                            "So, the default domain of the school's website will be https://abc.eschool-saas.wrteam.me"
                         ]
                     }
                 ]
@@ -848,8 +742,7 @@
                 "Extended licence users will get priority support",
                 "Extended licence users will remote support through anydesk if needed",
                 "Extended licence users will get the API postman collection",
-                "We will setup the server and web setup for extended licence users",
-                "To know more about license please visit this link : https://codecanyon.net/licenses/faq#item-end-product-a"
+                "We will setup the server and web setup for extended licence users"
             ]
         },
         {
@@ -890,8 +783,7 @@
                 "Extended licence users will get priority support",
                 "Extended licence users will remote support through anydesk if needed",
                 "Extended licence users will get the API postman collection",
-                "We will setup the server and web setup for extended licence users",
-                "To know more about license please visit this link : https://codecanyon.net/licenses/faq#item-end-product-a"
+                "We will setup the server and web setup for extended licence users"
             ]
         },
         {
@@ -903,15 +795,12 @@
         {
             "question": "What is the server requirements?",
             "answers": [
-                "It requires VPS server with minimum 2 core cpu and root database access"
+                "It requires VPS server with minimum 2 core cpu"
             ]
         },
         {
             "questions": [
-                "Where can i test this script?",
-                "Where can i check the demo of this script?",
-                "Where can i check the live demo of this script?",
-                "I want to test the script and explore the features of the script. Where can i do that?"
+                "Where can i test this script?"
             ],
             "answers": [
                 "To  test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
@@ -953,30 +842,28 @@
             ]
         },
         {
+            "question": "Do you provide demo?",
+            "answers": [
+                ""
+            ]
+        },
+        {
             "question": "Do you provide support after buying the script?",
             "answers": [
-                "Yes, we do provide support after buying the script",
-                "We provide 6 month support for the script after the purchase"
+                ""
             ]
         },
         {
             "question": "After buying script, when will i get the source code of the script and how?",
             "answers": [
-                "Yes, user will get the source code of the script after the purchase",
-                "To get the code, go to codecanyon and login with your codecanyon account go to the profile and download the latest zip file"
+                ""
             ]
         },
         {
-            "question": "What is the support timing?",
+            "question": "What is the support timing",
             "answers": [
                 "To help our customers, we constantly be in touch with every customer if they need any assistance regarding our product.",
                 "We offer our customers a support from Monday to Friday 9.00 AM to 6.00 PM IST (GMT +5.30). We are a Team located in India – Asia. Typically we reply our customers for all the questions and queries within 24 hours of time via comments, support forum or emails."
-            ]
-        },
-        {
-            "question": "What is the support response time?",
-            "answers": [
-                "We will respond to your support request within 24 hours of receiving your support request."
             ]
         },
         {
@@ -1000,17 +887,6 @@
                 "Yes, you can white label the script as per your requirements"
             ]
         },
-        {
-            "question": "Is there any hidden fees in the script?",
-            "answers": [
-                "No, there are no hidden fees in the script"
-            ]
-        },
-        {
-            "question": "Will i get both web panels and mobile application source code?",
-            "answers": [
-                "Yes, user will get the both web panels and mobile application source code along with API & Database Code"
-            ]
-        }
+        {}
     ]
 }
