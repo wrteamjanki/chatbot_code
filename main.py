@@ -22,13 +22,17 @@ os.makedirs(DATA_DIR, exist_ok=True)
 def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
+# Function to clean text and handle Unicode errors
+def clean_text(text):
+    return text.encode("utf-16", "surrogatepass").decode("utf-16")
+
 # Function to Create Chat Chain
 def chat_chain(vectorstore):
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("GEMINI_API_KEY is not set.")
     
-    model = genai.GenerativeModel('gemini-1')  # Specify the correct model if different
+    model = genai.GenerativeModel('gemini-1.5-flash-002')
     retriever = vectorstore.as_retriever()
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
@@ -38,9 +42,12 @@ def chat_chain(vectorstore):
     
     # Custom chain for Gemini API
     def custom_chain(question, chat_history):
-        prompt = f"{question}\nHistory: {chat_history}"
+        history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
+        prompt = f"{history_text}\nUser: {question}"
+        
         response = model.generate_content([prompt])
-        return {"answer": response.text}
+        cleaned_response = clean_text(response.text)
+        return {"answer": cleaned_response}
     
     return custom_chain
 
