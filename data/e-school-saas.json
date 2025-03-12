@@ -733,8 +733,324 @@
                     "If school does not have the free trial then school admin can access the default features of the system.",
                     "Following features are available for school admin in case of no free trial or any active package. Dashboard, Academics, Custome fields, Students, Teachers,System seteting, Support, Features and Subscription",
                     "School admin can buy any subsciption package in order to access the features of the system"
+                ],
+                "questions": []
+            }
+        },
+        {
+            "school-admin-profile": {
+                "information": [
+                    "School admin can update the profile. School admin can update the profile details like First name, Last name, Mobile, Gender, Image, Date of birth, Email and Address.",
+                    "School admin can change the current password",
+                    "If school admin updates the email then it will send the verification email to the updated email."
+                ],
+                "questions": [
+                    {
+                        "title": "Can school admin update name, image, mobile and other profile details?",
+                        "answers": [
+                            "Yes, school admin can update the name, image, mobile and other profile details"
+                        ]
+                    },
+                    {
+                        "title": "Can school admin change the current password?",
+                        "answers": [
+                            "Yes, school admin can change the current password"
+                        ]
+                    }
                 ]
             }
+        },
+        {
+            "dashboard": {
+                "information": [
+                    "School admin can view the total teachers, students, guardians, classes and streams",
+                    "School admin can view the leave details of the staffs. Who is absent and when",
+                    "School admin can view the expense of the school.",
+                    "School admin can  view the attendance graph of class and section",
+                    "School admin can view the announcements of the school",
+                    "School admin can view the fee related details",
+                    "School admin can view the result of the exams",
+                    "School admin can view the holidays",
+                    "School admin can view the birthdays of the students"
+                ]
+            }
+        },
+        {
+            "manage-mediums": {
+                "information": [
+                    "School admin can manage the medium of the school. School admin will go to the Academics menu and click on medium.",
+                    "Medium is the language of the teaching happens in the school. Example Englih medium, French medium, Hindi medium etc.",
+                    "School admin need to add at least one medium",
+                    "School admin can add, delete and edit the medium"
+                ],
+                "questions": [
+                    {
+                        "title": "Is medium mandatory?",
+                        "answers": [
+                            "Yes, medium is mandatory"
+                        ]
+                    },
+                    {
+                        "title": "Is medium optional?",
+                        "answers": [
+                            "No, medium is mandatory"
+                        ]
+                    },
+                    {
+                        "title": "What is the medium?",
+                        "answers": [
+                            "Medium is the language of the teaching happens in the school. Example Englih medium, French medium, Hindi medium etc."
+                        ]
+                    },
+                    {
+                        "title": "How to add the medium?",
+                        "answers": [
+                            "School admin will go to the Academics menu and click on medium. Here school admin can create the medium."
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-sections": {
+                "information": [
+                    "School admin can manage the section in the school. School admin will go to the Academics menu and click on section.",
+                    "Section is divison of the class. Example Section A,B,C. It divides class into section like 1-A, 1-B and 1-C",
+                    "School admin need to add at least one section",
+                    "School admin can add, delete and edit the section"
+                ],
+                "questions": [
+                    {
+                        "title": "Is section optional?",
+                        "answers": [
+                            "No, section is mandatory"
+                        ]
+                    },
+                    {
+                        "title": "Is section mandatory?",
+                        "answers": [
+                            "Yes, section is mandatory"
+                        ]
+                    },
+                    {
+                        "title": "What is the section?",
+                        "answers": [
+                            "Section is divison of the class. Example Section A,B,C. It divides class into section like 1-A, 1-B and 1-C"
+                        ]
+                    },
+                    {
+                        "title": "How to add the section?",
+                        "answers": [
+                            "School admin will go to the Academics menu and click on section. Here school admin can create the section."
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-subjects": {
+                "information": [
+                    "School admin can manage the subjects. School admin will go to the Academics menu and click on subject.",
+                    "To create the subject, school admin need to provide the following information. Medium, Subject Name, Code, Type, Image and Background color.",
+                    "Subject Name, Code should be Unique for Medium",
+                    "Subuject type can be either Pratical or Theoretical",
+                    "Subject admin can add, delete and edit the subject",
+                    "School admin need to add the minimum one subject for each medium",
+                    "Subject will be created by medium"
+                ],
+                "questions": [
+                    {
+                        "title": "Is subject creation mandatory?",
+                        "answers": [
+                            "Yes, subject creation is mandatory",
+                            "School admin need to add the minimum one subject for each medium"
+                        ]
+                    },
+                    {
+                        "title": "Can i add subject for multiple medium?",
+                        "answers": [
+                            "Yes, you can add subject for multiple medium"
+                        ]
+                    },
+                    {
+                        "title": "Can subject has type?",
+                        "answers": [
+                            "Yes, Subject can have type either Pratical or Theoretical"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-semesters": {
+                "information": [
+                    "School admin can manage the semesters. School admin will go to the Academics menu and click on semester.",
+                    "To create the semeseter need to provide the following information. Semester Name, Start Month and End Month.",
+                    "Creating the semester is optional",
+                    "Based on the start and end month, system will mark the semester as current semester or not",
+                    "School admin can add, delete and edit the semester"
+                ],
+                "questions": [
+                    {
+                        "title": "Is semester creation mandatory?",
+                        "answers": [
+                            "No, semester creation is not mandatory"
+                        ]
+                    },
+                    {
+                        "title": "Can semester has start and end month?",
+                        "answers": [
+                            "Yes, semester can have start and end month"
+                        ]
+                    },
+                    {
+                        "title": "Can semester marked as current semester?",
+                        "answers": [
+                            "Based on the start and end month, system will mark the semester as current semester or not"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-streams": {
+                "information": [
+                    "School admin can manage the streams. School admin will go to the Academics menu and click on stream.",
+                    "To create the stream need to provide the following information. Stream Name",
+                    "Creating the stream is optional",
+                    "School admin can add, delete and edit the stream"
+                ],
+                "questions": [
+                    {
+                        "title": "Is stream creation mandatory?",
+                        "answers": [
+                            "No, stream creation is not mandatory"
+                        ]
+                    },
+                    {
+                        "title": "Is stream creation is optional?",
+                        "answers": [
+                            "Yes, stream creation is optional"
+                        ]
+                    },
+                    {
+                        "title": "Can stream has stream name?",
+                        "answers": [
+                            "Yes, stream can have stream name"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-shifts": {
+                "information": [
+                    "School admin can manage the class shifts. School admin will go to the Academics menu and click on class shift.",
+                    "To create the class shift need to provide the following information. Shift Name, Start Time, End Time",
+                    "Creating shift is optional",
+                    "School admin can add, delete and edit the shift"
+                ],
+                "questions": [
+                    {
+                        "title": "Is shift creation mandatory?",
+                        "answers": [
+                            "No, shift creation is not mandatory"
+                        ]
+                    },
+                    {
+                        "title": "Is shift creation is optional?",
+                        "answers": [
+                            "Yes, shift creation is optional"
+                        ]
+                    },
+                    {
+                        "title": "Can shift has shift name?",
+                        "answers": [
+                            "Yes, shift can have shift name"
+                        ]
+                    },
+                    {
+                        "title": "Can shift has timing?",
+                        "answers": [
+                            "Yes, shift can have timing"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-classes": {
+                "information": [
+                    "School admin can manage the classes. School admin will go to the Academics menu and click on class.",
+                    "To create the class need to provide the following information. Medium, Name, Shift, Stream, Section, To Include semester",
+                    "Creating the class is mandatory",
+                    "School admin can add, delete and edit the class",
+                    "To create the class, shift and strem are optional",
+                    "If school admin has mark the class as include semester then semester will be added to the class else it will be added",
+                    "School admin has to select at least one section for the class",
+                    "Class can have multiple sections",
+                    "Class can have only one shift and one medium assgined to it",
+                    "Class can have multiple streams assgined to it",
+                    "If class has the multiple streams, school admin can add the multiple section for the stream. Example : Class A has stream Science and Arts. Admin can add the section for Class A Science and Class A Arts"
+                ],
+                "questions": [
+                    {
+                        "title": "Is creating class mandatory?",
+                        "answers": [
+                            "Yes, class creation is mandatory. School admin need to have at least one class"
+                        ]
+                    },
+                    {
+                        "title": "Can class have multiple sections?",
+                        "answers": [
+                            "Yes, class can have multiple sections"
+                        ]
+                    },
+                    {
+                        "title": "Can class have multiple streams?",
+                        "answers": [
+                            "Yes, class can have multiple streams"
+                        ]
+                    },
+                    {
+                        "title": "Is it mandatory to select at least one section?",
+                        "answers": [
+                            "Yes, it is mandatory to select at least one section"
+                        ]
+                    },
+                    {
+                        "title": "Can class have multiple mediums?",
+                        "answers": [
+                            "No, class not can have multiple mediums"
+                        ]
+                    },
+                    {
+                        "title": "What are the mandatory fields to create the class?",
+                        "answers": [
+                            "Medium, Name and Section"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-class-subjects": {
+                "information": [
+                    "School admin can manage the class subjects. School admin will go to the Academics menu and click on class subject.",
+                    "In the class, there will be two type of subjects one is core subjects and other is elective subjects",
+                    "Core subjects are mandatory and elective subjects are optional",
+                    "To enable the elective subjects, school admin need to create the elective subject groups. In the elective subject group school admin can add the subjects and total selections of the subjects",
+                    "If the class has semester enabled then school admin need to add the subjects by semester"
+                ]
+            },
+            "questions": [
+                {
+                    "title": "Is adding elective subjects mandatory?",
+                    "answers": [
+                        "No, adding elective subjects is not mandatory"
+                    ]
+                }
+            ]
         }
     ],
     "faqs": [
