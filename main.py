@@ -15,33 +15,14 @@ import json
 import pickle
 import streamlit as st
 import subprocess
-
-# Instead of ChatGroq, we'll use ChatOpenAI from LangChain
-from langchain.chat_models import ChatOpenAI  
+from langchain_chroma import Chroma
+from langchain_groq import ChatGroq  # Removed RateLimitError import
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
-from langchain_chroma import Chroma
 from vectorized_documents import embeddings
-
-# --------------------------
-# Setup Deepseek API Environment
-# --------------------------
-# Set the base URL for the OpenRouter (Deepseek) API
-os.environ["OPENAI_API_BASE"] = "https://openrouter.ai/api/v1"
-
-# Load your Deepseek API key from secrets.toml (assuming it is stored there)
-# If your secrets.toml is in the .streamlit folder, adjust the path accordingly:
 import toml
-secrets = toml.load(".streamlit/secrets.toml")
-# For Deepseek, ensure you have the key stored under a proper name
-deepseek_api_key = secrets["general"]["OPENROUTER_API_KEY"]
 
-# Set the API key as an environment variable for OpenAI's client to use
-os.environ["OPENAI_API_KEY"] = deepseek_api_key
-
-# --------------------------
 # Directories
-# --------------------------
 DATA_DIR = "data"
 VECTOR_DB_DIR = "vectordb"
 HISTORY_FILE = "chat_history.pkl"
@@ -49,19 +30,20 @@ HISTORY_FILE = "chat_history.pkl"
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# --------------------------
+# Load API Key from secret.toml
+# Make sure your secret file is located at .streamlit/secrets.toml
+secrets = toml.load(".streamlit/secrets.toml")
+# Here we assume you changed the key name to GEMIN_API_KEY in your secret file
+os.environ["GEMIN_API_KEY"] = secrets["general"]["GEMIN_API_KEY"]
+
 # Cached Vector Store Setup
-# --------------------------
 @st.cache_resource
 def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
-# --------------------------
-# Function to Create Chat Chain using Deepseek (via ChatOpenAI)
-# --------------------------
+# Function to Create Chat Chain
 def chat_chain(vectorstore):
-    # Create a ChatOpenAI instance pointing to the Deepseek model
-    llm = ChatOpenAI(model_name="deepseek/deepseek-r1-zero:free", temperature=0)
+    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
     retriever = vectorstore.as_retriever()
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
@@ -77,9 +59,7 @@ def chat_chain(vectorstore):
         return_source_documents=True,
     )
 
-# --------------------------
 # Streamlit Page Configuration
-# --------------------------
 st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
 
 # Custom CSS for Minimalist Design
@@ -132,4 +112,8 @@ if user_input:
                 {"role": "assistant", "content": assistant_response}
             )
     except Exception as e:
-        st.error(f"Error: {e}")
+        # Check if error message indicates a rate limit error
+        if "rate limit" in str(e).lower():
+            st.error("The Groq API rate limit has been reached. Please wait a moment and try again.")
+        else:
+            raise e
