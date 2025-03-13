@@ -1,3 +1,17 @@
+try:
+    import pysqlite3
+    import sys
+
+    sys.modules["sqlite3"] = pysqlite3
+except ImportError:
+    import sqlite3
+    from packaging import version
+
+    if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
+        raise RuntimeError(
+            "Your system sqlite3 version is too old. Please install pysqlite3-binary."
+        )
+
 import gemini_api
 import os
 import json
@@ -17,39 +31,45 @@ HISTORY_FILE = "chat_history.pkl"
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
 
+
 # Cached Vector Store Setup
 @st.cache_resource
 def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
+
 # Function to clean text and handle Unicode errors
 def clean_text(text):
     return text.encode("utf-16", "surrogatepass").decode("utf-16")
+
 
 # Function to Create Chat Chain
 def chat_chain(vectorstore):
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("GEMINI_API_KEY is not set.")
-    
-    model = genai.GenerativeModel('gemini-1.5-flash-002')
+
+    model = genai.GenerativeModel("gemini-1.5-flash-002")
     retriever = vectorstore.as_retriever()
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
         return_messages=True,
         output_key="answer",
     )
-    
+
     # Custom chain for Gemini API
     def custom_chain(question, chat_history):
-        history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
+        history_text = "\n".join(
+            [f"{msg['role']}: {msg['content']}" for msg in chat_history]
+        )
         prompt = f"{history_text}\nUser: {question}"
-        
+
         response = model.generate_content([prompt])
         cleaned_response = clean_text(response.text)
         return {"answer": cleaned_response}
-    
+
     return custom_chain
+
 
 # Streamlit Page Configuration
 st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
@@ -95,7 +115,9 @@ if user_input:
 
     try:
         with st.chat_message("assistant"):
-            response = st.session_state.conversational_chain(user_input, st.session_state.chat_history)
+            response = st.session_state.conversational_chain(
+                user_input, st.session_state.chat_history
+            )
             assistant_response = response["answer"]
             st.markdown(assistant_response)
             st.session_state.chat_history.append(

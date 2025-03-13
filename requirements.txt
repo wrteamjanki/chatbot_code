@@ -12,5 +12,6 @@ langchain_community
 pymupdf
 jq
 packaging
+pysqlite3-binary
 toml
 google-generativeai
