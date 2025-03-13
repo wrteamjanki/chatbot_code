@@ -7,7 +7,7 @@ except ImportError:
     from packaging import version
     if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
         raise RuntimeError("Your system sqlite3 version is too old. Please install pysqlite3-binary.")
-
+import gemini_api
 import os
 import streamlit as st
 import google.generativeai as genai
