@@ -14,7 +14,7 @@ import pickle
 import gemini_api
 import streamlit as st
 import google.generativeai as genai
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI 
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
@@ -100,10 +100,18 @@ def custom_chain(question, chat_history):
     prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
 
     response = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002").invoke(prompt)
-    cleaned_response = clean_text(response)
+    
+    # Ensure response is properly extracted
+    if isinstance(response, dict) and "text" in response:
+        cleaned_response = clean_text(response["text"])
+    elif isinstance(response, str):
+        cleaned_response = clean_text(response)
+    else:
+        cleaned_response = "I'm not sure how to respond."
 
-    # Detect if the model gives an uncertain response
-    if "I don’t know" in cleaned_response or not cleaned_response.strip():
+    # Detect uncertain responses
+    uncertain_phrases = ["I don’t know", "I am not sure", "I have no information", "I need more context"]
+    if any(phrase.lower() in cleaned_response.lower() for phrase in uncertain_phrases) or not cleaned_response.strip():
         wrteam_keywords = ["wrteam", "your company", "your product", "support", "customer service"]
         if any(keyword in question.lower() for keyword in wrteam_keywords):
             return {
@@ -132,7 +140,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Display Title
-st.markdown("WRTEAM AI Assistant")
+st.markdown("WRTeam AI Assistant")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
