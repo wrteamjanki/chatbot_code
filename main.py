@@ -13,6 +13,8 @@ except ImportError:
         )
 
 import os
+import gemini_api
+import os
 import streamlit as st
 import google.generativeai as genai
 from langchain_chroma import Chroma
