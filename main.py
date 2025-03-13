@@ -11,10 +11,10 @@ except ImportError:
 import os
 import json
 import pickle
-import gemini_api
 import streamlit as st
+import gemini_api
 import google.generativeai as genai
-from langchain_google_genai import ChatGoogleGenerativeAI 
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
@@ -44,7 +44,7 @@ if os.path.exists(config_path):
 def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
-# Load Chat History
+# Load Chat History (Used only for AI context, not display)
 def load_chat_history():
     if os.path.exists(HISTORY_FILE):
         with open(HISTORY_FILE, "rb") as f:
@@ -66,9 +66,7 @@ def chat_chain(vectorstore):
     if not api_key:
         raise ValueError("GEMINI_API_KEY is not set.")
 
-    # Using ChatGoogleGenerativeAI instead of GenerativeModel
     llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002", google_api_key=api_key)
-
     retriever = vectorstore.as_retriever()
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
@@ -77,7 +75,7 @@ def chat_chain(vectorstore):
     )
 
     return ConversationalRetrievalChain.from_llm(
-        llm=llm, 
+        llm=llm,
         retriever=retriever,
         chain_type="stuff",
         memory=memory,
@@ -100,8 +98,7 @@ def custom_chain(question, chat_history):
     prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
 
     response = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002").invoke(prompt)
-    
-    # Ensure response is properly extracted
+
     if isinstance(response, dict) and "text" in response:
         cleaned_response = clean_text(response["text"])
     elif isinstance(response, str):
@@ -144,7 +141,8 @@ st.markdown("WRTeam AI Assistant")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
-    st.session_state.chat_history = load_chat_history()
+    st.session_state.chat_history = load_chat_history()  # Load for AI context only
+    st.session_state.current_chat = []  # Empty chat for display
 
 if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = setup_vectorstore()
@@ -152,8 +150,8 @@ if "vectorstore" not in st.session_state:
 if "conversational_chain" not in st.session_state:
     st.session_state.conversational_chain = chat_chain(st.session_state.vectorstore)
 
-# Display Chat History
-for message in st.session_state.chat_history:
+# Display only current session chat (not past history)
+for message in st.session_state.current_chat:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
@@ -161,8 +159,12 @@ for message in st.session_state.chat_history:
 user_input = st.chat_input("Ask me anything...")
 
 if user_input:
+    # Store in history for AI context
     st.session_state.chat_history.append({"role": "user", "content": user_input})
-    save_chat_history(st.session_state.chat_history)  # 🔹 Save chat history
+    save_chat_history(st.session_state.chat_history)  
+
+    # Store in current session for display only
+    st.session_state.current_chat.append({"role": "user", "content": user_input})
 
     with st.chat_message("user"):
         st.markdown(user_input)
@@ -182,8 +184,11 @@ if user_input:
                 )
 
             st.markdown(assistant_response)
+
+            # Store AI response in both history (for AI context) and current session (for display)
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
-            save_chat_history(st.session_state.chat_history)  # 🔹 Save after response
+            st.session_state.current_chat.append({"role": "assistant", "content": assistant_response})
+            save_chat_history(st.session_state.chat_history)
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
