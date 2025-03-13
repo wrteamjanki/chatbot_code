@@ -7,27 +7,55 @@ except ImportError:
     from packaging import version
     if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
         raise RuntimeError("Your system sqlite3 version is too old. Please install pysqlite3-binary.")
+        
 import gemini_api
 import os
+import json
+import pickle
 import streamlit as st
 import google.generativeai as genai
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
+from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
+
+# WRTeam Support Details
+SUPPORT_NUMBER = "+91-8849493106"
+SUPPORT_EMAIL = "wrteam.priyansh@gmail.com"
 
 # Directories
 DATA_DIR = "data"
 VECTOR_DB_DIR = "vectordb"
+HISTORY_FILE = "chat_history.pkl"
 
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
+
+# Load API Key
+config_path = "config.json"
+if os.path.exists(config_path):
+    with open(config_path, "r") as f:
+        config_data = json.load(f)
+        os.environ["GEMINI_API_KEY"] = config_data.get("GEMINI_API_KEY", "")
 
 # Cached Vector Store Setup
 @st.cache_resource
 def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
-# Function to clean text and handle Unicode errors
+# Load Chat History
+def load_chat_history():
+    if os.path.exists(HISTORY_FILE):
+        with open(HISTORY_FILE, "rb") as f:
+            return pickle.load(f)
+    return []
+
+# Save Chat History
+def save_chat_history(history):
+    with open(HISTORY_FILE, "wb") as f:
+        pickle.dump(history, f)
+
+# Function to clean text
 def clean_text(text):
     return text.encode("utf-16", "surrogatepass").decode("utf-16")
 
@@ -39,48 +67,73 @@ def chat_chain(vectorstore):
 
     model = genai.GenerativeModel("gemini-1.5-flash-002")
     retriever = vectorstore.as_retriever()
-    memory = ConversationBufferWindowMemory(memory_key="chat_history", return_messages=True, output_key="answer")
+    memory = ConversationBufferWindowMemory(
+        memory_key="chat_history",
+        return_messages=True,
+        output_key="answer",
+    )
 
-    # Custom chain for Gemini API with retrieval
-    def custom_chain(question, chat_history):
-        # Retrieve relevant documents
-        retrieved_docs = retriever.get_relevant_documents(question)
-        context = "\n".join([doc.page_content for doc in retrieved_docs])
+    return ConversationalRetrievalChain.from_llm(
+        llm=model,
+        retriever=retriever,
+        chain_type="stuff",
+        memory=memory,
+        verbose=True,
+        return_source_documents=True,
+    )
 
-        # Construct the final prompt
-        history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
-        prompt = f"Context:\n{context}\n\nChat History:\n{history_text}\n\nUser: {question}"
+# Custom chain for WRTeam Assistant
+def custom_chain(question, chat_history):
+    history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
 
-        # Generate response using Gemini
-        response = model.generate_content([prompt])
+    system_prompt = (
+        "You are WRTeam's official AI assistant. You answer queries on behalf of WRTeam "
+        "using the company's knowledge base. If the question is about WRTeam but you don't have an answer, "
+        f"then suggest the user contact WRTeam support at {SUPPORT_NUMBER} or email {SUPPORT_EMAIL}. "
+        "However, if the question is general and not related to WRTeam, do not redirect to support. "
+        "Instead, respond naturally or say you don't have enough information."
+    )
 
-        # Validate response
-        if not hasattr(response, "text") or not response.text.strip():
-            return {"answer": "I'm sorry, but I couldn't generate a response."}
+    prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
 
-        return {"answer": clean_text(response.text)}
+    response = genai.GenerativeModel("gemini-1.5-flash-002").generate_content([prompt])
+    cleaned_response = clean_text(response.text)
 
-    return custom_chain
+    # Detect if the model gives an uncertain response
+    if "I don’t know" in cleaned_response or not cleaned_response.strip():
+        wrteam_keywords = ["wrteam", "your company", "your product", "support", "customer service"]
+        if any(keyword in question.lower() for keyword in wrteam_keywords):
+            return {
+                "answer": (
+                    f"I'm sorry, but I couldn't find relevant information for your WRTeam-related query. "
+                    f"Please contact WRTeam support at **{SUPPORT_NUMBER}** or email **{SUPPORT_EMAIL}** for assistance."
+                )
+            }
+        else:
+            return {"answer": "I'm not sure about that. You might want to check online for more details!"}
+
+    return {"answer": cleaned_response}
 
 # Streamlit Page Configuration
-st.set_page_config(page_title="AI ASSISTANT", page_icon="💬", layout="centered")
+st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬", layout="centered")
 
-# Custom CSS for Minimalist Design
+# Custom CSS for Dark Theme
 st.markdown("""
     <style>
+    body { background-color: #1E1E1E; color: white; }
     .stChatInput > div > div > textarea:focus {
         border-color: #4A90E2 !important;
         box-shadow: 0 0 5px #4A90E2 !important;
     }
     </style>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 # Display Title
-st.markdown("# AI ASSISTANT")
+st.markdown("# 🤖 WRTeam AI Assistant")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
+    st.session_state.chat_history = load_chat_history()
 
 if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = setup_vectorstore()
@@ -98,24 +151,28 @@ user_input = st.chat_input("Ask me anything...")
 
 if user_input:
     st.session_state.chat_history.append({"role": "user", "content": user_input})
+    save_chat_history(st.session_state.chat_history)  # 🔹 Sauvegarde après chaque message
+
     with st.chat_message("user"):
         st.markdown(user_input)
 
     try:
         with st.chat_message("assistant"):
-            response = st.session_state.conversational_chain(user_input, st.session_state.chat_history)
+            response = st.session_state.conversational_chain.invoke(
+                {"question": user_input, "chat_history": st.session_state.chat_history}
+            )
             assistant_response = response["answer"]
 
             # Redirect user to support if no answer is found
             if "I'm sorry" in assistant_response or not assistant_response.strip():
                 assistant_response = (
-                    "I'm sorry, but I couldn't find an answer in my knowledge base. "
-                    "Please contact our support team at **wrteam.priyansh@gmail.com** "
-                    "or call **+91-8849493106** for further assistance."
+                    f"I'm sorry, but I couldn't find an answer in my knowledge base. "
+                    f"Please contact WRTeam support at **{SUPPORT_NUMBER}** or email **{SUPPORT_EMAIL}** for further assistance."
                 )
 
             st.markdown(assistant_response)
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+            save_chat_history(st.session_state.chat_history)  # 🔹 Sauvegarde après la réponse
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
