@@ -1154,6 +1154,53 @@
                 ],
                 "questions": []
             }
+        },
+        {
+            "manage-custom-field": {
+                "information": [
+                    "School admin can create the custom fields.",
+                    "Created custom fields will be reflected in the student and teacher/staff registration form.",
+                    "To creat the custom fields, school admin need to provide the following information. Name, Type, Required or not and User type",
+                    "User type can be either Student or Teacher/Staff",
+                    "Type field has following values. Text, Numeric, Dropdown, Radio Button, Checkbox, Text Area and File Upload.",
+                    "School admin can give the rank to the custom fields. Based on the rank, the custom fields will be displayed in the registration form"
+                ]
+            },
+            "questions": [
+                {
+                    "title": "Can i create multiple custom fields?",
+                    "answers": [
+                        "Yes, you can create multiple custom fields"
+                    ]
+                },
+                {
+                    "title": "Can i create custom fields for both student and teacher/staff?",
+                    "answers": [
+                        "Yes, you can create custom fields for both student and teacher/staff"
+                    ]
+                }
+            ]
+        },
+        {
+            "student-admission": {
+                "information": [
+                    "School admin can add the student by filling out the student registration form.",
+                    "Registration form will have GR Number, Class Section, Session year, Admission Date, Status, First Name, Last Name, Gender, Date of Birth,Image, Mobile, Current Address, Permanent Address",
+                    "Registration form will also have the Guardian related fields. It has following fields. Guardian First Name, Guardian Last Name, Guardian Mobile, Guardian Email, Guardian Gender and Image",
+                    "GR Number is the unique student id. It is auto generated and can not be changed.",
+                    "Student status will have active or inactive value. If status is inactive then, student will not be able to login to the system and will not consider in the current subscription cycle.",
+                    "Confirmation email will be sent to the the guardian email on the successful registration, In that email it will have student account details, parent account details and school code. By using this information student and parent can use the mobile application.",
+                    "After registration, student and parent can login in the Student/Parent Mobile application.",
+                    "Default student account details are as follows. GR Number as id and Date of Birth will be used as Password.",
+                    "Default Guardian account details are as follows. Guardian Email as id and Guardian Mobile will be used as Password.",
+                    "Student and Parent can change the password anytime."
+                ],
+                "questions": [
+                    {
+                        "title": ""
+                    }
+                ]
+            }
         }
     ],
     "faqs": [
