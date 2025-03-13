@@ -1049,8 +1049,111 @@
                     "answers": [
                         "No, adding elective subjects is not mandatory"
                     ]
+                },
+                {
+                    "title": "Are core subjects mandatory?",
+                    "answers": [
+                        "Yes, core subjects are mandatory"
+                    ]
+                },
+                {
+                    "title": "Can student select the elective subjects?",
+                    "answers": [
+                        "Yes, student can select the elective subjects"
+                    ]
+                },
+                {
+                    "title": "Can school admin assgin the elective subjects for any student?",
+                    "answers": [
+                        "No, school admin can not assgin the elective subjects for any student"
+                    ]
                 }
             ]
+        },
+        {
+            "manage-class-groups": {
+                "information": [
+                    "School admin can manage the class groups. School admin will go to the Academics menu and click on class group.",
+                    "Class group divides the class into different groups. Example Prinary, Secondary, Higher Secondary etc.",
+                    "To create the class group, school admin need to provide the following information. Name, Description, Classes and Image"
+                ]
+            },
+            "questions": [
+                {
+                    "title": "Is it mandatory to add the class group?",
+                    "answers": [
+                        "Yes, No it is not mandatory to add the class group"
+                    ]
+                },
+                {
+                    "title": "Can class group have multiple classes?",
+                    "answers": [
+                        "Yes, class group can have multiple classes"
+                    ]
+                },
+                {
+                    "title": "Can i create class group such as secondary, higher secondary etc in the system?",
+                    "answers": [
+                        "Yes, You can create class group such as secondary, higher secondary etc in the system"
+                    ]
+                }
+            ]
+        },
+        {
+            "manage-class-section-and-teachers": {
+                "information": [
+                    "School admin can assgin the teachers to the class section.",
+                    "In the class section, there will be two type of teachers one is class teacher and other is subject teacher",
+                    "School admin can add the multiple class teachers to the class section",
+                    "School admin can add the multiple subject teachers to the class section. Means, Multiple teachers can teach the same subject in the class section",
+                    "Class teacher can take the attendance of the class section",
+                    "Class teacher can add the result of the students in the class section",
+                    "Subject teacher can teach the subject"
+                ],
+                "questions": []
+            }
+        },
+        {
+            "transfer-student-in-other-section": {
+                "information": [
+                    "School admin can transfer the student from one class section to another class section."
+                ]
+            }
+        },
+        {
+            "promote-student-to-next-class": {
+                "information": [
+                    "School admin can promote the student to the other class",
+                    "In order to promote the student to the other class, School admin need to select the current class, Promote In Session year, Promote In Class, Result Of the current class and the promotion status",
+                    "Result of the current class can have pass or fail",
+                    "Promotion status can be continue or leave",
+                    "If school admin select the promotion status as continue then the student will be promoted to the next class in the school.",
+                    "If school admin select the promotion status as leave then the student will not be part of the next class in the school. Student will be considered as ex-student."
+                ],
+                "questions": [
+                    {
+                        "title": "Does this system has student promotion?",
+                        "answers": [
+                            "Yes, this system has student promotion"
+                        ]
+                    },
+                    {
+                        "title": "How can school admin promote the student to the next class?",
+                        "answers": [
+                            "In order to promote the student to the next class, school admin need to select the current class, Promote In Session year, Promote In Class, Current class exam result and Promotion status as continue"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "manage-student-roll-number": {
+                "information": [
+                    "School admin can generate the roll number of the students in the class section.",
+                    "School admin can generate the roll number of the stduents by first name or last name"
+                ],
+                "questions": []
+            }
         }
     ],
     "faqs": [
