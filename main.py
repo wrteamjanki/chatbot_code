@@ -7,13 +7,14 @@ except ImportError:
     from packaging import version
     if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
         raise RuntimeError("Your system sqlite3 version is too old. Please install pysqlite3-binary.")
-        
-import gemini_api
+
 import os
 import json
 import pickle
+import gemini_api
 import streamlit as st
 import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationalRetrievalChain
@@ -65,7 +66,9 @@ def chat_chain(vectorstore):
     if not api_key:
         raise ValueError("GEMINI_API_KEY is not set.")
 
-    model = genai.GenerativeModel("gemini-1.5-flash-002")
+    # Using ChatGoogleGenerativeAI instead of GenerativeModel
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002", google_api_key=api_key)
+
     retriever = vectorstore.as_retriever()
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
@@ -74,7 +77,7 @@ def chat_chain(vectorstore):
     )
 
     return ConversationalRetrievalChain.from_llm(
-        llm=model,
+        llm=llm, 
         retriever=retriever,
         chain_type="stuff",
         memory=memory,
@@ -96,8 +99,8 @@ def custom_chain(question, chat_history):
 
     prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
 
-    response = genai.GenerativeModel("gemini-1.5-flash-002").generate_content([prompt])
-    cleaned_response = clean_text(response.text)
+    response = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002").invoke(prompt)
+    cleaned_response = clean_text(response)
 
     # Detect if the model gives an uncertain response
     if "I don’t know" in cleaned_response or not cleaned_response.strip():
@@ -129,7 +132,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Display Title
-st.markdown("# 🤖 WRTeam AI Assistant")
+st.markdown("WRTEAM AI Assistant")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
@@ -151,7 +154,7 @@ user_input = st.chat_input("Ask me anything...")
 
 if user_input:
     st.session_state.chat_history.append({"role": "user", "content": user_input})
-    save_chat_history(st.session_state.chat_history)  # 🔹 Sauvegarde après chaque message
+    save_chat_history(st.session_state.chat_history)  # 🔹 Save chat history
 
     with st.chat_message("user"):
         st.markdown(user_input)
@@ -172,7 +175,7 @@ if user_input:
 
             st.markdown(assistant_response)
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
-            save_chat_history(st.session_state.chat_history)  # 🔹 Sauvegarde après la réponse
+            save_chat_history(st.session_state.chat_history)  # 🔹 Save after response
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
