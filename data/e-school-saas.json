@@ -13,8 +13,8 @@
         "Parent",
         "Student"
     ],
-    "short-description": "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
-    "full-description": [
+    " eschool-saas-short-description": "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
+    "eschool-saas-full-description": [
         "It has two mobile applications, Web panel, Saas Website and School Website. One application for Students & Parents and another for Teachers, Staffs and School Admin.",
         "Super admin, School admin, Teachers, Staffs will use the web panel.",
         "Student and Parents will use the Student & Parent mobile app.",
@@ -25,7 +25,7 @@
         "School website will be used by general public to know about the school and other activities of the school.",
         "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features."
     ],
-    "techonology-used": [
+    "technology-used": [
         "Following Technologies, Framework and Tools are used in this project",
         "Flutter(Dart) - To build the mobile apps",
         "Laravel(PHP) - To build the web panel and APIs",

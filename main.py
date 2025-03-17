@@ -13,6 +13,7 @@ except ImportError:
         )
 
 import os
+import toml
 import streamlit as st
 import google.generativeai as genai
 from langchain_chroma import Chroma
@@ -41,10 +42,14 @@ def clean_text(text):
 
 # Function to Create Chat Chain
 def chat_chain(vectorstore):
-    api_key = os.getenv("GEMINI_API_KEY")
+# Load API Key from secrets.toml
+    secrets = toml.load(".streamlit/secrets.toml")
+    api_key = secrets["general"].get("GEMINI_API_KEY")
+    
     if not api_key:
-        raise ValueError("GEMINI_API_KEY is not set.")
+        raise ValueError("GEMINI_API_KEY not found. Please check your secrets.toml file.")
 
+    genai.configure(api_key=api_key)
     model = genai.GenerativeModel("gemini-1.5-flash-002")
     retriever = vectorstore.as_retriever()
     memory = ConversationBufferWindowMemory(
@@ -60,13 +65,13 @@ def chat_chain(vectorstore):
         )
 
         system_prompt = (
-            "You are WRTeam's official AI assistant. You answer queries on behalf of WRTeam "
-            "using the company's knowledge base. If the question is about WRTeam but you don't have an answer, "
-            f"then suggest the user contact WRTeam support at {SUPPORT_NUMBER} or email {SUPPORT_EMAIL}. "
-            "However, if the question is general and not related to WRTeam, do not redirect to support. "
-            "Instead, respond naturally or say you don't have enough information."
+            "You are the official AI assistant for eSchoolSaaS, a product by WRTeam. "
+            "Your knowledge is drawn from an accurate, curated knowledge base. "
+            "When a question is asked, provide the exact, professional, and concise answer using the information available. "
+            "If the question is ambiguous, ask for clarification. Only if no matching information exists should you suggest contacting WRTeam support at {SUPPORT_NUMBER} or via email at {SUPPORT_EMAIL}."
         )
 
+  
         prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
         
         response = model.generate_content([prompt])
