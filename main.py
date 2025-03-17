@@ -63,15 +63,15 @@ def chat_chain(vectorstore):
         history_text = "\n".join(
             [f"{msg['role']}: {msg['content']}" for msg in chat_history]
         )
-
+        
         system_prompt = (
-            "You are the official AI assistant for eSchoolSaaS, a product by WRTeam. "
-            "Your knowledge is drawn from an accurate, curated knowledge base. "
-            "When a question is asked, provide the exact, professional, and concise answer using the information available. "
-            "If the question is ambiguous, ask for clarification. Only if no matching information exists should you suggest contacting WRTeam support at {SUPPORT_NUMBER} or via email at {SUPPORT_EMAIL}."
+             "You are an AI assistant for WRteam's eSchoolSaaS. You answer queries on behalf of WRTeam "
+            "using the company's knowledge base. If the question is about eSchollSaas but you don't have an answer, "
+            f"then suggest the user contact WRTeam support at {SUPPORT_NUMBER} or email {SUPPORT_EMAIL}. "
+            "However, if the question is general and not related to WRTeam, do not redirect to support. "
+            "Instead, respond naturally or say you don't have enough information."
         )
 
-  
         prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
         
         response = model.generate_content([prompt])
