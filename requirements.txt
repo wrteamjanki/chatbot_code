@@ -4,7 +4,7 @@ nltk
 streamlit
 python-dotenv
 unstructured
-langchain-groq
+google-generativeai
 langchain-huggingface
 langchain-text-splitters
 langchain-chroma
@@ -13,3 +13,5 @@ pymupdf
 jq
 pysqlite3-binary
 packaging
+langchain-google-genai
+toml
