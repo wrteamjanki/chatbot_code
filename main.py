@@ -103,7 +103,7 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
                 return {
                     "answer": (
                         f"I'm sorry, but I couldn't find relevant information for your WRTeam-related query. "
-                        f"Please contact WRTeam support at **{SUPPORT_NUMBER}** or email **{SUPPORT_EMAIL}** for assistance."
+                        f"Please contact WRTeam support at **{+91 8849491306}** or email **{support@wrteam.in}** for assistance."
                     )
                 }
             else:
