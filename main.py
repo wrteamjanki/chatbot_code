@@ -80,7 +80,7 @@ if user_input:
             source_documents = response.get("source_documents", [])
 
             # Handle No Relevant Data Found
-            if not source_documents in assistant_response:
+            if not source_documents:
                 st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
                 
                 col1, col2 = st.columns(2)
