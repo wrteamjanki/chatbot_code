@@ -82,21 +82,7 @@ if user_input:
             # Handle No Relevant Data Found
             if not source_documents or "I don't know" in assistant_response:
                 st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
-                st.markdown(
-                    """
-                    <div style="
-                        padding: 10px;
-                        background-color: rgba(0, 123, 255, 0.2); 
-                        border-left: 5px solid rgba(0, 123, 255, 0.8); 
-                        border-radius: 5px;
-                        color: #0056b3;
-                        font-weight: bold;">
-                        I couldn’t find an exact match in my knowledge base. Would you like a general response?
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-
+                
                 col1, col2 = st.columns(2)
                 with col1:
                     if st.button("Yes, give me a general response"):
@@ -114,12 +100,9 @@ if user_input:
                         st.stop()
 
             if st.session_state.general_response_requested:
-                general_response = {
-                    "powerbi": "Power BI is a business analytics tool by Microsoft that allows users to visualize data and share insights. It connects to various data sources and provides interactive dashboards and reports.",
-                    "default": "I don’t have specific information on that, but I can try to provide a general explanation. Could you clarify what you’re looking for?"
-                }
-                topic = user_input.lower().split()[0]
-                assistant_response = general_response.get(topic, general_response["default"])
+                # Invoke LLM for a general response
+                general_response = st.session_state.conversational_chain.invoke({"question": f"Provide a general explanation about {user_input}"})
+                assistant_response = general_response["answer"]
                 st.session_state.general_response_requested = False
                 
                 # Include Support Info
