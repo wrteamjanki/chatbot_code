@@ -37,7 +37,7 @@ def chat_chain(vectorstore):
 
     llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002", google_api_key=api_key)
     retriever = vectorstore.as_retriever()
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True, output_key="answer")
 
     return ConversationalRetrievalChain.from_llm(
         llm=llm,
@@ -46,6 +46,7 @@ def chat_chain(vectorstore):
         verbose=True,
         return_source_documents=True,
     )
+
 
 # Streamlit Page Configuration
 st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬", layout="centered")
