@@ -13,7 +13,7 @@
         "Parent",
         "Student"
     ],
-    "eschool-saas-short-description": "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
+    " eschool-saas-short-description": "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
     "eschool-saas-full-description": [
         "It has two mobile applications, Web panel, Saas Website and School Website. One application for Students & Parents and another for Teachers, Staffs and School Admin.",
         "Super admin, School admin, Teachers, Staffs will use the web panel.",
@@ -1121,7 +1121,7 @@
             }
         },
         {
-            "promote-student-to-next-class-in-the-school": {
+            "promote-student-to-next-class": {
                 "information": [
                     "School admin can promote the student to the other class",
                     "In order to promote the student to the other class, School admin need to select the current class, Promote In Session year, Promote In Class, Result Of the current class and the promotion status",
@@ -1182,7 +1182,7 @@
             ]
         },
         {
-            "student-admission-process": {
+            "student-admission": {
                 "information": [
                     "School admin can add the student by filling out the student registration form.",
                     "Registration form will have GR Number, Class Section, Session year, Admission Date, Status, First Name, Last Name, Gender, Date of Birth,Image, Mobile, Current Address, Permanent Address",
@@ -1322,15 +1322,6 @@
             "question": "Can i modify the code?",
             "answers": [
                 "Yes, you can modify the code as per requirements."
-            ]
-        },
-        {
-            "question": "Can i add new features or modify the existing features?",
-            "answers": [
-                "Yes, you can add new features. You can modify the existing features as per your requirements.",
-                "We are also open to do the customisation. Please contact us.",
-                "Whatsapp : +91 8849493106",
-                "Email : support@wrteam.in"
             ]
         },
         {
