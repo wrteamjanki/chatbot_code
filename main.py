@@ -37,6 +37,7 @@ def decline_general_response():
             f"{SUPPORT_NUMBER}\n{SUPPORT_EMAIL}"
         )
     })
+    st.session_state.pending_question = ""
 
 # Cached Vector Store Setup
 @st.cache_resource
@@ -87,11 +88,12 @@ if st.session_state.general_response_requested and st.session_state.pending_ques
     try:
         question = st.session_state.pending_question
         general_response = st.session_state.conversational_chain.llm.invoke(
-            f"Provide a general explanation about {question}"
+            f"Provide a clear explanation about {question}. "
+            "If you're uncertain, give a general overview."
         )
         
         assistant_response = (
-            f"{general_response.content}\n\n"
+            f"Here's a general explanation:\n\n{general_response.content}\n\n"
             f"For personalized assistance, contact WRTeam support:\n"
             f"{SUPPORT_NUMBER}\n{SUPPORT_EMAIL}"
         )
@@ -105,12 +107,16 @@ if st.session_state.general_response_requested and st.session_state.pending_ques
         })
     
     except Exception as e:
-        st.error(f"Error generating general response: {e}")
+        st.error(f"Error generating response: {str(e)}")
+        st.session_state.chat_history.append({
+            "role": "assistant",
+            "content": "Sorry, I encountered an error. Please try again."
+        })
     
     finally:
-        # Reset state
         st.session_state.general_response_requested = False
         st.session_state.pending_question = ""
+        st.rerun()
 
 # User Input Handling
 user_input = st.chat_input("Ask me anything...")
@@ -121,13 +127,13 @@ if user_input:
 
     try:
         response = st.session_state.conversational_chain.invoke({"question": user_input})
-        assistant_response = response["answer"]
+        assistant_response = response.get("answer", "").strip()
         source_documents = response.get("source_documents", [])
 
-        if not source_documents:
-            # Store question and prompt for general response
+        # Check if response is empty or no documents found
+        if not assistant_response or not source_documents:
             st.session_state.pending_question = user_input
-            st.warning("I couldn't find an exact match in my knowledge base. Would you like a general response?")
+            st.warning("I couldn't find specific information. Would you like a general explanation?")
             
             col1, col2 = st.columns(2)
             with col1:
@@ -135,9 +141,9 @@ if user_input:
             with col2:
                 st.button("No", on_click=decline_general_response)
             
-            st.stop()  # Stop execution until user responds
+            st.stop()  # Pause execution until user responds
         
-        # If documents found, show normal response
+        # Show found response
         with st.chat_message("assistant"):
             st.markdown(assistant_response)
         st.session_state.chat_history.append({
@@ -146,4 +152,8 @@ if user_input:
         })
 
     except Exception as e:
-        st.error(f"An error occurred: {e}")
+        st.error(f"An error occurred: {str(e)}")
+        st.session_state.chat_history.append({
+            "role": "assistant",
+            "content": "Sorry, I encountered an error. Please try again."
+        })
