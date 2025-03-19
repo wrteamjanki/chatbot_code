@@ -17,68 +17,101 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from vectorized_documents import embeddings
 
-SUPPORT_INFO = """
-For personalized assistance, contact WRTeam support:
-📞 +91-8849493106
-📧 wrteam.priyansh@gmail.com
-"""
-VECTORDB_DIR = "vectordb"
+# WRTeam Support Details
+SUPPORT_NUMBER = "+91-8849493106"
+SUPPORT_EMAIL = "wrteam.priyansh@gmail.com"
 
-# Initialize vector store
-@st.cache_resource
-def get_vectorstore():
-    return Chroma(persist_directory=VECTORDB_DIR, embedding_function=embeddings)
+# Directories
+VECTOR_DB_DIR = "vectordb"
 
-# Initialize conversation chain
+# Cached Vector Store Setup
 @st.cache_resource
-def get_conversation_chain(_vectorstore):  # Added underscore to parameter
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002")
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+def setup_vectorstore():
+    return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
+
+# Function to Create Chat Chain
+def chat_chain(vectorstore):
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY is not set.")
+
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002", google_api_key=api_key)
+    retriever = vectorstore.as_retriever()
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True, output_key="answer")
+
     return ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=_vectorstore.as_retriever(),  # Updated reference
+        retriever=retriever,
         memory=memory,
-        return_source_documents=True
+        verbose=True,
+        return_source_documents=True,
     )
 
-# Page setup
-st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬")
-st.title("WRTeam AI Assistant 🚀")
+# Streamlit Page Configuration
+st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬", layout="centered")
+st.markdown("# WRTeam AI Assistant")
 
-# Initialize session state
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# Initialize Session State
+if "vectorstore" not in st.session_state:
+    st.session_state.vectorstore = setup_vectorstore()
+if "conversational_chain" not in st.session_state:
+    st.session_state.conversational_chain = chat_chain(st.session_state.vectorstore)
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+if "general_response_requested" not in st.session_state:
+    st.session_state.general_response_requested = False
 
-# Display chat messages
-for message in st.session_state.messages:
+# Display Chat Messages
+for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Main chat logic
-if user_query := st.chat_input("Ask about WRTeam products/services"):
-    # Add user message to history
-    st.session_state.messages.append({"role": "user", "content": user_query})
-    
-    try:
-        # Initialize components
-        vectorstore = get_vectorstore()
-        qa_chain = get_conversation_chain(vectorstore)
-        
-        # Get response
-        response = qa_chain({"question": user_query})
-        answer = response["answer"]
-        sources = response["source_documents"]
-        
-        # Handle unknown queries
-        if not sources:
-            answer = f"I couldn't find specific information in our knowledge base.\n\n{SUPPORT_INFO}"
-        
-        # Add assistant response
-        st.session_state.messages.append({"role": "assistant", "content": answer})
-        
-    except Exception as e:
-        error_msg = f"Sorry, an error occurred: {str(e)}\n\n{SUPPORT_INFO}"
-        st.session_state.messages.append({"role": "assistant", "content": error_msg})
+# User Input
+user_input = st.chat_input("Ask me anything...")
+if user_input:
+    st.session_state.chat_history.append({"role": "user", "content": user_input})
+    with st.chat_message("user"):
+        st.markdown(user_input)
 
-    # Redisplay all messages
-    st.rerun()
+    try:
+        with st.chat_message("assistant"):
+            response = st.session_state.conversational_chain.invoke({"question": user_input})
+            assistant_response = response["answer"]
+            source_documents = response.get("source_documents", [])
+
+            # Handle No Relevant Data Found
+            if not source_documents in assistant_response:
+                st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
+                
+                col1, col2 = st.columns(2)
+                with col1:
+                    if st.button("Yes, give me a general response"):
+                        st.session_state.general_response_requested = True
+                with col2:
+                    if st.button("No, end the conversation"):
+                        st.session_state.general_response_requested = False
+                        assistant_response = (
+                            "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
+                            f"📞 {SUPPORT_NUMBER}  \n📧 {SUPPORT_EMAIL}  \n\n"
+                            "Have a great day! 😊"
+                        )
+                        st.markdown(assistant_response)
+                        st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+                        st.stop()
+
+            if st.session_state.general_response_requested:
+                # Invoke LLM for a general response
+                general_response = st.session_state.conversational_chain.invoke({"question": f"Provide a general explanation about {user_input}"})
+                assistant_response = general_response["answer"]
+                st.session_state.general_response_requested = False
+                
+                # Include Support Info
+                assistant_response += (
+                    f"\n\n💡 If you need personalized assistance, contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
+                )
+
+            # Display Response
+            st.markdown(assistant_response)
+            st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
