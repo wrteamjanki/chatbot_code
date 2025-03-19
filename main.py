@@ -14,6 +14,7 @@ except ImportError:
         raise RuntimeError(f"System sqlite3 version {sqlite3.sqlite_version} is too old. Install pysqlite3-binary with: pip install pysqlite3-binary")
 
 import os
+import gemini_api
 import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
