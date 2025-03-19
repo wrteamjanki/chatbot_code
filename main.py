@@ -19,69 +19,80 @@ import google.generativeai as genai
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from vectorized_documents import embeddings
+from typing import List, Dict, Callable
 
 # WRTeam Support Details
-SUPPORT_NUMBER = "1234567890"
-SUPPORT_EMAIL = "support@wrteam.com"
+SUPPORT_NUMBER: str = "1234567890"
+SUPPORT_EMAIL: str = "support@wrteam.com"
 
 # Directories
-DATA_DIR = "data"
-VECTOR_DB_DIR = "vectordb"
+DATA_DIR: str = "data"
+VECTOR_DB_DIR: str = "vectordb"
 
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # Cached Vector Store Setup
 @st.cache_resource
-def setup_vectorstore():
+def setup_vectorstore() -> Chroma:
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
 # Function to clean text
-def clean_text(text):
+def clean_text(text: str) -> str:
     return text.encode("utf-16", "surrogatepass").decode("utf-16")
 
 # Function to Create Chat Chain
-def chat_chain(vectorstore):
-# Load API Key from secrets.toml
-    secrets = toml.load(".streamlit/secrets.toml")
-    api_key = secrets["general"].get("GEMINI_API_KEY")
-    
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY not found. Please check your secrets.toml file.")
+def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dict[str, str]]:
+    # Load API Key from secrets.toml
+    try:
+        secrets = toml.load(".streamlit/secrets.toml")
+        api_key = secrets["general"]["GEMINI_API_KEY"]
+    except (FileNotFoundError, KeyError):
+        st.error(
+            "GEMINI_API_KEY not found or secrets.toml is missing. Please check your secrets.toml file."
+        )
+        return lambda question, chat_history: {"answer": "API key error. Please check your secrets.toml file."}
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel("gemini-1.5-flash-002")
-    retriever = vectorstore.as_retriever()
-    memory = ConversationBufferWindowMemory(
-        memory_key="chat_history",
-        return_messages=True,
-        output_key="answer",
-    )
 
     # Custom chain for WRTeam Assistant
-    def custom_chain(question, chat_history):
+    def custom_chain(question: str, chat_history: List[Dict[str, str]]) -> Dict[str, str]:
         history_text = "\n".join(
             [f"{msg['role']}: {msg['content']}" for msg in chat_history]
         )
-        
+
+        retriever = st.session_state.vectorstore.as_retriever()
+        relevant_docs = retriever.get_relevant_documents(question)
+
+        context = "\n".join([doc.page_content for doc in relevant_docs])
+
         system_prompt = (
-            "You are an AI assistant for WRTeam's eSchoolSaaS, responsible for answering user queries based on the provided data."
-            "If a query is related to eSchoolSaaS and you have relevant data, provide a detailed, accurate, and well-structured response."
-            "If the query is about eSchoolSaaS but the answer is not in your data,"
-            f"inform the user and suggest contacting WRTeam support at {SUPPORT_NUMBER} or emailing {SUPPORT_EMAIL}."
-            "If the query is unrelated to WRTeam, do not redirect to support. Instead, respond naturally with as much relevant detail as possible "
-            "based on general knowledge, or state that you lack sufficient information."
+            "You are an AI assistant for WRTeam's eSchoolSaaS, responsible for answering user queries based on the provided data. Use the provided context to answer the questions."
+            "Prioritize accuracy and provide detailed, relevant, and well-structured responses. Use bullet points, numbered lists, or tables when appropriate."
+            "If a query is related to eSchoolSaaS and you have relevant data in the context, provide a detailed, accurate, and well-structured response."
+            "If the query is about eSchoolSaaS but the answer is not in the context,"
+            f" inform the user and suggest contacting WRTeam support at {SUPPORT_NUMBER} or emailing {SUPPORT_EMAIL}."
+            "If the query is unrelated to WRTeam, do not redirect to support. Instead, respond naturally with as much relevant detail as possible based on general knowledge, maintaining a helpful and professional tone, or state that you lack sufficient information."
+            "When providing answers, please consider the user's role, and give role specific information."
+            "Example 1:"
+            "User: 'What are the available user roles?'"
+            "Assistant: 'The available user roles are Super admin, School admin, Teacher, Staff, Parent, and Student. This is the detaile info of them...'"
+            "Example 2:"
+            "User: 'How do I reset my password?'"
+            "Assistant: 'I do not have that information. " f"Please contact WRTeam support at {SUPPORT_NUMBER} or email {SUPPORT_EMAIL}.'"
+            f"\n\nContext:\n{context}"
         )
 
         prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
-        
+
         response = model.generate_content([prompt])
         cleaned_response = clean_text(response.text)
 
         # Detect if the model gives an uncertain response
-        if "I don’t know" in cleaned_response or not cleaned_response.strip():
+        if "I don’t know" in cleaned_response.lower() or not cleaned_response.strip():
             # Check if the question is about WRTeam
-            wrteam_keywords = ["wrteam", "your company", "your product", "support", "customer service"]
+            wrteam_keywords = ["wrteam", "eschoolsaas", "your product", "support", "customer service"]
             if any(keyword in question.lower() for keyword in wrteam_keywords):
                 return {
                     "answer": (
