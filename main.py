@@ -75,15 +75,42 @@ if user_input:
         with st.chat_message("assistant"):
             response = st.session_state.conversational_chain.invoke({"question": user_input})
             assistant_response = response["answer"]
+            source_documents = response.get("source_documents", [])
 
-            # If no relevant documents are found, let LLM try but filter weak responses
-            if not response.get("source_documents") and (not assistant_response.strip() or "I'm sorry" in assistant_response):
+            # If no relevant data is found
+            if not source_documents:
+                st.warning("I couldn’t find any exact match in my knowledge base. Would you like a general response?")
+                
+                # User Decision Handling
+                col1, col2 = st.columns(2)
+                with col1:
+                    agree = st.button("Yes, give me a general response")
+                with col2:
+                    decline = st.button("No, end the conversation")
+
+                if agree:
+                    assistant_response = (
+                        "Sure! While I don’t have exact data on this, here’s what I can share:\n\n"
+                        "**[Insert a general response here based on the topic]**"
+                    )
+                elif decline:
+                    assistant_response = (
+                        "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
+                        f"📞 {SUPPORT_NUMBER}  \n📧 {SUPPORT_EMAIL}  \n\n"
+                        "Have a great day! 😊"
+                    )
+                    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+                    st.markdown(assistant_response)
+                    st.stop()
+
+                # Include Support Info
                 assistant_response += (
-                    f"\n\n⚠️ I couldn't find an exact match for your query. "
-                    f"Please contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
+                    f"\n\n💡 If you need personalized assistance, you can contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
                 )
 
+            # Display Response
             st.markdown(assistant_response)
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+
     except Exception as e:
         st.error(f"An error occurred: {e}")
