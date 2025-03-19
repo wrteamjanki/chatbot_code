@@ -27,7 +27,7 @@ CONFIG = {
     "SUPPORT_EMAIL": "wrteam.priyansh@gmail.com",
     "VECTOR_DB_DIR": "vectordb",
     "MODEL_NAME": "gemini-1.5-flash-002",
-    "SUPPORT_MESSAGE": "\n\nFor further assistance, contact our support team:\n\ud83d\udcde +91-8849493106\n\ud83d\udce7 wrteam.priyansh@gmail.com"
+    "SUPPORT_MESSAGE": "\n\nFor further assistance, contact our support team: \nPhone: +91-8849493106\nEmail: wrteam.priyansh@gmail.com"
 }
 
 if "GEMINI_API_KEY" not in os.environ:
@@ -88,7 +88,7 @@ def initialize_system():
 def configure_ui():
     st.set_page_config(
         page_title="WRTeam AI Assistant",
-        page_icon="",
+        page_icon=None,  # Removed emojis and replaced with None
         layout="centered",
         initial_sidebar_state="collapsed"
     )
@@ -98,11 +98,11 @@ def configure_ui():
 def display_chat_history():
     for message in st.session_state.chat_history:
         with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+            st.markdown(message["content"].encode("utf-8", "ignore").decode("utf-8"))
 
 def handle_response(response, query):
     if response["source_documents"]:
-        assistant_response = f"{response['answer']}{CONFIG['SUPPORT_MESSAGE']}"
+        assistant_response = response['answer']
     else:
         assistant_response = generate_general_response(query)
     
@@ -115,9 +115,9 @@ def generate_general_response(query: str):
             general_response = st.session_state.conversational_chain.invoke({
                 "question": f"Provide a general explanation about {query}"
             })
-        return f"{general_response['answer']}{CONFIG['SUPPORT_MESSAGE']}"
+        return f"{general_response['answer']}\n{CONFIG['SUPPORT_MESSAGE']}"
     except Exception as e:
-        return f"Failed to generate response: {str(e)}{CONFIG['SUPPORT_MESSAGE']}"
+        return f"Failed to generate response: {str(e)}\n{CONFIG['SUPPORT_MESSAGE']}"
 
 def process_user_query(user_input: str):
     try:
