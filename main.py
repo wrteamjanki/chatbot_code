@@ -9,9 +9,8 @@ except ImportError:
         raise RuntimeError("Your system sqlite3 version is too old. Please install pysqlite3-binary.")
 
 import os
-import json
 import streamlit as st
-import gemini_api
+import gemini_api  # Ensures GEMINI_API_KEY is set
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferMemory
@@ -24,13 +23,6 @@ SUPPORT_EMAIL = "wrteam.priyansh@gmail.com"
 
 # Directories
 VECTOR_DB_DIR = "vectordb"
-
-# Load API Key
-config_path = "config.json"
-if os.path.exists(config_path):
-    with open(config_path, "r") as f:
-        config_data = json.load(f)
-        os.environ["GEMINI_API_KEY"] = config_data.get("GEMINI_API_KEY", "")
 
 # Cached Vector Store Setup
 @st.cache_resource
