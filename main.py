@@ -74,44 +74,50 @@ if user_input:
         st.markdown(user_input)
 
     try:
-        with st.chat_message("assistant"):
-            response = st.session_state.conversational_chain.invoke({"question": user_input})
-            assistant_response = response["answer"]
-            source_documents = response.get("source_documents", [])
+        # Use conversational chain to get relevant documents
+        response = st.session_state.conversational_chain.invoke({"question": user_input})
+        assistant_response = response["answer"]
+        source_documents = response.get("source_documents", [])
 
-            # Handle No Relevant Data Found
-            if not source_documents:
-                st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
-                
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("Yes, give me a general response"):
-                        st.session_state.general_response_requested = True
-                with col2:
-                    if st.button("No, end the conversation"):
-                        st.session_state.general_response_requested = False
-                        assistant_response = (
-                            "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
-                            f"📞 {SUPPORT_NUMBER}  \n📧 {SUPPORT_EMAIL}  \n\n"
-                            "Have a great day! 😊"
-                        )
-                        st.markdown(assistant_response)
-                        st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
-                        st.stop()
+        if not source_documents:
+            st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
 
-            if st.session_state.general_response_requested:
-                # Invoke LLM for a general response
-                general_response = st.session_state.conversational_chain.invoke({"question": f"Provide a general explanation about {user_input}"})
-                assistant_response = general_response["answer"]
-                st.session_state.general_response_requested = False
-                
-                # Include Support Info
-                assistant_response += (
-                    f"\n\n💡 If you need personalized assistance, contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
-                )
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("Yes, give me a general response"):
+                    st.session_state.general_response_requested = True
+            with col2:
+                if st.button("No, end the conversation"):
+                    st.session_state.general_response_requested = False
+                    assistant_response = (
+                        "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
+                        f" {SUPPORT_NUMBER}  \n {SUPPORT_EMAIL}  \n\n"
+                        "Have a great day!"
+                    )
+                    st.markdown(assistant_response)
+                    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+                    st.stop()
 
-            # Display Response
+        if st.session_state.general_response_requested:
+            # Generate a general response if requested
+            general_response = st.session_state.conversational_chain.llm.invoke(
+                f"Provide a general explanation about {user_input}"
+            )
+            assistant_response = general_response if general_response else "I'm sorry, I don't have information on that."
+
+            # Add customer support info
+            assistant_response += (
+                f"\n\n If you need personalized assistance, contact WRTeam support:\n {SUPPORT_NUMBER} \n {SUPPORT_EMAIL}"
+            )
+
+            # Display the general response
             st.markdown(assistant_response)
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+            st.session_state.general_response_requested = False
+        else:
+            # If source documents are found, provide the response based on retrieved info
+            st.markdown(assistant_response)
+            st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+
     except Exception as e:
         st.error(f"An error occurred: {e}")
