@@ -58,6 +58,8 @@ if "conversational_chain" not in st.session_state:
     st.session_state.conversational_chain = chat_chain(st.session_state.vectorstore)
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+if "general_response_requested" not in st.session_state:
+    st.session_state.general_response_requested = False
 
 # Display Chat Messages
 for message in st.session_state.chat_history:
@@ -80,31 +82,51 @@ if user_input:
             # Handle No Relevant Data Found
             if not source_documents or "I don't know" in assistant_response:
                 st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
-                agree = st.button("Yes, give me a general response")
-                decline = st.button("No, end the conversation")
-                
-                if agree:
-                    general_response = {
-                        "powerbi": "Power BI is a business analytics tool by Microsoft that allows users to visualize data and share insights. It connects to various data sources and provides interactive dashboards and reports.",
-                        "default": "I don’t have specific information on that, but I can try to provide a general explanation. Could you clarify what you’re looking for?"
-                    }
-                    topic = user_input.lower().split()[0]
-                    assistant_response = general_response.get(topic, general_response["default"])
-                elif decline:
-                    assistant_response = (
-                        "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
-                        f"{SUPPORT_NUMBER}  \n {SUPPORT_EMAIL}  \n\n"
-                        "Have a great day!"
-                    )
-                    st.markdown(assistant_response)
-                    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
-                    st.stop()
+                st.markdown(
+                    """
+                    <div style="
+                        padding: 10px;
+                        background-color: rgba(0, 123, 255, 0.2); 
+                        border-left: 5px solid rgba(0, 123, 255, 0.8); 
+                        border-radius: 5px;
+                        color: #0056b3;
+                        font-weight: bold;">
+                        I couldn’t find an exact match in my knowledge base. Would you like a general response?
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+                col1, col2 = st.columns(2)
+                with col1:
+                    if st.button("Yes, give me a general response"):
+                        st.session_state.general_response_requested = True
+                with col2:
+                    if st.button("No, end the conversation"):
+                        st.session_state.general_response_requested = False
+                        assistant_response = (
+                            "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
+                            f"📞 {SUPPORT_NUMBER}  \n📧 {SUPPORT_EMAIL}  \n\n"
+                            "Have a great day! 😊"
+                        )
+                        st.markdown(assistant_response)
+                        st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+                        st.stop()
+
+            if st.session_state.general_response_requested:
+                general_response = {
+                    "powerbi": "Power BI is a business analytics tool by Microsoft that allows users to visualize data and share insights. It connects to various data sources and provides interactive dashboards and reports.",
+                    "default": "I don’t have specific information on that, but I can try to provide a general explanation. Could you clarify what you’re looking for?"
+                }
+                topic = user_input.lower().split()[0]
+                assistant_response = general_response.get(topic, general_response["default"])
+                st.session_state.general_response_requested = False
                 
                 # Include Support Info
                 assistant_response += (
-                    f"\n\n If you need personalized assistance, contact WRTeam support:\n {SUPPORT_NUMBER} \n {SUPPORT_EMAIL}"
+                    f"\n\n💡 If you need personalized assistance, contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
                 )
-            
+
             # Display Response
             st.markdown(assistant_response)
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
