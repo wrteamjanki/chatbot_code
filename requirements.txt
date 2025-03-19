@@ -11,6 +11,7 @@ langchain-chroma
 langchain_community
 pymupdf
 jq
+rank_bm25
 packaging
 pysqlite3-binary
 toml
