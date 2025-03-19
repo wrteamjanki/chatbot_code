@@ -98,7 +98,7 @@ def initialize_system():
 def configure_ui():
     st.set_page_config(
         page_title="WRTeam AI Assistant",
-        page_icon="\ud83d\udcac",
+        page_icon="💬",
         layout="centered",
         initial_sidebar_state="collapsed"
     )
