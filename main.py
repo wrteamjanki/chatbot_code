@@ -73,7 +73,7 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
             Prioritize accuracy and provide detailed, relevant, and well-structured responses. Use bullet points, numbered lists, or tables when appropriate.
 
             If a query is related to eSchoolSaaS and you have relevant data in the context, provide a detailed, accurate, and well-structured response.
-            If the query is about eSchoolSaaS but the answer is not in the context, inform the user and suggest contacting WRTeam support at {+91 8849493106} or emailing {support@wrteam.in}.
+            If the query is about eSchoolSaaS but the answer is not in the context, inform the user and suggest contacting WRTeam support at +91 8849491306 or emailing support@wrteam.in.
             If the query is unrelated to WRTeam, do not redirect to support. Instead, respond naturally with as much relevant detail as possible based on general knowledge,
             maintaining a helpful and professional tone, or state that you lack sufficient information.
 
@@ -85,7 +85,7 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
 
             Example 2:
             User: 'How do I reset my password?'
-            Assistant: 'I do not have that information. Please contact WRTeam support at {+91 8849493106} or email {support@wrteam.in}.'
+            Assistant: 'I do not have that information. Please contact WRTeam support at +91 8849491306 or email support@wrteam.in.'
 
             Context:
             {context}
@@ -103,7 +103,7 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
                 return {
                     "answer": (
                         f"I'm sorry, but I couldn't find relevant information for your WRTeam-related query. "
-                        f"Please contact WRTeam support at **{+91 8849491306}** or email **{support@wrteam.in}** for assistance."
+                        f"Please contact WRTeam support at +91 8849491306 or email support@wrteam.in}** for assistance."
                     )
                 }
             else:
