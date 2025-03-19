@@ -1,7 +1,6 @@
 # Check for required packages
 try:
     import pysqlite3
-    import sys
     sys.modules["sqlite3"] = pysqlite3
 except ImportError:
     import sqlite3
@@ -14,6 +13,7 @@ except ImportError:
         raise RuntimeError(f"System sqlite3 version {sqlite3.sqlite_version} is too old. Install pysqlite3-binary")
 
 import os
+import sys
 import streamlit as st
 import gemini_api
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -24,10 +24,12 @@ from vectorized_documents import embeddings
 from langchain.retrievers import BM25Retriever, EnsembleRetriever
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain.schema import Document
+
 
 # Configuration
 CONFIG = {
-    "SUPPORT_INFO": "\n\nFor further assistance, contact our support team:\n📞 +91-8849493106\n📧 wrteam.priyansh@gmail.com",
+    "SUPPORT_INFO": "\n\nFor further assistance, contact our support team:\n\ud83d\udcde +91-8849493106\n\ud83d\udce7 wrteam.priyansh@gmail.com",
     "VECTOR_DB_DIR": "vectordb",
     "MODEL_NAME": "gemini-1.5-flash-002",
     "RETRIEVAL_SETTINGS": {
@@ -52,12 +54,20 @@ def setup_retriever():
             persist_directory=CONFIG["VECTOR_DB_DIR"],
             embedding_function=embeddings
         )
-        bm25_retriever = BM25Retriever.from_documents(vectorstore.get()['documents'])
+        raw_docs = vectorstore.get().get('documents', [])
+        
+        # Ensure documents have proper structure
+        documents = [Document(page_content=doc) if isinstance(doc, str) else doc for doc in raw_docs]
+        
+        bm25_retriever = BM25Retriever.from_documents(documents)
         return EnsembleRetriever(
-            retrievers=[vectorstore.as_retriever(
-                search_type="similarity_score_threshold",
-                search_kwargs=CONFIG["RETRIEVAL_SETTINGS"]["search_kwargs"]
-            ), bm25_retriever],
+            retrievers=[
+                vectorstore.as_retriever(
+                    search_type="similarity_score_threshold",
+                    search_kwargs=CONFIG["RETRIEVAL_SETTINGS"]["search_kwargs"]
+                ),
+                bm25_retriever
+            ],
             weights=[0.7, 0.3]
         )
     except Exception as e:
@@ -113,10 +123,7 @@ def validate_answer(question: str, answer: str) -> bool:
         | StrOutputParser()
     )
     try:
-        return validation_chain.invoke({
-            "question": question,
-            "answer": answer
-        }).strip().lower() == "valid"
+        return validation_chain.invoke({"question": question, "answer": answer}).strip().lower() == "valid"
     except:
         return False
 
@@ -128,16 +135,13 @@ def handle_query(user_input: str):
             response = st.session_state.convo_chain.invoke({"question": user_input})
             
             valid_response = (
-                response["source_documents"]
+                response.get("source_documents")
                 and validate_answer(user_input, response["answer"])
             )
             
             if valid_response:
                 response_text = f"{response['answer']}{CONFIG['SUPPORT_INFO']}"
-                st.session_state.chat_history.append({
-                    "role": "assistant",
-                    "content": response_text
-                })
+                st.session_state.chat_history.append({"role": "assistant", "content": response_text})
             else:
                 if st.session_state.validation_attempts < 2:
                     st.session_state.validation_attempts += 1
@@ -146,69 +150,19 @@ def handle_query(user_input: str):
                     st.session_state.pending_question = user_input
                     st.session_state.show_general_prompt = True
                     st.session_state.validation_attempts = 0
-
     except Exception as e:
         error_msg = f"Processing error: {str(e)}{CONFIG['SUPPORT_INFO']}"
         st.session_state.chat_history.append({"role": "assistant", "content": error_msg})
     finally:
         st.rerun()
 
-def handle_general_response():
-    try:
-        with st.spinner("Generating general response..."):
-            response = st.session_state.convo_chain.invoke({
-                "question": st.session_state.pending_question
-            })
-        response_text = f"{response['answer']}{CONFIG['SUPPORT_INFO']}"
-    except Exception as e:
-        response_text = f"Response generation failed: {str(e)}{CONFIG['SUPPORT_INFO']}"
-    
-    st.session_state.chat_history.append({
-        "role": "assistant",
-        "content": response_text
-    })
-    st.session_state.show_general_prompt = False
-    st.session_state.pending_question = None
-    st.rerun()
-
-def handle_support_redirect():
-    support_msg = f"We couldn't find a specific answer.{CONFIG['SUPPORT_INFO']}"
-    st.session_state.chat_history.append({"role": "assistant", "content": support_msg})
-    st.session_state.show_general_prompt = False
-    st.session_state.pending_question = None
-    st.rerun()
-
-# Streamlit UI
 def main():
-    st.set_page_config(
-        page_title="WRTeam AI Assistant",
-        page_icon="💬",
-        layout="centered"
-    )
+    st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬", layout="centered")
     st.title("WRTeam AI Assistant")
-    
     initialize_system()
-    
-    # Display chat history
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
-    
-    # Handle general response prompt
-    if st.session_state.show_general_prompt:
-        with st.chat_message("assistant"):
-            st.warning("I couldn't find specific documentation. Would you like a general answer?")
-            
-            col1, col2 = st.columns(2)
-            with col1:
-                if st.button("Yes, please", key="general_yes"):
-                    handle_general_response()
-            with col2:
-                if st.button("No, thanks", key="general_no"):
-                    handle_support_redirect()
-        return
-    
-    # Process new input
     if user_input := st.chat_input("Ask about WRTeam products..."):
         handle_query(user_input)
 
