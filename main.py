@@ -1,6 +1,17 @@
+try:
+    import pysqlite3
+    import sys
+    sys.modules["sqlite3"] = pysqlite3
+except ImportError:
+    import sqlite3
+    from packaging import version
+    if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
+        raise RuntimeError("Your system sqlite3 version is too old. Please install pysqlite3-binary.")
+
 import os
 import json
 import streamlit as st
+import gemini_api
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferMemory
