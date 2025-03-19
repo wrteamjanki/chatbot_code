@@ -78,21 +78,23 @@ if user_input:
             source_documents = response.get("source_documents", [])
 
             # Handle No Relevant Data Found
-            if not source_documents:
+            if not source_documents or "I don't know" in assistant_response:
                 st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
                 agree = st.button("Yes, give me a general response")
                 decline = st.button("No, end the conversation")
                 
                 if agree:
-                    assistant_response = (
-                        "Sure! While I don’t have exact data on this, here’s a general insight:\n\n"
-                        "**[Insert general response based on the topic]**"
-                    )
+                    general_response = {
+                        "powerbi": "Power BI is a business analytics tool by Microsoft that allows users to visualize data and share insights. It connects to various data sources and provides interactive dashboards and reports.",
+                        "default": "I don’t have specific information on that, but I can try to provide a general explanation. Could you clarify what you’re looking for?"
+                    }
+                    topic = user_input.lower().split()[0]
+                    assistant_response = general_response.get(topic, general_response["default"])
                 elif decline:
                     assistant_response = (
                         "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
-                        f"📞 {SUPPORT_NUMBER}  \n📧 {SUPPORT_EMAIL}  \n\n"
-                        "Have a great day! 😊"
+                        f"{SUPPORT_NUMBER}  \n {SUPPORT_EMAIL}  \n\n"
+                        "Have a great day!"
                     )
                     st.markdown(assistant_response)
                     st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
@@ -100,7 +102,7 @@ if user_input:
                 
                 # Include Support Info
                 assistant_response += (
-                    f"\n\n💡 If you need personalized assistance, contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
+                    f"\n\n If you need personalized assistance, contact WRTeam support:\n {SUPPORT_NUMBER} \n {SUPPORT_EMAIL}"
                 )
             
             # Display Response
