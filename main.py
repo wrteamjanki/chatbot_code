@@ -29,7 +29,7 @@ CONFIG = {
     "VECTOR_DB_DIR": "vectordb",
     "MODEL_NAME": "gemini-1.5-flash-002",
     "REQUIRED_SQLITE_VERSION": "3.35.0",
-    "SUPPORT_MESSAGE": f"\n\nFor further assistance, contact our support team:\n📞 +91-8849493106\n📧 wrteam.priyansh@gmail.com"
+    "SUPPORT_MESSAGE": f"\n\nFor further assistance, contact our support team:\n\ud83d\udcde +91-8849493106\n\ud83d\udce7 wrteam.priyansh@gmail.com"
 }
 
 # Validate environment variables
@@ -52,7 +52,6 @@ def setup_vectorstore():
 
 # System initialization
 def initialize_system():
-    # Initialize session states
     session_defaults = {
         "chat_history": [],
         "pending_question": None,
@@ -65,7 +64,6 @@ def initialize_system():
         if key not in st.session_state:
             st.session_state[key] = value
 
-    # Initialize vectorstore and conversation chain
     if st.session_state.vectorstore is None:
         try:
             st.session_state.vectorstore = setup_vectorstore()
@@ -100,7 +98,7 @@ def initialize_system():
 def configure_ui():
     st.set_page_config(
         page_title="WRTeam AI Assistant",
-        page_icon="💬",
+        page_icon="\ud83d\udcac",
         layout="centered",
         initial_sidebar_state="collapsed"
     )
@@ -116,7 +114,7 @@ def display_chat_history():
 # Response handlers
 def handle_knowledgebase_response(response):
     """Handle responses when knowledge base documents are found"""
-    assistant_response = f"{response['answer']}{CONFIG['SUPPORT_MESSAGE']}"
+    assistant_response = response["answer"]
     st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
     st.rerun()
 
@@ -137,28 +135,13 @@ def handle_general_response():
         st.session_state.pending_question = None
         st.rerun()
 
-def handle_support_redirect():
-    """Handle case when user declines general response"""
-    support_message = (
-        f"No problem! Feel free to reach out to our support team for specialized help:"
-        f"{CONFIG['SUPPORT_MESSAGE']}"
-    )
-    st.session_state.chat_history.append({"role": "assistant", "content": support_message})
-    st.session_state.show_general_prompt = False
-    st.session_state.pending_question = None
-    st.rerun()
-
-# Main processing function
 def process_user_query(user_input: str):
     try:
-        # Add user message to history
         st.session_state.chat_history.append({"role": "user", "content": user_input})
         
-        # Process query through conversation chain
         with st.spinner("Analyzing your query..."):
             response = st.session_state.conversational_chain.invoke({"question": user_input})
         
-        # Handle response based on source documents
         if not response["source_documents"]:
             st.session_state.pending_question = user_input
             st.session_state.show_general_prompt = True
@@ -176,7 +159,6 @@ def main():
     initialize_system()
     display_chat_history()
 
-    # Handle general response prompt
     if st.session_state.show_general_prompt:
         with st.chat_message("assistant"):
             st.warning("I couldn't find specific documentation for your query. Would you like a general answer?")
@@ -187,10 +169,11 @@ def main():
                     handle_general_response()
             with col2:
                 if st.button("No, thank you", key="general_no"):
-                    handle_support_redirect()
+                    st.session_state.show_general_prompt = False
+                    st.session_state.pending_question = None
+                    st.rerun()
         return
 
-    # Process new user input
     if user_input := st.chat_input("Ask me anything about WRTeam products..."):
         process_user_query(user_input)
 
