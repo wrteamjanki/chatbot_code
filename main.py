@@ -30,7 +30,6 @@ def setup_vectorstore():
     return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
 # Function to Create Chat Chain
-@st.cache_resource
 def chat_chain(vectorstore):
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
