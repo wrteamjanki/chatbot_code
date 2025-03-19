@@ -15,6 +15,7 @@ except ImportError:
 
 import os
 import streamlit as st
+import gemini_api
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferMemory
