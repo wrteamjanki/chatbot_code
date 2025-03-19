@@ -56,42 +56,37 @@ if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = setup_vectorstore()
 if "conversational_chain" not in st.session_state:
     st.session_state.conversational_chain = chat_chain(st.session_state.vectorstore)
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
 
 # Display Chat Messages
-for message in st.session_state.get("chat_history", []):
+for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # User Input
 user_input = st.chat_input("Ask me anything...")
 if user_input:
-    st.session_state.chat_history = st.session_state.get("chat_history", [])
     st.session_state.chat_history.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    # Get AI Response
     try:
         with st.chat_message("assistant"):
             response = st.session_state.conversational_chain.invoke({"question": user_input})
             assistant_response = response["answer"]
             source_documents = response.get("source_documents", [])
 
-            # If no relevant data is found
+            # Handle No Relevant Data Found
             if not source_documents:
-                st.warning("I couldn’t find any exact match in my knowledge base. Would you like a general response?")
+                st.warning("I couldn’t find an exact match in my knowledge base. Would you like a general response?")
+                agree = st.button("Yes, give me a general response")
+                decline = st.button("No, end the conversation")
                 
-                # User Decision Handling
-                col1, col2 = st.columns(2)
-                with col1:
-                    agree = st.button("Yes, give me a general response")
-                with col2:
-                    decline = st.button("No, end the conversation")
-
                 if agree:
                     assistant_response = (
-                        "Sure! While I don’t have exact data on this, here’s what I can share:\n\n"
-                        "**[Insert a general response here based on the topic]**"
+                        "Sure! While I don’t have exact data on this, here’s a general insight:\n\n"
+                        "**[Insert general response based on the topic]**"
                     )
                 elif decline:
                     assistant_response = (
@@ -99,18 +94,17 @@ if user_input:
                         f"📞 {SUPPORT_NUMBER}  \n📧 {SUPPORT_EMAIL}  \n\n"
                         "Have a great day! 😊"
                     )
-                    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
                     st.markdown(assistant_response)
+                    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
                     st.stop()
-
+                
                 # Include Support Info
                 assistant_response += (
-                    f"\n\n💡 If you need personalized assistance, you can contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
+                    f"\n\n💡 If you need personalized assistance, contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
                 )
-
+            
             # Display Response
             st.markdown(assistant_response)
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
-
     except Exception as e:
         st.error(f"An error occurred: {e}")
