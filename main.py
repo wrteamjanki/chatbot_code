@@ -47,7 +47,6 @@ def chat_chain(vectorstore):
         return_source_documents=True,
     )
 
-
 # Streamlit Page Configuration
 st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬", layout="centered")
 st.markdown("# WRTeam AI Assistant")
@@ -77,12 +76,11 @@ if user_input:
             response = st.session_state.conversational_chain.invoke({"question": user_input})
             assistant_response = response["answer"]
 
-            # Check if source documents are empty
-            if not response.get("source_documents"):
-                assistant_response = (
-                    "I couldn't find any relevant information in my database. "
-                    f"If you need more help, please contact WRTeam support at **{SUPPORT_NUMBER}** "
-                    f"or email **{SUPPORT_EMAIL}**."
+            # If no relevant documents are found, let LLM try but filter weak responses
+            if not response.get("source_documents") and (not assistant_response.strip() or "I'm sorry" in assistant_response):
+                assistant_response += (
+                    f"\n\n⚠️ I couldn't find an exact match for your query. "
+                    f"Please contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
                 )
 
             st.markdown(assistant_response)
