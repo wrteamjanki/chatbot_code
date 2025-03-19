@@ -37,7 +37,7 @@ def chat_chain(vectorstore):
 
     llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002", google_api_key=api_key)
     retriever = vectorstore.as_retriever()
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True, output_key="answer")
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
     return ConversationalRetrievalChain.from_llm(
         llm=llm,
@@ -46,7 +46,6 @@ def chat_chain(vectorstore):
         verbose=True,
         return_source_documents=True,
     )
-
 
 # Streamlit Page Configuration
 st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬", layout="centered")
@@ -77,11 +76,12 @@ if user_input:
             response = st.session_state.conversational_chain.invoke({"question": user_input})
             assistant_response = response["answer"]
 
-            # Handle support redirection
-            if "I'm sorry" in assistant_response or not assistant_response.strip():
+            # Check if source documents are empty
+            if not response.get("source_documents"):
                 assistant_response = (
-                    f"I'm sorry, but I couldn't find an answer in my knowledge base. "
-                    f"Please contact WRTeam support at **{SUPPORT_NUMBER}** or email **{SUPPORT_EMAIL}** for further assistance."
+                    "I couldn't find any relevant information in my database. "
+                    f"If you need more help, please contact WRTeam support at **{SUPPORT_NUMBER}** "
+                    f"or email **{SUPPORT_EMAIL}**."
                 )
 
             st.markdown(assistant_response)
