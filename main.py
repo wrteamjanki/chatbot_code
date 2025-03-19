@@ -66,10 +66,29 @@ for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+# Check if a general response was requested in the last interaction
+if st.session_state.general_response_requested:
+    with st.chat_message("assistant"):
+        general_response = st.session_state.conversational_chain.invoke({"question": f"Provide a general explanation about {st.session_state.last_user_input}"})
+        assistant_response = general_response["answer"]
+        
+        # Reset the state so the chatbot does not keep giving general responses
+        st.session_state.general_response_requested = False
+
+        # Include Support Info
+        assistant_response += (
+            f"\n\n💡 If you need personalized assistance, contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
+        )
+
+        st.markdown(assistant_response)
+        st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+
 # User Input
 user_input = st.chat_input("Ask me anything...")
 if user_input:
+    st.session_state.last_user_input = user_input  # Save user input for later use
     st.session_state.chat_history.append({"role": "user", "content": user_input})
+    
     with st.chat_message("user"):
         st.markdown(user_input)
 
@@ -87,6 +106,7 @@ if user_input:
                 with col1:
                     if st.button("Yes, give me a general response"):
                         st.session_state.general_response_requested = True
+                        st.rerun()  # Forces the app to reload and process the general response
                 with col2:
                     if st.button("No, end the conversation"):
                         st.session_state.general_response_requested = False
@@ -98,17 +118,6 @@ if user_input:
                         st.markdown(assistant_response)
                         st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
                         st.stop()
-
-            if st.session_state.general_response_requested:
-                # Invoke LLM for a general response
-                general_response = st.session_state.conversational_chain.invoke({"question": f"Provide a general explanation about {user_input}"})
-                assistant_response = general_response["answer"]
-                st.session_state.general_response_requested = False
-                
-                # Include Support Info
-                assistant_response += (
-                    f"\n\n💡 If you need personalized assistance, contact WRTeam support:\n📞 {SUPPORT_NUMBER} \n📧 {SUPPORT_EMAIL}"
-                )
 
             # Display Response
             st.markdown(assistant_response)
