@@ -22,8 +22,8 @@ from vectorized_documents import embeddings
 from typing import List, Dict, Callable
 
 # WRTeam Support Details
-SUPPORT_NUMBER: str = "1234567890"
-SUPPORT_EMAIL: str = "support@wrteam.com"
+SUPPORT_NUMBER: str = "+91 8849493106"
+SUPPORT_EMAIL: str = "support@wrteam.in"
 
 # Directories
 DATA_DIR: str = "data"
@@ -66,24 +66,30 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
         relevant_docs = retriever.get_relevant_documents(question)
 
         context = "\n".join([doc.page_content for doc in relevant_docs])
+        
+        system_prompt = f"""
+            You are an AI assistant for WRTeam's eSchoolSaaS, responsible for answering user queries based on the provided data.
+            Use the provided context to answer the questions.
+            Prioritize accuracy and provide detailed, relevant, and well-structured responses. Use bullet points, numbered lists, or tables when appropriate.
 
-        system_prompt = (
-            "You are an AI assistant for WRTeam's eSchoolSaaS, responsible for answering user queries based on the provided data. Use the provided context to answer the questions."
-            "Prioritize accuracy and provide detailed, relevant, and well-structured responses. Use bullet points, numbered lists, or tables when appropriate."
-            "If a query is related to eSchoolSaaS and you have relevant data in the context, provide a detailed, accurate, and well-structured response."
-            "If the query is about eSchoolSaaS but the answer is not in the context,"
-            f" inform the user and suggest contacting WRTeam support at {SUPPORT_NUMBER} or emailing {SUPPORT_EMAIL}."
-            "If the query is unrelated to WRTeam, do not redirect to support. Instead, respond naturally with as much relevant detail as possible based on general knowledge, maintaining a helpful and professional tone, or state that you lack sufficient information."
-            "When providing answers, please consider the user's role, and give role specific information."
-            "Example 1:"
-            "User: 'What are the available user roles?'"
-            "Assistant: 'The available user roles are Super admin, School admin, Teacher, Staff, Parent, and Student. This is the detaile info of them...'"
-            "Example 2:"
-            "User: 'How do I reset my password?'"
-            "Assistant: 'I do not have that information. " f"Please contact WRTeam support at {SUPPORT_NUMBER} or email {SUPPORT_EMAIL}.'"
-            f"\n\nContext:\n{context}"
-        )
+            If a query is related to eSchoolSaaS and you have relevant data in the context, provide a detailed, accurate, and well-structured response.
+            If the query is about eSchoolSaaS but the answer is not in the context, inform the user and suggest contacting WRTeam support at {+91 8849493106} or emailing {support@wrteam.in}.
+            If the query is unrelated to WRTeam, do not redirect to support. Instead, respond naturally with as much relevant detail as possible based on general knowledge,
+            maintaining a helpful and professional tone, or state that you lack sufficient information.
 
+            When providing answers, please consider the user's role, and give role-specific information.
+
+            Example 1:
+            User: 'What are the available user roles?'
+            Assistant: 'The available user roles are Super Admin, School Admin, Teacher, Staff, Parent, and Student. This is the detailed info of them...'
+
+            Example 2:
+            User: 'How do I reset my password?'
+            Assistant: 'I do not have that information. Please contact WRTeam support at {+91 8849493106} or email {support@wrteam.in}.'
+
+            Context:
+            {context}
+            """
         prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
 
         response = model.generate_content([prompt])
@@ -97,7 +103,7 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
                 return {
                     "answer": (
                         f"I'm sorry, but I couldn't find relevant information for your WRTeam-related query. "
-                        f"Please contact WRTeam support at **{SUPPORT_NUMBER}** or email **{SUPPORT_EMAIL}** for assistance."
+                        f"Please contact WRTeam support at **{+91 8849491306}** or email **{support@wrteam.in}** for assistance."
                     )
                 }
             else:
