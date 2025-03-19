@@ -1287,7 +1287,7 @@
             }
         },
         {
-            "promote-student-to-next-class": {
+            "promote-student-to-next-class-in-the-school": {
                 "information": [
                     "School admin can promote the student to the other class",
                     "In order to promote the student to the other class, School admin need to select the current class, Promote In Session year, Promote In Class, Result Of the current class and the promotion status",
