@@ -1,172 +1,6 @@
 {
-    "eschool_saas_info": {
-        "title": "Overview of eSchool SaaS",
-        "description": "eSchool SaaS is a cloud-based school management system designed to simplify school administration. It includes mobile applications, a web panel, a SaaS website, and a school website.",
-        "details": [
-            "It has two mobile applications, Web panel, Saas Website and School Website.",
-            "One application for Students & Parents and another for Teachers, Staffs and School Admin.",
-            "Super admin, School admin, Teachers, Staffs will use the web panel.",
-            "Students and Parents will use the Student & Parent mobile app.",
-            "Teachers, Staffs and School admin will use the Teacher & Staff mobile app.",
-            "Saas website will be used by the general public to learn about the system and its services.",
-            "Super admin (SaaS Owner) can create various types of packages based on given features and provide them to schools."
-        ]
-    },
-    "company_info": {
-        "title": "About WRTeam",
-        "description": "WRTeam is a software development company based in Bhuj, India, specializing in IT services and digital solutions. For more information, visit https://wrteam.in."
-    },
-    "user_roles": {
-        "title": "User Roles in eSchool SaaS",
-        "roles": [
-            "Super Admin",
-            "School Admin",
-            "Teacher",
-            "Staff",
-            "Parent",
-            "Student"
-        ]
-    },
-    "e-school-saas-features": {
-        "title": "Key Features of eSchool SaaS",
-        "list": [
-            "School Management",
-            "Packages and Add-ons",
-            "Saas Website",
-            "Student Management",
-            "Academics Management",
-            "Timetable Management",
-            "Attendance Management",
-            "Offline and Online Exams",
-            "Study Materials",
-            "Assignments",
-            "Announcements",
-            "Fee Management",
-            "School Gallery",
-            "ID Card and Certificate Generation",
-            "Chat between Students and Teachers",
-            "Chat between Teachers and Staffs",
-            "Chat between Parents and Teachers"
-        ]
-    },
-    "technology_used": {
-        "list": [
-            "Flutter (Dart) - Mobile Apps",
-            "Laravel (PHP) - Web Panel & APIs",
-            "MySQL - Database",
-            "HTML, CSS, JavaScript - Web Development",
-            "Firebase - Push Notifications",
-            "Stripe & Razorpay - Payments",
-            "Google reCAPTCHA - Security"
-        ]
-    },
-    "prerequisites": {
-        "title": "System Requirements",
-        "details": {
-            "basic_knowledge": [
-                "Flutter",
-                "Laravel",
-                "PHP",
-                "MySQL"
-            ],
-            "accounts_required": [
-                "Firebase",
-                "Stripe",
-                "Razorpay"
-            ],
-            "server_requirements": "VPS or Dedicated Server (Min. 2 core CPU & Root DB Access)",
-            "additional_requirements": [
-                "SMTP Server",
-                "Google Play Console & Apple Developer Account"
-            ]
-        }
-    },
-    "packages": {
-        "title": "Subscription Packages",
-        "types": [
-            "Prepaid",
-            "Postpaid"
-        ],
-        "package_details": "Each package includes a set of features and pricing plans based on student and staff count.",
-        "features": [
-            "Academics Management",
-            "Session Year Management",
-            "Student Management",
-            "Announcement Management",
-            "Assignment Management",
-            "Attendance Management",
-            "Chat Module",
-            "Exam Management",
-            "Expense Management",
-            "Fees Management",
-            "Holiday Management",
-            "ID Card - Certificate Generation",
-            "Lesson Management",
-            "School Gallery Management",
-            "Slider Management",
-            "Staff Leave Management",
-            "Staff Management",
-            "Timetable Management",
-            "Website Management"
-        ]
-    },
-    "support": {
-        "title": "Support & Contact Information",
-        "contact_methods": [
-            "Email: support@wrteam.in",
-            "WhatsApp: +91 8849493106",
-            "Skype Support Available"
-        ],
-        "included_in_support": [
-            "Pre-sale queries",
-            "Understanding script & features",
-            "Bug fixes",
-            "Guidance on web & app setup"
-        ],
-        "not_included": [
-            "Customization",
-            "Deployment on app stores",
-            "Logo creation",
-            "Server & PHP setup"
-        ]
-    },
-    "saas_website-features": {
-        "information": [
-            "Marketing Website for Schools",
-            "School Registration & Login Portal",
-            "Privacy Policy & Terms Display",
-            "Subscription Package Display",
-            "FAQs Section",
-            "Google reCAPTCHA (V2) for Security"
-        ]
-    },
-    "faq": {
-        "title": "Frequently Asked Questions",
-        "questions": [
-            {
-                "question": "Where can I buy eSchool SaaS?",
-                "answer": "You can buy it on Codecanyon: https://codecanyon.net/item/eschool-saas-school-management-system/49307764"
-            },
-            {
-                "question": "What are the server requirements?",
-                "answer": "Minimum VPS with 2-core CPU & Root DB Access"
-            },
-            {
-                "question": "Does it support multiple languages?",
-                "answer": "Yes, including RTL & LTR layouts."
-            },
-            {
-                "question": "What is included in the support?",
-                "answer": "Pre-sale queries, script understanding, bug fixes, and guidance."
-            },
-            {
-                "question": "What is not included in the support?",
-                "answer": "Customization, app deployment, logo creation, and PHP setup."
-            }
-        ]
-    },
-    "name": "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
-    "author": [
+    "name-of-the-script": "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
+    "author-of-the-script": [
         "WRTeam",
         "WRTeam is, a software development company located in Bhuj - India, serving IT services & digital solutions around the globe.",
         "To know more about us, visit https://wrteam.in"
@@ -1651,6 +1485,20 @@
             "question": "Will i get both web panels and mobile application source code?",
             "answers": [
                 "Yes, user will get the both web panels and mobile application source code along with API & Database Code"
+            ]
+        },
+        {
+            "question": "Where can i buy the script?",
+            "answers": [
+                "You can buy the script from the codecanyon.",
+                "Please visit this link to buy the script. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764",
+                "If you are unable to buy the script from the codecanyon, please contact us for the support."
+            ]
+        },
+        {
+            "question": "What is the price of the script?",
+            "answers": [
+                "Price of the script is $99.00"
             ]
         }
     ]
