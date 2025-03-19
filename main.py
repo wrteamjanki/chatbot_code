@@ -1,6 +1,8 @@
+
 # Check for required packages
 try:
     import pysqlite3
+    import sys
     sys.modules["sqlite3"] = pysqlite3
 except ImportError:
     import sqlite3
