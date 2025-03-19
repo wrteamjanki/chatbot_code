@@ -133,12 +133,15 @@ def handle_query(user_input: str):
             )
             
             if valid_response:
-                response_text = f"{response['answer']}{CONFIG['SUPPORT_INFO']}"
+                # Si la réponse est trouvée dans la base de connaissance,
+                # on renvoie la réponse sans ajouter les détails du support client.
+                response_text = response["answer"]
                 st.session_state.chat_history.append({
                     "role": "assistant",
                     "content": response_text
                 })
             else:
+                # Sinon, on peut réessayer ou finalement ajouter le support info.
                 if st.session_state.validation_attempts < 2:
                     st.session_state.validation_attempts += 1
                     handle_query(f"Explain {user_input} in simple terms")
