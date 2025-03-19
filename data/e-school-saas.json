@@ -13,8 +13,8 @@
         "Parent",
         "Student"
     ],
-    " eschool-saas-short-description": "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
-    "eschool-saas-full-description": [
+    "e-school-saas-short-description": "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
+    "e-school-saas-full-description": [
         "It has two mobile applications, Web panel, Saas Website and School Website. One application for Students & Parents and another for Teachers, Staffs and School Admin.",
         "Super admin, School admin, Teachers, Staffs will use the web panel.",
         "Student and Parents will use the Student & Parent mobile app.",
@@ -1490,6 +1490,12 @@
             "question": "What is the price of the script?",
             "answers": [
                 "Price of the script is $99.00"
+            ]
+        },
+        {
+            "question": "Can i get the discount on the price?",
+            "answers": [
+                "No, Price is fixed. You can not get the discount on the price."
             ]
         }
     ]
