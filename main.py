@@ -92,7 +92,7 @@ if user_input:
                     assistant_response = (
                         "I understand! If you need more specific help, feel free to reach out to our support team:\n\n"
                         f" {SUPPORT_NUMBER}  \n {SUPPORT_EMAIL}  \n\n"
-                        "Have a great day!"
+                        "Have a great day! "
                     )
                     st.markdown(assistant_response)
                     st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
