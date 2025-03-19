@@ -15,7 +15,6 @@ except ImportError:
 
 import os
 import streamlit as st
-import gemini_api
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferMemory
@@ -28,12 +27,13 @@ CONFIG = {
     "SUPPORT_EMAIL": "wrteam.priyansh@gmail.com",
     "VECTOR_DB_DIR": "vectordb",
     "MODEL_NAME": "gemini-1.5-flash-002",
-    "REQUIRED_SQLITE_VERSION": "3.35.0"
+    "REQUIRED_SQLITE_VERSION": "3.35.0",
+    "SUPPORT_MESSAGE": f"\n\nFor further assistance, contact our support team:\n📞 +91-8849493106\n📧 wrteam.priyansh@gmail.com"
 }
 
 # Validate environment variables
 if "GEMINI_API_KEY" not in os.environ:
-    raise EnvironmentError("GEMINI_API_KEY environment variable not set. Ensure it's set in gemini_api.py or your environment.")
+    raise EnvironmentError("GEMINI_API_KEY environment variable not set.")
 
 # VectorDB initialization with error handling
 @st.cache_resource(show_spinner="Initializing knowledge base...")
@@ -51,14 +51,28 @@ def setup_vectorstore():
 
 # System initialization
 def initialize_system():
-    if "vectorstore" not in st.session_state:
+    # Initialize session states
+    session_defaults = {
+        "chat_history": [],
+        "pending_question": None,
+        "show_general_prompt": False,
+        "vectorstore": None,
+        "conversational_chain": None
+    }
+    
+    for key, value in session_defaults.items():
+        if key not in st.session_state:
+            st.session_state[key] = value
+
+    # Initialize vectorstore and conversation chain
+    if st.session_state.vectorstore is None:
         try:
             st.session_state.vectorstore = setup_vectorstore()
         except Exception as e:
             st.error(f"Initialization error: {str(e)}")
             st.stop()
 
-    if "conversational_chain" not in st.session_state:
+    if st.session_state.conversational_chain is None:
         try:
             llm = ChatGoogleGenerativeAI(
                 model=CONFIG["MODEL_NAME"],
@@ -81,15 +95,6 @@ def initialize_system():
             st.error(f"Failed to create conversation chain: {str(e)}")
             st.stop()
 
-    # Initialize session states for conversation flow
-    session_defaults = {
-        "chat_history": [],
-        "pending_question": None,
-        "show_general_prompt": False
-    }
-    for key, value in session_defaults.items():
-        st.session_state.setdefault(key, value)
-
 # Streamlit UI configuration
 def configure_ui():
     st.set_page_config(
@@ -107,8 +112,43 @@ def display_chat_history():
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-# Response generation flow
-def handle_user_query(user_input: str):
+# Response handlers
+def handle_knowledgebase_response(response):
+    """Handle responses when knowledge base documents are found"""
+    assistant_response = f"{response['answer']}{CONFIG['SUPPORT_MESSAGE']}"
+    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+    st.rerun()
+
+def handle_general_response():
+    """Handle generation of general response when requested"""
+    try:
+        with st.spinner("Generating general response..."):
+            response = st.session_state.conversational_chain.invoke({
+                "question": f"Provide a general explanation about {st.session_state.pending_question}"
+            })
+        assistant_response = f"{response['answer']}{CONFIG['SUPPORT_MESSAGE']}"
+        st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+    except Exception as e:
+        error_message = f"Failed to generate response: {str(e)}{CONFIG['SUPPORT_MESSAGE']}"
+        st.session_state.chat_history.append({"role": "assistant", "content": error_message})
+    finally:
+        st.session_state.show_general_prompt = False
+        st.session_state.pending_question = None
+        st.rerun()
+
+def handle_support_redirect():
+    """Handle case when user declines general response"""
+    support_message = (
+        f"No problem! Feel free to reach out to our support team for specialized help:"
+        f"{CONFIG['SUPPORT_MESSAGE']}"
+    )
+    st.session_state.chat_history.append({"role": "assistant", "content": support_message})
+    st.session_state.show_general_prompt = False
+    st.session_state.pending_question = None
+    st.rerun()
+
+# Main processing function
+def process_user_query(user_input: str):
     try:
         # Add user message to history
         st.session_state.chat_history.append({"role": "user", "content": user_input})
@@ -122,54 +162,12 @@ def handle_user_query(user_input: str):
             st.session_state.pending_question = user_input
             st.session_state.show_general_prompt = True
         else:
-            display_assistant_response(response["answer"])
-
+            handle_knowledgebase_response(response)
+            
     except Exception as e:
-        st.error(f"Error processing your request: {str(e)}")
-        st.session_state.chat_history.append({
-            "role": "assistant",
-            "content": f"Sorry, I encountered an error. Please try again or contact support."
-        })
-
-# Response display handlers
-def display_assistant_response(response_text: str):
-    with st.chat_message("assistant"):
-        st.markdown(response_text)
-    st.session_state.chat_history.append({"role": "assistant", "content": response_text})
-
-def display_support_prompt():
-    support_message = (
-        "I understand! For personalized assistance, contact our support team:\n\n"
-        f"📞 {CONFIG['SUPPORT_NUMBER']}  \n"
-        f"📧 {CONFIG['SUPPORT_EMAIL']}\n\n"
-        "We're here to help! 😊"
-    )
-    display_assistant_response(support_message)
-    st.session_state.show_general_prompt = False
-
-def handle_general_response_request():
-    with st.chat_message("assistant"):
-        st.warning("I couldn't find specific documentation. Would you like a general answer?")
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("Yes, please", key="general_yes"):
-                try:
-                    with st.spinner("Generating general response..."):
-                        response = st.session_state.conversational_chain.invoke({
-                            "question": f"Provide a general explanation about {st.session_state.pending_question}"
-                        })
-                    augmented_response = (
-                        f"{response['answer']}\n\n"
-                        f"💡 For specific implementation details, contact {CONFIG['SUPPORT_EMAIL']}"
-                    )
-                    display_assistant_response(augmented_response)
-                finally:
-                    st.session_state.show_general_prompt = False
-        
-        with col2:
-            if st.button("No, thanks", key="general_no"):
-                display_support_prompt()
+        error_message = f"Error processing your request: {str(e)}{CONFIG['SUPPORT_MESSAGE']}"
+        st.session_state.chat_history.append({"role": "assistant", "content": error_message})
+        st.rerun()
 
 # Main application flow
 def main():
@@ -177,14 +175,23 @@ def main():
     initialize_system()
     display_chat_history()
 
-    # Handle pending general response requests first
+    # Handle general response prompt
     if st.session_state.show_general_prompt:
-        handle_general_response_request()
+        with st.chat_message("assistant"):
+            st.warning("I couldn't find specific documentation for your query. Would you like a general answer?")
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("Yes, please", key="general_yes"):
+                    handle_general_response()
+            with col2:
+                if st.button("No, thank you", key="general_no"):
+                    handle_support_redirect()
         return
 
     # Process new user input
     if user_input := st.chat_input("Ask me anything about WRTeam products..."):
-        handle_user_query(user_input)
+        process_user_query(user_input)
 
 if __name__ == "__main__":
     main()
