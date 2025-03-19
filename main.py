@@ -31,12 +31,12 @@ def get_vectorstore():
 
 # Initialize conversation chain
 @st.cache_resource
-def get_conversation_chain(vectorstore):
+def get_conversation_chain(_vectorstore):  # Added underscore to parameter
     llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-002")
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     return ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=vectorstore.as_retriever(),
+        retriever=_vectorstore.as_retriever(),  # Updated reference
         memory=memory,
         return_source_documents=True
     )
