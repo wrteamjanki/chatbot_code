@@ -170,12 +170,12 @@
     },
     "super-admin-features": [
         {
-            "manage-packages": {
+            "manage-packages-by-superadmin": {
                 "information": [
                     "Super admin can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
                     "There are total 20 features that can be added to the packages. From that 4 features are default. Rest 16 features can be used to create the various packages.",
                     "Each package can be subscribed by multiple schools. So, Super admin can create multiple packages for different schools.",
-                    "There will two type of package prepaid and postpaid.",
+                    "There are two types of package, prepaid and postpaid.",
                     "To create the prepaid pacakge, Super admin will need to provide the following information. Name, Description, Tagline, Days, Number of Active Students, Number of Active Staffs, Charges or Price.",
                     "To create the postpaid package, Super admin will need to provide the following information. Name, Description, Tagline, Days, Per Active Student Charges, Per Active Staff Charges",
                     "While creating the perpaid or postpaid package, super admin can highlight the package. If it is mark as highlight then it will be shown in the Saas website",
@@ -220,6 +220,12 @@
                         "title": "Can I edit or delete a package after creating it?",
                         "answers": [
                             "Yes, you can edit or delete a package by navigating to the package management section and selecting the desired package."
+                        ]
+                    },
+                    {
+                        "title": "What are the types of packages?",
+                        "answers": [
+                            "There are two types of package prepaid and postpaid."
                         ]
                     }
                 ]
@@ -1543,9 +1549,13 @@
             ]
         },
         {
-            "question": "What is the price of the script?",
+            "question": [
+                "What is the price of the script?",
+                "What is the price of the eSchool Saas?",
+                "What is the price of the eSchool Saas software?"
+            ],
             "answers": [
-                "Price of the script is $99.00"
+                "Price of the eSchool Saas script is $99.00 with regular licence and $499.00 with extended licence"
             ]
         },
         {
@@ -1589,7 +1599,7 @@
             "question": "Does the school have its own mobile application?",
             "answers": [
                 "No, school can not have its own mobile application",
-                "There will one application for all the schools. "
+                "There will one application for all the schools."
             ]
         }
     ]
