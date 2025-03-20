@@ -34,6 +34,7 @@
     ],
     "e-school-saas-demo": {
         "information": [
+            "To view the e-school-saas demo, you can visit this link https://eschool-saas.wrteam.me",
             "To test and explore the e-school-saas script, you can visit this link https://eschool-saas.wrteam.me/login",
             "To test the student/parent mobile application, Google play store link is https://play.google.com/store/apps/details?id=com.wrteam.saas.school. Apple store link is https://testflight.apple.com/join/HxZcnKO6",
             "To test the teacher/staff mobile application, Google play store link is https://play.google.com/store/apps/details?id=com.wrteam.saas.staff. Apple store link is https://testflight.apple.com/join/FWRlupU9",
@@ -1601,6 +1602,13 @@
             "answers": [
                 "No, school can not have its own mobile application",
                 "There will one application for all the schools."
+            ]
+        },
+        {
+            "question": "What is the demo of the url?",
+            "answers": [
+                "The demo of the url is https://eschool-saas.wrteam.me",
+                "You can not modify the data in the demo. You can only view the demo data."
             ]
         }
     ]
