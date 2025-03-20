@@ -29,7 +29,8 @@
         "Student and Parents will not use the web panel",
         "Super admin can not use the applications",
         "School website will be used by general public to know about the school and other activities of the school.",
-        "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features."
+        "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
+        "E-school saas support multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school."
     ],
     "e-school-saas-demo": {
         "information": [
@@ -178,7 +179,7 @@
                     "To create the prepaid pacakge, Super admin will need to provide the following information. Name, Description, Tagline, Days, Number of Active Students, Number of Active Staffs, Charges or Price.",
                     "To create the postpaid package, Super admin will need to provide the following information. Name, Description, Tagline, Days, Per Active Student Charges, Per Active Staff Charges",
                     "While creating the perpaid or postpaid package, super admin can highlight the package. If it is mark as highlight then it will be shown in the Saas website",
-                    "There are 4 Default features. Academics Management, Session Year Management, Student Management, Session Year Management.",
+                    "There are 4 Default features. Academics Management, Session Year Management, Student Management, Teacher Management.",
                     "16 featuares that can be added to the packages are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management",
                     "All packages will be in unpublished state by default. Super admin can publish the package by clicking on the publish button. Super admin can also unpublish the package by clicking on the unpublish button.",
                     "If the package is published then it will be visible to all the schools.",
@@ -238,7 +239,7 @@
                     "Super admin can create various type of add-ons.",
                     "The validity of add-on is determined by the expiration date of user's current subscription.",
                     "To create an add-on, Super admin will need to provide the following information. Name, Price and features to be added.",
-                    "Same as package, there are 16 features that can be added to the add-ons. Default features are as follows, Academics Management, Session Year Management, Student Management, Session Year Management",
+                    "Same as package, there are 16 features that can be added to the add-ons. Default features are as follows, Academics Management, Session Year Management, Student Management, Teacher Management",
                     "16 featuares that can be added to the add-ons are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management"
                 ],
                 "questions": []
@@ -1557,6 +1558,38 @@
                 "linkedin :  https://www.linkedin.com/company/wrteam/",
                 "facebook : https://www.facebook.com/wrteam.in/ ",
                 "X : https://x.com/wrteamin"
+            ]
+        },
+        {
+            "question": "Does school data will be stored in separate database?",
+            "answers": [
+                "Yes, school data will be stored in separate database"
+            ]
+        },
+        {
+            "question": "Does this script support multitenancy?",
+            "answers": [
+                "Yes, it supports multitenancy",
+                "It supports multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school."
+            ]
+        },
+        {
+            "question": "What is the multitenancy?",
+            "answers": [
+                "Multitenancy is the ability to have multiple databases for a single application. In this script, each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school."
+            ]
+        },
+        {
+            "question": "Does the school have its own website?",
+            "answers": [
+                "Yes, school has its own website"
+            ]
+        },
+        {
+            "question": "Does the school have its own mobile application?",
+            "answers": [
+                "No, school can not have its own mobile application",
+                "There will one application for all the schools. "
             ]
         }
     ]
