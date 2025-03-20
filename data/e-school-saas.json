@@ -1,4 +1,3 @@
-
 {
     "name-of-the-script": "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
     "author-of-the-script": [
@@ -6,8 +5,8 @@
         "WRTeam is, a software development company located in Bhuj - India, serving IT services & digital solutions around the globe.",
         "To know more about us, visit https://wrteam.in",
         "Follow WRTeam on social media",
-        "Instagram : https://www.instagram.com/wrteam.in/ ",
-        "Whatsapp channel : https://shreesoftechworkspace.slack.com/archives/D08H4DU8GE5/p1742385988307269 ",
+        "Instagram :https://www.instagram.com/wrteam.in/",
+        "Whatsapp channel : https://www.whatsapp.com/channel/0029VaFfBBP2ER6eCc3E8y0M ",
         "linkedin :  https://www.linkedin.com/company/wrteam/",
         "facebook : https://www.facebook.com/wrteam.in/ ",
         "X : https://x.com/wrteamin"
@@ -31,9 +30,8 @@
         "Super admin can not use the applications",
         "School website will be used by general public to know about the school and other activities of the school.",
         "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features."
-    
     ],
-    "e-school-saas-demo" : {
+    "e-school-saas-demo": {
         "information": [
             "To test and explore the e-school-saas script, you can visit this link https://eschool-saas.wrteam.me/login",
             "To test the student/parent mobile application, Google play store link is https://play.google.com/store/apps/details?id=com.wrteam.saas.school. Apple store link is https://testflight.apple.com/join/HxZcnKO6",
@@ -1222,6 +1220,46 @@
     ],
     "faqs": [
         {
+            "question": "Can i have multiple domain on one item purchase code?",
+            "answers": [
+                "No, you can not have the multiple domain on one item purchase code. You can have only one domain at a time."
+            ]
+        },
+        {
+            "question": "Can i have multiple domain?",
+            "answers": [
+                "No, you can not have the multiple domain. You can have only one domain at a time."
+            ]
+        },
+        {
+            "question": "If i want to change the domain, can i do that?",
+            "answers": [
+                "Yes, you can change the domain anytime. For that you need to contact us."
+            ]
+        },
+        {
+            "qyestion": "Can i run this script on localhost?",
+            "answers": [
+                "Yes, you can run this script on localhost."
+            ]
+        },
+        {
+            "questions": [
+                "Can i run this script on multiple domain?",
+                "Can i run this script on multiple server?"
+            ],
+            "answers": [
+                "No, you can't run this script on multiple domain or server. You can only run this script on one domain or server.",
+                "At a time you can run this script on one domain or server."
+            ]
+        },
+        {
+            "question": "Can i run this script on localhost and on production server at a time?",
+            "answers": [
+                "No, you can't run this script on localhost and on production server simultaneously."
+            ]
+        },
+        {
             "question": "From where i can buy the script?",
             "answers": [
                 "You can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764"
@@ -1395,7 +1433,6 @@
                 "Where can i check the demo of this script?",
                 "Where can i check the live demo of this script?",
                 "I want to test the script and explore the features of the script. Where can i do that?"
-            
             ],
             "answers": [
                 "To  test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
