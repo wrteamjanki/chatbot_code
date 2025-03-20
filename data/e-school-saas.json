@@ -1275,7 +1275,7 @@
         {
             "question": "What is the price of the script?",
             "answers": [
-                "Price of the script is $99.00"
+                "Price of the script is 99.00 USD"
             ]
         },
         {
@@ -1555,7 +1555,8 @@
                 "What is the price of the eSchool Saas software?"
             ],
             "answers": [
-                "Price of the eSchool Saas script is $99.00 with regular licence and $499.00 with extended licence"
+                "Price of the eSchool Saas script is 99.00 USD with regular licence.",
+                "Price of the eSchool Saas script is 499.00 USD with extended licence"
             ]
         },
         {
