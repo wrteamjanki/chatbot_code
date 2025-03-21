@@ -29,10 +29,12 @@
         "Student and Parents will not use the web panel",
         "Super admin can not use the applications",
         "School website will be used by general public to know about the school and other activities of the school.",
-        "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features."
+        "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
+        "E-school saas support multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school."
     ],
     "e-school-saas-demo": {
         "information": [
+            "To view the e-school-saas demo, you can visit this link https://eschool-saas.wrteam.me",
             "To test and explore the e-school-saas script, you can visit this link https://eschool-saas.wrteam.me/login",
             "To test the student/parent mobile application, Google play store link is https://play.google.com/store/apps/details?id=com.wrteam.saas.school. Apple store link is https://testflight.apple.com/join/HxZcnKO6",
             "To test the teacher/staff mobile application, Google play store link is https://play.google.com/store/apps/details?id=com.wrteam.saas.staff. Apple store link is https://testflight.apple.com/join/FWRlupU9",
@@ -169,16 +171,16 @@
     },
     "super-admin-features": [
         {
-            "manage-packages": {
+            "manage-packages-by-superadmin": {
                 "information": [
                     "Super admin can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
                     "There are total 20 features that can be added to the packages. From that 4 features are default. Rest 16 features can be used to create the various packages.",
                     "Each package can be subscribed by multiple schools. So, Super admin can create multiple packages for different schools.",
-                    "There will two type of package prepaid and postpaid.",
+                    "There are two types of package, prepaid and postpaid.",
                     "To create the prepaid pacakge, Super admin will need to provide the following information. Name, Description, Tagline, Days, Number of Active Students, Number of Active Staffs, Charges or Price.",
                     "To create the postpaid package, Super admin will need to provide the following information. Name, Description, Tagline, Days, Per Active Student Charges, Per Active Staff Charges",
                     "While creating the perpaid or postpaid package, super admin can highlight the package. If it is mark as highlight then it will be shown in the Saas website",
-                    "There are 4 Default features. Academics Management, Session Year Management, Student Management, Session Year Management.",
+                    "There are 4 Default features. Academics Management, Session Year Management, Student Management, Teacher Management.",
                     "16 featuares that can be added to the packages are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management",
                     "All packages will be in unpublished state by default. Super admin can publish the package by clicking on the publish button. Super admin can also unpublish the package by clicking on the unpublish button.",
                     "If the package is published then it will be visible to all the schools.",
@@ -220,6 +222,12 @@
                         "answers": [
                             "Yes, you can edit or delete a package by navigating to the package management section and selecting the desired package."
                         ]
+                    },
+                    {
+                        "title": "What are the types of packages?",
+                        "answers": [
+                            "There are two types of package prepaid and postpaid."
+                        ]
                     }
                 ]
             }
@@ -238,7 +246,7 @@
                     "Super admin can create various type of add-ons.",
                     "The validity of add-on is determined by the expiration date of user's current subscription.",
                     "To create an add-on, Super admin will need to provide the following information. Name, Price and features to be added.",
-                    "Same as package, there are 16 features that can be added to the add-ons. Default features are as follows, Academics Management, Session Year Management, Student Management, Session Year Management",
+                    "Same as package, there are 16 features that can be added to the add-ons. Default features are as follows, Academics Management, Session Year Management, Student Management, Teacher Management",
                     "16 featuares that can be added to the add-ons are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management"
                 ],
                 "questions": []
@@ -1268,7 +1276,7 @@
         {
             "question": "What is the price of the script?",
             "answers": [
-                "Price of the script is $99.00"
+                "Price of the script is 99.00 USD"
             ]
         },
         {
@@ -1542,9 +1550,14 @@
             ]
         },
         {
-            "question": "What is the price of the script?",
+            "question": [
+                "What is the price of the script?",
+                "What is the price of the eSchool Saas?",
+                "What is the price of the eSchool Saas software?"
+            ],
             "answers": [
-                "Price of the script is $99.00"
+                "Price of the eSchool Saas script is 99.00 USD with regular licence.",
+                "Price of the eSchool Saas script is 499.00 USD with extended licence"
             ]
         },
         {
@@ -1557,6 +1570,45 @@
                 "linkedin :  https://www.linkedin.com/company/wrteam/",
                 "facebook : https://www.facebook.com/wrteam.in/ ",
                 "X : https://x.com/wrteamin"
+            ]
+        },
+        {
+            "question": "Does school data will be stored in separate database?",
+            "answers": [
+                "Yes, school data will be stored in separate database"
+            ]
+        },
+        {
+            "question": "Does this script support multitenancy?",
+            "answers": [
+                "Yes, it supports multitenancy",
+                "It supports multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school."
+            ]
+        },
+        {
+            "question": "What is the multitenancy?",
+            "answers": [
+                "Multitenancy is the ability to have multiple databases for a single application. In this script, each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school."
+            ]
+        },
+        {
+            "question": "Does the school have its own website?",
+            "answers": [
+                "Yes, school has its own website"
+            ]
+        },
+        {
+            "question": "Does the school have its own mobile application?",
+            "answers": [
+                "No, school can not have its own mobile application",
+                "There will one application for all the schools."
+            ]
+        },
+        {
+            "question": "What is the demo of the url?",
+            "answers": [
+                "The demo of the url is https://eschool-saas.wrteam.me",
+                "You can not modify the data in the demo. You can only view the demo data."
             ]
         }
     ]
