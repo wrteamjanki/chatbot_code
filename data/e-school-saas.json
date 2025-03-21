@@ -42,10 +42,13 @@
             "WRTeam do provide the demo session, but it will be chargeable. You can contact us for the demo session."
         ]
     },
-    "e-school-saas-white-label-information": [
-        "After buying the script, you can white label the script",
-        "You can white label the script by adding the logo, color, font, background image, etc.",
-        "You can white label the e-school-saas product."
+    "e-school-saas-white-label-and-moditifcation-information": [
+        "After buying the script, user can white label the script",
+        "User can white label the script by adding the logo, color, font, background image, etc.",
+        "User can white label the e-school-saas product. User can white label the both apps and web panel",
+        "User can modify the scource code as per their requirements. User can modify the both apps and web panel",
+        "User has full rights to modify the source code. User can modify the both apps and web panel",
+        "In white label user can change the logo, application name, theme, font, background image, etc."
     ],
     "technology-used": [
         "Following Technologies, Framework and Tools are used in this project",
@@ -1279,12 +1282,6 @@
             ]
         },
         {
-            "question": "What is the price of the script?",
-            "answers": [
-                "Price of the script is 99.00 USD"
-            ]
-        },
-        {
             "question": "How to update the script?",
             "answers": [
                 "You can update the script by uploading the updated zip file. Super admin can download the latest zip file from codecanyon."
@@ -1529,7 +1526,11 @@
             ]
         },
         {
-            "question": "Can i white label the script?",
+            "question": [
+                "Can i white label the script?",
+                "Can i white label the product?",
+                "Can i white label the e-school-saas?"
+            ],
             "answers": [
                 "Yes, you can white label the script as per your requirements"
             ]
@@ -1614,6 +1615,18 @@
             "answers": [
                 "The demo of the url is https://eschool-saas.wrteam.me",
                 "You can not modify the data in the demo. You can only view the demo data."
+            ]
+        },
+        {
+            "question": "Can i change the application name, logo and other details?",
+            "answers": [
+                "Yes, you can change the application name, logo and other details"
+            ]
+        },
+        {
+            "question": "Can i change the source code?",
+            "answers": [
+                "Yes, you can change the source code as per your requirements"
             ]
         }
     ]
