@@ -1556,14 +1556,24 @@
             ]
         },
         {
-            "question": [
-                "What is the price of the script?",
-                "What is the price of the eSchool Saas?",
-                "What is the price of the eSchool Saas software?"
-            ],
+            "question": "What is the price of the script?",
             "answers": [
                 "Price of the eSchool Saas script is 99.00 USD with regular licence.",
                 "Price of the eSchool Saas script is 499.00 USD with extended licence"
+            ]
+        },
+        {
+            "question": "What is the price of the eSchool Saas?",
+            "answers": [
+                "Price of the eSchool Saas is 99.00 USD with regular licence.",
+                "Price of the eSchool Saas is 499.00 USD with extended licence"
+            ]
+        },
+        {
+            "question": "What is the price of the eSchool Saas software?",
+            "answers": [
+                "Price of the eSchool Saas software is 99.00 USD with regular licence.",
+                "Price of the eSchool Saas software is 499.00 USD with extended licence"
             ]
         },
         {
