@@ -42,6 +42,11 @@
             "WRTeam do provide the demo session, but it will be chargeable. You can contact us for the demo session."
         ]
     },
+    "e-school-saas-white-label-information": [
+        "After buying the script, you can white label the script",
+        "You can white label the script by adding the logo, color, font, background image, etc.",
+        "You can white label the e-school-saas product."
+    ],
     "technology-used": [
         "Following Technologies, Framework and Tools are used in this project",
         "Flutter(Dart) - To build the mobile apps",
