@@ -1704,3 +1704,20 @@
         }
     ]
 }
+        },
+        {
+            "other_products": 
+              {"qustion": "what all othere product wrteam sells ",
+                "answera": [
+                "eSchool saas","eShop Plus","eClassify","Elite Quiz","eBroker","News app and web","eDemand-Multi Vendor",
+                "eGrocer","eCart","eShop web","eRestro-Multi Vendor","eRestro-Single Vendor","eSpeech"
+            ]
+        
+              },
+              {
+                "product-website": ["https://www.wrteam.in/products/app-products/"
+                "i dont have any more info they might have many products please visit their website"
+              ]
+              }
+            ]
+          }                     
