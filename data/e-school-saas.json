@@ -34,7 +34,8 @@
         "Super admin can not use the applications",
         "School website will be used by general public to know about the school and other activities of the school.",
         "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
-        "E-school saas support multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school."
+        "E-school saas support multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school.",
+        "Currently E-school saas supports following payment gateways. Stripe, Razorpay, Flutterwave and Paystack. Using these payment gateways, school can pay for the subscription. Parent can pay the school fees through the mobile application."
     ],
     "e-school-saas-demo": {
         "information": [
