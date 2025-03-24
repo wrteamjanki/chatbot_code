@@ -114,7 +114,7 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
     return custom_chain
 
 # Streamlit Page Configuration
-st.set_page_config(page_title="WRTeam AI Assistant", page_icon="💬", layout="centered")
+st.set_page_config(page_title="WRTeam AI Assistant chatbot", page_icon="💬", layout="centered")
 
 # Custom CSS for Dark Theme
 st.markdown(
@@ -131,7 +131,7 @@ st.markdown(
 )
 
 # Display Title
-st.markdown("# 🤖 WRTeam AI Assistant")
+st.markdown("# 👻 WRTeam AI Assistant")
 
 # Initialize Session State
 if "chat_history" not in st.session_state:
