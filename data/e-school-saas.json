@@ -1644,54 +1644,18 @@
             ]
         },
         {
-            "other_products": [
+            "other_products": 
               {"qustion": "what all othere product wrteam sells ",
                 "answera": [
-                "eschool saas", "erestro", "erestro single vendor", "erestro multi vendor",
-                "ebroker", "tabebi", "lokale mand", "aristo trivia", "eshop", "online quiz", "enews"
+                "eSchool saas","eShop Plus","eClassify","Elite Quiz","eBroker","News app and web","eDemand-Multi Vendor",
+                "eGrocer","eCart","eShop web","eRestro-Multi Vendor","eRestro-Single Vendor","eSpeech"
             ]
+        
               },
               {
-                "name": "eRestro - Single Vendor",
-                "description": "A food ordering app for single vendors with multiple branches."
-              },
-              {
-                "name": "eRestro - Multi Vendor",
-                "description": "A multi-vendor food ordering app for diverse food options."
-              },
-              {
-                "name": "eBroker",
-                "description": "A property marketplace for buying, renting, and selling real estate."
-              },
-              {
-                "name": "Tabebi",
-                "description": "A healthcare app connecting doctors and patients for online consultations."
-              },
-              {
-                "name": "Lokale Mand",
-                "description": "A grocery business app that connects sellers and customers."
-              },
-              {
-                "name": "Aristo Trivia",
-                "description": "A trivia app for testing knowledge across different categories."
-              },
-              {
-                "name": "eShop - Ecommerce Store",
-                "description": "A multipurpose e-commerce store for online shopping."
-              },
-              {
-                "name": "Online Quiz",
-                "description": "A platform for creating and participating in quizzes."
-              },
-              {
-                "name": "eNews",
-                "description": "A news application providing the latest updates across categories."
-              },
-              {
-                "product-website": "https://www.wrteam.in/products/app-products/"
-
+                "product-website": ["https://www.wrteam.in/products/app-products/"
+                "i dont have any more info they might have many products please visit their website"
+              ]
               }
             ]
-          }
-        ]
-}
+          }                     
