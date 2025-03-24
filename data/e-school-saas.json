@@ -1702,22 +1702,24 @@
                 "Yes, you can change the source code as per your requirements."
             ]
         }
-    ]
+    ],
+    "other_products_by_wrteam": {
+        "information": [
+            "WRTeam sells the following products",
+            "eSchool saas",
+            "eShop Plus",
+            "eClassify",
+            "Elite Quiz",
+            "eBroker",
+            "News app and web",
+            "eDemand-Multi Vendor",
+            "eGrocer",
+            "eCart",
+            "eShop web",
+            "eRestro-Multi Vendor",
+            "eRestro-Single Vendor",
+            "eSpeech",
+            "Visit this link for more information : https://www.wrteam.in/products/app-products/"
+        ]
+    }
 }
-        },
-        {
-            "other_products": 
-              {"qustion": "what all othere product wrteam sells ",
-                "answera": [
-                "eSchool saas","eShop Plus","eClassify","Elite Quiz","eBroker","News app and web","eDemand-Multi Vendor",
-                "eGrocer","eCart","eShop web","eRestro-Multi Vendor","eRestro-Single Vendor","eSpeech"
-            ]
-        
-              },
-              {
-                "product-website": ["https://www.wrteam.in/products/app-products/"
-                "i dont have any more info they might have many products please visit their website"
-              ]
-              }
-            ]
-          }                     
