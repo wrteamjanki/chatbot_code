@@ -1287,6 +1287,73 @@
             }
         }
     ],
+    
+    "Teacher-features": [
+        {
+            "dashboard": {
+                "description": "The Teacher Dashboard in eSchoolSaaS provides an overview of important information and quick access to key teaching tools.",
+                "details": [
+                    "View holidays, student leave records, and total number of students by gender.",
+                    "Access personal schedules and timetables.",
+                    "View subject-wise attendance records.",
+                    "Check exam results and announcements."
+                ]
+            },
+            "features": {
+                "description": "Teachers have access to multiple features for managing their classes, lessons, exams, and student progress.",
+                "details": [
+                    "Manage class sections and view timetables.",
+                    "Create and manage lessons, assignments, and lesson records.",
+                    "Create topics, submit files, and manage topic records.",
+                    "Manage assignment submissions.",
+                    "Add and view attendance records monthly.",
+                    "Create and manage announcements.",
+                    "Create timetables for exams, upload exam marks (subject-wise or in bulk), and publish results.",
+                    "Create online exam papers.",
+                    "Apply for leave and view leave records.",
+                    "Access payroll slips to see basic and net salary details.",
+                    "View student ID card information."
+                ]
+            }
+        }
+    ],
+    
+    "student-feature":[
+    {
+        "dashboard": [
+            ""
+        ]
+    }
+],
+    
+    
+    "staff-feature": [
+        {
+            "dashboard": {
+                "description": "The Staff Dashboard in eSchoolSaaS provides an overview of key administrative and financial details for staff members.",
+                "details": [
+                    "View expense records, leave records, and attendance records of teachers and staff.",
+                    "Check student fee overdue lists with a pie chart breakdown of paid, unpaid, and partially paid fees.",
+                    "Access holiday details and view student gender distribution via graphs."
+                ]
+            },
+            "features": {
+                "description": "Staff members have access to multiple features for managing school operations, student admissions, finances, and communication.",
+                "details": [
+                    "Manage mediums, sections, subjects, streams, shifts, classes, class subjects, class sections, and teacher assignments, as well as assign roll numbers.",
+                    "Handle student admissions, manage inquiries, view student details, reset student passwords, add data in bulk, download sample files, upload profile images, and manage guardian details.",
+                    "Manage teacher details and their records.",
+                    "Manage sliders, notifications, and announcements.",
+                    "Set up and manage grading systems for exams.",
+                    "Apply for leave and access leave reports.",
+                    "View payroll slips, including basic and net salary details.",
+                    "Manage expenses and financial records.",
+                    "Organize and manage the school gallery.",
+                    "View student ID card details."
+                ]
+            }
+        }
+    ],
     "faqs": [
         {
             "question": "Can i have multiple domain on one item purchase code?",
