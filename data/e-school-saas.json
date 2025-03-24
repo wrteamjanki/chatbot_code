@@ -269,6 +269,7 @@
                 "information": [
                     "Super admin can manage all the schools. Super admin can create, edit, delete and manage the schools.",
                     "Super admin can create the school by filling out the school registration form. Registration form will have Name, Logo, School Email, School Phone, School Address, Tagline, School Code Prefix, Domain Type (Custom or Default)",
+                    "Following fields are default fields.Name, Logo, School Email, School Phone, School Address, Tagline, School Code Prefix, Domain Type (Custom or Default). Any other field will be added as extra fields.",
                     "By default, Created school will be in Inactive state.",
                     "Verification email will be sent to the school email address. Super admin can manually verify the school email as well.",
                     "Supre admin can assign package to the school.",
@@ -337,18 +338,51 @@
                             "Example, main  saas website domain is https://eschool-saas.wrteam.me. Schoool name is ABC",
                             "So, the default domain of the school's website will be https://abc.eschool-saas.wrteam.me"
                         ]
+                    },
+                    {
+                        "title": "Can super admin add the extra fields in the school registration form?",
+                        "answers": [
+                            "Yes, super admin can add the extra fields in the school registration form."
+                        ]
+                    },
+                    {
+                        "title": "Can super admin edit or delete the extra fields in the school registration form?",
+                        "answers": [
+                            "Yes, super admin can edit or delete the extra fields in the school registration form."
+                        ]
                     }
                 ]
             }
         },
         {
-            "school-enquires": {
+            "school-inquiries": {
                 "information": [
                     "If super admin has enable the school enquiry field from the system settings then super admin can view the enquires of the schools.",
                     "School registred through the Saas website will be considered as a enquiry.",
                     "Super admin can view and delete the enquires of the schools.",
                     "Super admin can Accept or Reject the enquire of the schools.",
-                    "If super admin accept the enquire then the school will be created and it will shown in the school management section."
+                    "If super admin accept the enquire then the school will be created and it will shown in the school management section.",
+                    "Super admin can track the all the inquires in the School Inquiries  section."
+                ],
+                "questions": [
+                    {
+                        "title": "How to view the enquiries?",
+                        "answers": [
+                            "You can view the enquiries by going to the School Inquiry section."
+                        ]
+                    },
+                    {
+                        "title": "How to accept or reject the enquire?",
+                        "answers": [
+                            "You can accept or reject the enquire by going to the School Inquiry section."
+                        ]
+                    },
+                    {
+                        "title": "How to delete the enquire?",
+                        "answers": [
+                            "You can delete the enquire by going to the School Inquiry section."
+                        ]
+                    }
                 ]
             }
         },
@@ -378,7 +412,7 @@
                     {
                         "title": "What does 'Next Billing Cycle' mean?",
                         "answers": [
-                            "'Next Billing Cycle' means that the school’s current subscription is still active, and the next billing date is scheduled based on the plan."
+                            "'Next Billing Cycle' means that the school's current subscription is still active, and the next billing date is scheduled based on the plan."
                         ]
                     },
                     {
@@ -1232,7 +1266,22 @@
                 ],
                 "questions": [
                     {
-                        "title": ""
+                        "title": "What is GR Number?",
+                        "answers": [
+                            "GR Number is the unique student id. It is auto generated and can not be changed."
+                        ]
+                    },
+                    {
+                        "title": "What are the default account details for student?",
+                        "answers": [
+                            "Default student account details are as follows. GR Number as id and Date of Birth will be used as Password."
+                        ]
+                    },
+                    {
+                        "title": "What are the default account details for guardian?",
+                        "answers": [
+                            "Default Guardian account details are as follows. Guardian Email as id and Guardian Mobile will be used as Password."
+                        ]
                     }
                 ]
             }
@@ -1258,16 +1307,13 @@
             ]
         },
         {
-            "qyestion": "Can i run this script on localhost?",
+            "question": "Can i run this script on localhost?",
             "answers": [
                 "Yes, you can run this script on localhost."
             ]
         },
         {
-            "questions": [
-                "Can i run this script on multiple domain?",
-                "Can i run this script on multiple server?"
-            ],
+            "question": "Can i run this script on multiple domain or server?",
             "answers": [
                 "No, you can't run this script on multiple domain or server. You can only run this script on one domain or server.",
                 "At a time you can run this script on one domain or server."
@@ -1442,14 +1488,27 @@
             ]
         },
         {
-            "questions": [
-                "Where can i test this script?",
-                "Where can i check the demo of this script?",
-                "Where can i check the live demo of this script?",
-                "I want to test the script and explore the features of the script. Where can i do that?"
-            ],
+            "question": "Where can i test this script?",
             "answers": [
-                "To  test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
+                "To test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
+            ]
+        },
+        {
+            "question": "Where can i check the demo of this script?",
+            "answers": [
+                "To test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
+            ]
+        },
+        {
+            "question": "Where can i check the live demo of this script?",
+            "answers": [
+                "To test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
+            ]
+        },
+        {
+            "question": "I want to test the script and explore the features of the script. Where can i do that?",
+            "answers": [
+                "To test and explore the script, visit this link https://eschool-saas.wrteam.me/login"
             ]
         },
         {
