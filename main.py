@@ -104,7 +104,7 @@ def configure_ui():
         layout="centered",
         initial_sidebar_state="collapsed"
     )
-    st.markdown("# WRTeam AI Assistant")
+    st.markdown("# 👻 WRTeam AI Assistant")
     st.caption("Powered by Gemini 1.5 Flash and ChromaDB")
 
 # Chat history management
