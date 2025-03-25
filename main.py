@@ -13,13 +13,13 @@ except ImportError:
         )
 
 import os
-import toml
 import streamlit as st
 import google.generativeai as genai
 from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from vectorized_documents import embeddings
 from typing import List, Dict, Callable
+from api import GEMINI_API_KEY  # Import API key from api.py
 
 # WRTeam Support Details
 SUPPORT_NUMBER: str = "+91 8849493106"
@@ -43,18 +43,12 @@ def clean_text(text: str) -> str:
 
 # Function to Create Chat Chain
 def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dict[str, str]]:
-    # Load API Key from secrets.toml
     try:
-        secrets = toml.load(".streamlit/secrets.toml")
-        api_key = secrets["general"]["GEMINI_API_KEY"]
-    except (FileNotFoundError, KeyError):
-        st.error(
-            "GEMINI_API_KEY not found or secrets.toml is missing. Please check your secrets.toml file."
-        )
-        return lambda question, chat_history: {"answer": "API key error. Please check your secrets.toml file."}
-
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash-002")
+        genai.configure(api_key=GEMINI_API_KEY)
+        model = genai.GenerativeModel("gemini-1.5-flash-002")
+    except Exception as e:
+        st.error(f"API key error: {e}")
+        return lambda question, chat_history: {"answer": "API key error. Please check your API key."}
 
     # Custom chain for WRTeam Assistant
     def custom_chain(question: str, chat_history: List[Dict[str, str]]) -> Dict[str, str]:
