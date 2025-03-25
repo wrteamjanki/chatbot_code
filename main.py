@@ -19,7 +19,7 @@ from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from vectorized_documents import embeddings
 from typing import List, Dict, Callable
-from API import GEMINI_API_KEY  # Updated import from API.py instead of api.py
+from APIKEY import GEMINI_API_KEY  # Updated import from API.py instead of api.py
 
 # WRTeam Support Details
 SUPPORT_NUMBER: str = "+91 8849493106"
