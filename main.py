@@ -20,6 +20,7 @@ from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from vectorized_documents import embeddings
 from typing import List, Dict, Callable
+import env
 
 # WRTeam Support Details
 SUPPORT_NUMBER: str = "+91 8849493106"
@@ -31,6 +32,7 @@ VECTOR_DB_DIR: str = "vectordb"
 
 # Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
+os.environ["GEMINI_API_KEY"] = env.GEMINI_API_KEY
 
 # Cached Vector Store Setup
 @st.cache_resource
@@ -45,13 +47,12 @@ def clean_text(text: str) -> str:
 def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dict[str, str]]:
     # Load API Key from secrets.toml
     try:
-        secrets = toml.load(".streamlit/secrets.toml")
-        api_key = secrets["general"]["GEMINI_API_KEY"]
+        api_key = os.environ["GEMINI_API_KEY"]
     except (FileNotFoundError, KeyError):
         st.error(
-            "GEMINI_API_KEY not found or secrets.toml is missing. Please check your secrets.toml file."
+            "GEMINI_API_KEY not found."
         )
-        return lambda question, chat_history: {"answer": "API key error. Please check your secrets.toml file."}
+        return lambda question, chat_history: {"answer": "API key error. Please add the API key."}
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel("gemini-1.5-flash-002")

@@ -35,7 +35,10 @@
         "School website will be used by general public to know about the school and other activities of the school.",
         "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
         "E-school saas support multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school.",
-        "Currently E-school saas supports following payment gateways. Stripe, Razorpay, Flutterwave and Paystack. Using these payment gateways, school can pay for the subscription. Parent can pay the school fees through the mobile application."
+        "Currently E-school saas only supports following payment gateways Stripe, Razorpay, Flutterwave and Paystack. Except these payment gateways, other payment gateways are not supported. We will be adding more payment gateways in future as per the demand.",
+        "It supports UPI payment through Razorpay",
+        "All the subscribed schools will use the same mobile application it will be differ by the school code.",
+        "All the subscribed schools will have the dedicated or seperate website"
     ],
     "e-school-saas-demo": {
         "information": [
@@ -64,6 +67,8 @@
         "Firebase - To manage the push notifications",
         "Stripe - To manage the payments",
         "Razorpay - To manage the payments",
+        "Flutterwave - To manage the payments",
+        "Paystack - To manage the payments",
         "Google reCAPTCHA - To prevent the spam registration and application form",
         "This script will work with latest flutter version"
     ],
@@ -76,18 +81,15 @@
             "Fireabse account",
             "Stripe account if you want to use Stripe",
             "Razorpay account if you want to use Razorpay",
+            "Flutterwave account if you want to use Flutterwave",
+            "Paystack account if you want to use Paystack",
             "VPS or Dedicated Server with minimum 2 core cpu and root database access",
+            "Sufficient RAM based on your expected concurrent users and server load",
             "SMTP server",
             "Google play console account if you want to publish the app on google play store",
             "Apple store account if you want to publish the app on apple store"
         ],
         "questions": [
-            {
-                "title": "What is the minimum requirements for the system?",
-                "answers": [
-                    "Minimum requirements for the system are as follows, Flutter(Dart) - To build the mobile apps, Laravel(PHP) - To build the web panel and APIs, MySQL - To store the data. It is a relational database, HTML, CSS, JavaScript - To build the web paneles, Firebase - To manage the push notifications, Stripe - To manage the payments, Razorpay - To manage the payments, Google reCAPTCHA - To prevent the spam registration and application form, This script will work with latest flutter version"
-                ]
-            },
             {
                 "title": "Will shared hosting work for the system?",
                 "answers": [
@@ -122,6 +124,19 @@
         "Chat between Students and Teachers",
         "Chat between Teachers and Staffs",
         "Chat between Parents and Teachers"
+    ],
+    "recommended-server-configuration": [
+        "VPS or Dedicated Server with root database access",
+        "CPU: 2 core",
+        "RAM: 8GB",
+        "To start business with lower traffic, Above mentioned server configuration will be more than enough. But if you are expecting more traffic then you can upgrade the server configuration.",
+        "Server configuration will depend on the expected concurrent users and server load"
+    ],
+    "other-information": [
+        "After buying the script user will the source code of this script.",
+        "User will get the source code of Student and Parent mobile application, Teacher and Staff mobile application, Web panel, Saas website and School website.",
+        "User will get the installation and setup documentation of the script.",
+        "E-school saas can handles multiple schools and many number of students and staffs. You may need to upgrade to better server to handle the large number of requests."
     ],
     "saas-website-features": {
         "information": [
@@ -623,7 +638,9 @@
                             "Only one payment gateway can be set as default payment gateway",
                             "If super admin fails to setup the payment gateway, then online payment will not be possible",
                             "If super admin has enable the stripe sdk then need to add the stripe related necessary details in the system",
-                            "If super admin has enable the razorpay sdk then need to add the razorpay related necessary details in the system"
+                            "If super admin has enable the razorpay sdk then need to add the razorpay related necessary details in the system",
+                            "If super admin has enable the flutterwave sdk then need to add the flutterwave related necessary details in the system",
+                            "If super admin has enable the paystack sdk then need to add the paystack related necessary details in the system"
                         ]
                     }
                 },
@@ -1371,7 +1388,10 @@
         {
             "question": "What will i get after buying the script?",
             "answers": [
-                "You will get the two application code, Web panel and API code. In this folder you will get the latest code of the script. You can use the PHP code to update the system."
+                "You will get the Student/Parent application code, Teacher/Staff application code, Web panel code and API code.",
+                "You will get the installation and setup documentation of the script.",
+                "You will get the 6 month of support for the script.",
+                "You will get the 1 year of support for the script if you have extended licence."
             ]
         },
         {
@@ -1518,13 +1538,6 @@
                 "Sorry, we don't provide any demo for this script",
                 "But you can check the demo mode of this script from this link https://eschool-saas.wrteam.me/login",
                 "User can only view the demo can not do any modification"
-            ]
-        },
-        {
-            "question": "How many payment gateways are supported?",
-            "answers": [
-                "Razorpay and Stripe are supported",
-                "Any other payment gateway not supported, we will be adding it soon other as per the demand"
             ]
         },
         {
@@ -1701,6 +1714,26 @@
             "question": "Can i change the source code?",
             "answers": [
                 "Yes, you can change the source code as per your requirements."
+            ]
+        },
+        {
+            "question": "Can school have its own mobile application?",
+            "answers": [
+                "No, school can not have its own mobile application",
+                "There will be common mobile application for all the schools."
+            ]
+        },
+        {
+            "question": "Can school have dedicated application for its own?",
+            "answers": [
+                "No, school can not have dedicated application",
+                "There will be common mobile application for all the schools."
+            ]
+        },
+        {
+            "question": "Can school have dedicated website?",
+            "answers": [
+                "Yes, school can have dedicated website"
             ]
         }
     ],

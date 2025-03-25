@@ -1,2 +1,6 @@
-myenv
-config.json
+.env 
+env.py
+
+
+
+
