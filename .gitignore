@@ -1,2 +1,3 @@
 myenv
-APIKEY.py
+.streamlit/
+.streamlit/secrets.toml

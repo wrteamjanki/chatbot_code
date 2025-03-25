@@ -19,7 +19,14 @@ from langchain_chroma import Chroma
 from langchain.memory import ConversationBufferWindowMemory
 from vectorized_documents import embeddings
 from typing import List, Dict, Callable
-from APIKEY import GEMINI_API_KEY  # Updated import from API.py instead of api.py
+
+# Get API key from streamlit secrets.toml
+if 'GEMINI_API_KEY' not in st.secrets:
+    st.error('GEMINI_API_KEY not found or secrets.toml is missing. Please check your secrets.toml file.')
+    st.stop()
+
+# Use the API key from secrets
+api_key = st.secrets['GEMINI_API_KEY']
 
 # WRTeam Support Details
 SUPPORT_NUMBER: str = "+91 8849493106"
@@ -44,7 +51,7 @@ def clean_text(text: str) -> str:
 # Function to Create Chat Chain
 def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dict[str, str]]:
     try:
-        genai.configure(api_key=GEMINI_API_KEY)
+        genai.configure(api_key=api_key)
         model = genai.GenerativeModel("gemini-1.5-flash-002")
     except Exception as e:
         st.error(f"API key error: {e}")

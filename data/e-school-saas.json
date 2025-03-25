@@ -1291,28 +1291,37 @@
     "Teacher-web-outlook": [
         {
             "dashboard": [
-                    "View holidays, student leave records, and total number of students by gender.",
-                    "Access personal schedules and timetables.",
-                    "View subject-wise attendance records.",
-                    "Check exam results and announcements.",
-                    "The Teacher Dashboard in eSchoolSaaS provides an overview of important information and quick access to key teaching tools."
-                ],
-            "features":[
-                    "Teachers have access to multiple features for managing their classes, lessons, exams, and student progress.",
-                    "Manage class sections and view timetables.",
-                    "Create and manage lessons, assignments, and lesson records.",
-                    "Create topics, submit files, and manage topic records.",
-                    "Manage assignment submissions.",
-                    "Add and view attendance records monthly.",
-                    "Create and manage announcements.",
-                    "Create timetables for exams, upload exam marks (subject-wise or in bulk), and publish results.",
-                    "Create online exam papers.",
-                    "Apply for leave and view leave records.",
-                    "Access payroll slips to see basic and net salary details.",
-                    "View student ID card information."
-               ]
+                "View holidays, student leave records, and total number of students by gender",
+                "Access personal schedules and timetables",
+                "View subject-wise attendance records",
+                "Check exam results and announcements",
+                "Quick access to key teaching tools and information"
+            ],
+            "teaching_features": [
+                "Create and manage lessons, assignments, and lesson records",
+                "Upload study materials and resources",
+                "Create topics and manage topic records",
+                "Track assignment submissions and provide feedback"
+            ],
+            "attendance_management": [
+                "Take daily attendance",
+                "View and manage monthly attendance records",
+                "Generate attendance reports"
+            ],
+            "exam_management": [
+                "Create timetables for exams",
+                "Upload exam marks (subject-wise or in bulk)",
+                "Create online exam papers",
+                "Publish exam results"
+            ],
+            "administrative_features": [
+                "Manage class sections and view timetables",
+                "Create and manage announcements",
+                "Apply for leave and view leave records",
+                "Access payroll slips with salary details",
+                "View student ID card information"
+            ]
         }
-        
     ],
     
     "student-app-outlook-features":[
@@ -1330,25 +1339,34 @@
     "staff-web-outlook": [
         {
             "dashboard": [
-                    "The Staff Dashboard in eSchoolSaaS provides an overview of key administrative and financial details for staff members.",
-                    "View expense records, leave records, and attendance records of teachers and staff.",
-                    "Check student fee overdue lists with a pie chart breakdown of paid, unpaid, and partially paid fees.",
-                    "Access holiday details and view student gender distribution via graphs."
-                ],
-            "features":  [
-                    "Staff members have access to multiple features for managing school operations, student admissions, finances, and communication.",
-                    "Manage mediums, sections, subjects, streams, shifts, classes, class subjects, class sections, and teacher assignments, as well as assign roll numbers.",
-                    "Handle student admissions, manage inquiries, view student details, reset student passwords, add data in bulk, download sample files, upload profile images, and manage guardian details.",
-                    "Manage teacher details and their records.",
-                    "Manage sliders, notifications, and announcements.",
-                    "Set up and manage grading systems for exams.",
-                    "Apply for leave and access leave reports.",
-                    "View payroll slips, including basic and net salary details.",
-                    "Manage expenses and financial records.",
-                    "Organize and manage the school gallery.",
-                    "View student ID card details."
-                ]
-            
+                "View expense records and financial summaries",
+                "Monitor leave records and attendance for teachers and staff",
+                "Track student fee payments with pie chart breakdown",
+                "Access holiday details and student demographics"
+            ],
+            "student_management": [
+                "Handle student admissions and inquiries",
+                "View and manage student details",
+                "Reset student passwords when needed",
+                "Bulk data management capabilities",
+                "Manage guardian details"
+            ],
+            "academic_management": [
+                "Manage mediums, sections, subjects",
+                "Handle streams, shifts, classes",
+                "Organize class subjects and sections",
+                "Manage teacher assignments",
+                "Assign student roll numbers"
+            ],
+            "administrative_features": [
+                "Manage sliders and notifications",
+                "Create and send announcements",
+                "Set up grading systems for exams",
+                "Process leave applications",
+                "Handle payroll and salary details",
+                "Manage school expenses",
+                "Organize school gallery"
+            ]
         }
     ],
     "parents-app-outlook":[
