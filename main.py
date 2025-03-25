@@ -96,7 +96,7 @@ def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dic
         cleaned_response = clean_text(response.text)
 
         # Detect if the model gives an uncertain response
-        if "I don’t know" in cleaned_response.lower() or not cleaned_response.strip():
+        if "I don't know" in cleaned_response.lower() or not cleaned_response.strip():
             # Check if the question is about WRTeam
             wrteam_keywords = ["wrteam", "eschoolsaas", "your product", "support", "customer service"]
             if any(keyword in question.lower() for keyword in wrteam_keywords):
