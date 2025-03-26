@@ -63,29 +63,52 @@ print(f"Generated {len(chunks)} chunks")
 
 # for i, chunk in enumerate(chunks[:5]):
 #     print(f"Chunk {i+1} (Size: {len(chunk.page_content)} chars):\n{chunk.page_content}\n{'-'*50}")
-import matplotlib.pyplot as plt
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+# import matplotlib.pyplot as plt
+# from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-# Define chunk sizes to test
-chunk_sizes = [200, 300,400,500,600,700,800,900]
-chunk_results = {}
+# # Define chunk sizes to test
+# chunk_sizes = [200, 300,400,500,600,700,800,900]
+# chunk_results = {}
 
-for size in chunk_sizes:
-    splitter = RecursiveCharacterTextSplitter(chunk_size=size, chunk_overlap=50)
-    chunks = splitter.split_documents(documents)
-    chunk_results[size] = len(chunks)
-    print(f"Chunk Size {size}: Generated {len(chunks)} chunks")
+# for size in chunk_sizes:
+#     splitter = RecursiveCharacterTextSplitter(chunk_size=size, chunk_overlap=50)
+#     chunks = splitter.split_documents(documents)
+#     chunk_results[size] = len(chunks)
+#     print(f"Chunk Size {size}: Generated {len(chunks)} chunks")
 
-# Plot the chunk distribution
-plt.figure(figsize=(8, 5))
-plt.bar(chunk_results.keys(), chunk_results.values(), color="blue")
-plt.xlabel("Chunk Size (Characters)")
-plt.ylabel("Number of Chunks")
-plt.title("Chunk Size vs. Number of Chunks Generated")
-plt.show()
+# # Plot the chunk distribution
+# plt.figure(figsize=(8, 5))
+# plt.bar(chunk_results.keys(), chunk_results.values(), color="blue")
+# plt.xlabel("Chunk Size (Characters)")
+# plt.ylabel("Number of Chunks")
+# plt.title("Chunk Size vs. Number of Chunks Generated")
+# plt.show()
 
+from langchain.embeddings import HuggingFaceEmbeddings
 
+# Load a pre-trained embedding model
+embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
+# Test embedding
+sample_text = chunks[0].page_content
+vector = embedding_model.embed_query(sample_text)
+print(f"Sample Vector Shape: {len(vector)}")
+
+import chromadb
+from langchain.vectorstores import Chroma
+
+# Initialize ChromaDB
+chroma_client = chromadb.PersistentClient(path="./vector_db")
+
+# Store vectors in ChromaDB
+vector_store = Chroma.from_documents(
+    documents=chunks, 
+    embedding=embedding_model, 
+    persist_directory="./vector_db"
+)
+
+vector_store.persist()
+print("Vectors stored successfully!")
 
 
 
