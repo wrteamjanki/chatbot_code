@@ -1,0 +1,1112 @@
+{
+    "name-of-the-script": {
+        "information": [
+            "eSchool SaaS - School Management System with Student |  Parents Flutter App | Laravel Admin Panel",
+            "User can buy the script from the following link. https://codecanyon.net/item/eschool-saas-school-management-system-with-student-parents-teacher-flutter-app-laravel-admin/49307764"
+        ]
+    },
+    "price-of-the-script": {
+        "information": [
+            "Price of the script is 99.00 USD with regular licence.",
+            "Price of the script is 499.00 USD with extended licence."
+        ]
+    },
+    "author-of-the-script": {
+        "information": [
+            "Following are the details of the author of the e-school-saas",
+            "WRTeam",
+            "WRTeam is, a software development company located in Bhuj - India, serving IT services & digital solutions around the globe.",
+            "To know more about us, visit https://wrteam.in",
+            "Follow WRTeam on social media",
+            "Instagram :https://www.instagram.com/wrteam.in/",
+            "Whatsapp channel : https://www.whatsapp.com/channel/0029VaFfBBP2ER6eCc3E8y0M ",
+            "linkedin :  https://www.linkedin.com/company/wrteam/",
+            "facebook : https://www.facebook.com/wrteam.in/ ",
+            "X : https://x.com/wrteamin"
+        ]
+    },
+    "user-roles": {
+        "information": [
+            "Following are the user roles in the e-school-saas",
+            "Super admin",
+            "School admin",
+            "Teacher",
+            "Staff",
+            "Parent",
+            "Student"
+        ]
+    },
+    "e-school-saas-description": {
+        "information": [
+            "Description of the e-school-saas as follows",
+            "It is a SAAS based school management system that allows you to manage your school's information, students, parents, and teachers. It is designed to be user-friendly and easy to use, with a modern and responsive interface that provides all the necessary features for school administrators to manage their school effectively.",
+            "It has Student-Parent Application, Teacher-Staff Application, Web panel, Saas Website and School Website.",
+            "Super admin, School admin, Teachers, Staffs will use the web panel.",
+            "Student and Parents will use the Student-Parent mobile app.",
+            "Teachers, Staffs and School admin will use the Teacher-Staff mobile app.",
+            "Saas website will be used by general public to know about the system and its services. Super admin manages the Saas website.",
+            "Student and Parents will not use the web panel",
+            "Super admin can not use the applications",
+            "School website will be used by general public to know about the school and other activities of the school.",
+            "Super admin (Saas Owner) can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
+            "E-school saas support multitenancy. Each school can have its own database. Every school's data will be stored in its own database. By doing this, it ensure that school data will not mix with other school.",
+            "Currently E-school saas only supports following payment gateways Stripe, Razorpay, Flutterwave and Paystack. Except these payment gateways, other payment gateways are not supported. We will be adding more payment gateways in future as per the demand.",
+            "It supports UPI payment through Razorpay",
+            "All the subscribed schools will use the same mobile application it will be differ by the school code.",
+            "All the subscribed schools will have the dedicated or seperate website"
+        ]
+    },
+    "e-school-saas-demo": {
+        "information": [
+            "About e-school-saas demo",
+            "To test and explore the e-school-saas script, you can visit this link https://eschool-saas.wrteam.me/login",
+            "To test the school website, you can visit this link https://crestwood-academy.eschool-saas.wrteam.me/",
+            "To test the Student-Parent mobile application, Google play store link is https://play.google.com/store/apps/details?id=com.wrteam.saas.school. Apple store link is https://testflight.apple.com/join/HxZcnKO6",
+            "To test the Teacher-Staff mobile application, Google play store link is https://play.google.com/store/apps/details?id=com.wrteam.saas.staff. Apple store link is https://testflight.apple.com/join/FWRlupU9",
+            "You can not moidfy the data in the demo. You can only view the demo data.",
+            "WRTeam do provide the demo session, but it will be chargeable. You can contact us for the demo session."
+        ]
+    },
+    "white-label-and-moditifcation-information": {
+        "information": [
+            "After buying the script, user can white label the script",
+            "User can white label the script by adding the logo, color, font, background image, etc.",
+            "User can white label the e-school-saas product. User can white label the both apps and web panel",
+            "User can modify the scource code as per their requirements. User can modify the both apps and web panel",
+            "User has full rights to modify the source code. User can modify the both apps and web panel",
+            "In white label user can change the logo, application name, theme, font, background image, etc."
+        ]
+    },
+    "technology-used": {
+        "information": [
+            "Following Technologies, Framework and Tools are used in this project",
+            "Flutter(Dart) - To build the mobile apps",
+            "Laravel(PHP) - To build the web panel and APIs",
+            "MySQL - To store the data. It is a relational database",
+            "HTML, CSS, JavaScript - To build the web paneles, Saas website and School website",
+            "Firebase - To manage the push notifications",
+            "Stripe - To manage the payments",
+            "Razorpay - To manage the payments",
+            "Flutterwave - To manage the payments",
+            "Paystack - To manage the payments",
+            "Google reCAPTCHA - To prevent the spam registration and application form",
+            "This script will work with latest flutter version"
+        ]
+    },
+    "pre-requirements-to-run-e-school-saas": {
+        "information": [
+            "Following are the pre-requirements to run the e-school-saas script",
+            "VPS or Dedicated Server with minimum 2 core cpu and root database access",
+            "Basic knowledge of Flutter",
+            "Basic knowledge of Laravel",
+            "Basic knowledge of PHP",
+            "Basic knowledge of MySQL",
+            "Fireabse account",
+            "Sufficient RAM based on your expected concurrent users and server load",
+            "SMTP server",
+            "Google play console account if you want to publish the app on google play store",
+            "Apple store account if you want to publish the app on apple store",
+            "Stripe account if you want to use Stripe",
+            "Razorpay account if you want to use Razorpay",
+            "Flutterwave account if you want to use Flutterwave",
+            "Paystack account if you want to use Paystack"
+        ]
+    },
+    "essential-features": {
+        "information": [
+            "Following are the essential features of the e-school-saas",
+            "School Management",
+            "Packages and add-ons",
+            "Saas website",
+            "Student Management",
+            "Academics Management",
+            "Slider Management",
+            "Teacher Management",
+            "Session year Management",
+            "Holiday Management",
+            "Timetable Management",
+            "Attendance Management",
+            "Offline and Online Exams",
+            "Study Materials",
+            "Assignments",
+            "Announcements",
+            "Staff Management",
+            "Expenses Management",
+            "Staff Leave Management",
+            "Fee Management",
+            "School Gallery",
+            "ID Card and Cerificate Generation",
+            "School website",
+            "Chat between Students and Teachers",
+            "Chat between Teachers and Staffs",
+            "Chat between Parents and Teachers"
+        ]
+    },
+    "recommended-server-configuration": {
+        "information": [
+            "Following are the recommended server configuration for the e-school-saas",
+            "VPS or Dedicated Server with root database access",
+            "CPU: 2 core",
+            "RAM: 8GB",
+            "To start business with lower traffic, Above mentioned server configuration will be more than enough. But if you are expecting more traffic then you can upgrade the server configuration.",
+            "Server configuration will depend on the expected concurrent users and server load"
+        ]
+    },
+    "support-of-e-school-saas": {
+        "information": [
+            "Following are the support details of the e-school-saas",
+            "Please refer to this offical codecanyon link for more information about the support,https://codecanyon.net/page/item_support_policy?srsltid=AfmBOooTNA4mMmyShxr571415zHFX9FhUGL_PPL6-4LF48Z8R5FhuEJ1",
+            "Regular licence users will get the support for 6 month after the purchase of the script.",
+            "Extended licence users will get the support for 1 year after the purchase of the script.",
+            "The support includes the following features",
+            "Pre sale queries",
+            "Understading of the script and its features",
+            "Will provide guideance on web setup and application setup",
+            "Will provide bug fixes in case of any issues",
+            "Follwoing features will be not included in the support",
+            "Customisation of the script",
+            "Server and web setup",
+            "Application setup",
+            "Deployment of the application on the app store and play store",
+            "Logo creation",
+            "Flutter setup in your computer",
+            "PHP and Laravel setup computer"
+        ]
+    },
+    "about-item-purchase-code": {
+        "information": [
+            "About item purchase code",
+            "Item purchase code is like licence for this code. It will be used to run the script.",
+            "User will get the code from codecanyon after making the purchase.",
+            "From this link user can get the item purchase code. https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code",
+            "Item purchase code will be used to update the script",
+            "In order to get the support, user need to provide the purchase code to the WRTeam Support Team.",
+            "User can share the purchase code with the WRTeam Support Team."
+        ]
+    },
+    "benefits-of-extended-license": {
+        "information": [
+            "Following are the benefits of the extended license",
+            "Extended license will provide the support for 1 year from the date of purchase.",
+            "Extended licence users will get priority support",
+            "Extended licence users will remote support through anydesk if needed",
+            "Extended licence users will get the API postman collection",
+            "We will setup the server and web setup for extended licence users",
+            "User can modify the source code as per their requirements",
+            "To know more about license please visit this link : https://codecanyon.net/licenses/faq#item-end-product-a"
+        ]
+    },
+    "other-information": {
+        "information": [
+            "After buying the script user will the source code of this script.",
+            "User will get the source code of Student and Parent mobile application, Teacher and Staff mobile application, Web panel, Saas website and School website.",
+            "User will get the installation and setup documentation of the script.",
+            "E-school saas can handles multiple schools and many number of students and staffs. You may need to upgrade to better server to handle the large number of requests.",
+            "With one purchase code, user can have only one domain. If you want to have multiple domain, you need to buy the multiple purchase code.",
+            "User can not run the script on multiple domain with one purchase code.",
+            "At a time, only one domain can be used. If you want to use multiple domain, you need to buy the multiple purchase code.",
+            "User can run the script on the local host.",
+            "At a time, user can not run the script on localhost and live server both. User need to choose one server at a time.",
+            "User can change the domain of the script. For that user need to contact the WRTeam Support Team.",
+            "E-school saas does not have school branch management. User can not create the branch of the school. It will be added in future updates.",
+            "In order to have the dedicated school website, super admin need to enable the wildcard domain in the server."
+        ]
+    },
+    "saas-website-features": {
+        "information": [
+            "Following are the features of the saas website",
+            "Super admin will be able to manage the features of the saas website",
+            "The Saas website will be the main website of the saas business. It will be use as marketing website for this business",
+            "This will be main entry point for the school to register and login to the website",
+            "Terms and Condition, Privacy policy of this systme will be displayed on the website",
+            "Features of the system will be displayed on the website",
+            "School package will be displayed on the website",
+            "Participated schools will be displayed on the website",
+            "FAQs will be displayed on the website",
+            "Added featured section by super admin will be displayed on the website, Such as student features, school features etc.",
+            "User can view the application link of the mobile application on the website",
+            "User can send the query to the super admin throug contact us form on the website",
+            "By visitng this website, School can enble the trail plan and get the free trail features",
+            "Default Saas website will look like this https://eschool-saas.wrteam.me. Super admin can manage the features of this website as per the requirements",
+            "This website supports RTL and LTR languages",
+            "It support RTL and LTR layout",
+            "Social media links related to the saas business will be displayed on the website",
+            "Saas website has the Google reCAPTCHA (V2) to prevent the spam registration and contact us form"
+        ]
+    },
+    "super-admin-features": [
+        {
+            "package-management": {
+                "information": [
+                    "About package management by super admin",
+                    "Super admin can create various type of packages based on given features and provide to schools. School admin will subscribe to the packages and get access to the features.",
+                    "There are total 20 features that can be added to the packages. From that 4 features are default. Rest 16 features can be used to create the various packages.",
+                    "Each package can be subscribed by multiple schools. So, Super admin can create multiple packages for different schools.",
+                    "There are two types of package, prepaid and postpaid.",
+                    "To create the prepaid pacakge, Super admin will need to provide the following information. Name, Description, Tagline, Days, Number of Active Students, Number of Active Staffs, Charges or Price.",
+                    "To create the postpaid package, Super admin will need to provide the following information. Name, Description, Tagline, Days, Per Active Student Charges, Per Active Staff Charges",
+                    "While creating the perpaid or postpaid package, super admin can highlight the package. If it is mark as highlight then it will be shown in the Saas website",
+                    "There are 4 Default features. Academics Management, Session Year Management, Student Management, Teacher Management.",
+                    "16 featuares that can be added to the packages are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management",
+                    "All packages will be in unpublished state by default. Super admin can publish the package by clicking on the publish button. Super admin can also unpublish the package by clicking on the unpublish button.",
+                    "If the package is published then it will be visible to all the schools.",
+                    "If the package is unpublished then it will be visible to only super admin. Super admin can manually assign the package to schools.",
+                    "If the package is unpublished then it will be visible to only the schools that have subscribed to the package.",
+                    "Super admin can also delete the package. If any school is subscribed to the package then it will not be deleted.",
+                    "Super admin can edit the package. Super admin can edit the all fields of the package.",
+                    "In case of editing the prepaid package, If super admin update the Price, Number of students, Number of staffs, Days then it will take effect on the new subscriptions or renewals of the package. ",
+                    "In case of editing the postpaid package, If super admin update the Per Active Student Charge, Per Active Staff Charge, Days then it will take effect on the new subscriptions or renewals of the package. ",
+                    "If super admin update the features, super admin choose to make changed features instantly available to all the existing subscriptions or not. If it is not selected then the features will be available only to the new subscriptions or renewals of the package."
+                ]
+            }
+        },
+        {
+            "authentication": {
+                "information": [
+                    "About super admin authentication and account details",
+                    "Default credentails of super admin are superadmin@gmail.com and superadmin",
+                    "Here superadmin@gmail.com is email and password is superadmin. These can be changed later."
+                ]
+            }
+        },
+        {
+            "add-ons-management": {
+                "information": [
+                    "About add-ons management by super admin",
+                    "Super admin can create various type of add-ons.",
+                    "The validity of add-on is determined by the expiration date of user's current subscription.",
+                    "To create an add-on, Super admin will need to provide the following information. Name, Price and features to be added.",
+                    "Same as package, there are 16 features that can be added to the add-ons. Default features are as follows, Academics Management, Session Year Management, Student Management, Teacher Management",
+                    "16 featuares that can be added to the add-ons are as follows, Announcement Management, Assignment Management, Attendance Management, Chat Module, Exam Management, Expense Management, Fees Management, Holiday Management, ID Card - Certificate Generation, Lesson Management, School Gallery Management, Slider Management, Staff Leave Management, Staff Management, Timetable Management, Website Management"
+                ]
+            }
+        },
+        {
+            "school-management": {
+                "information": [
+                    "About school management in the system by super admin",
+                    "Super admin can manage all the schools. Super admin can add, edit, delete and manage the schools.",
+                    "Super admin can add the school by filling out the school registration form. Registration form will have Name, Logo, School Email, School Phone, School Address, Tagline, School Code Prefix, Domain Type (Custom or Default)",
+                    "Following fields are default fields.Name, Logo, School Email, School Phone, School Address, Tagline, School Code Prefix, Domain Type (Custom or Default). Any other field will be added as extra fields.",
+                    "By default, Created school will be in Inactive state.",
+                    "Verification email will be sent to the school email address. Super admin can manually verify the school email as well.",
+                    "Supre admin can assign package to the school.",
+                    "Super admin can reset the school admin password.",
+                    "Super admin can resend the verification email to school",
+                    "Super admin can enable the two factor authentication for the school. If it is enabled then OTP will be sent to the school email address.",
+                    "Super admin can add more fields in the scholol registraiton form. Super admin can create the custom fields by adding the field name, field type and is it mandatory or not.",
+                    "Super admin can edit or delete the custom fields.",
+                    "Custom fields can have following type. Text, Numeric, Dropdown, Radio Button, Text Area and File Upload.",
+                    "School can create the account by filling out the school registration form. This form is available on the Saas website.",
+                    "Super admin can take the backup of any school",
+                    "Super admin can add the domain for the school website. Super admin can add the custom domain for the school website. By default, school will have the school-name.saaswebsite.com as domain."
+                ]
+            }
+        },
+        {
+            "school-inquiries": {
+                "information": [
+                    "About school inquiries",
+                    "If super admin has enable the school enquiry field from the system settings then super admin can view the enquires of the schools.",
+                    "School registred through the Saas website will be considered as a enquiry.",
+                    "Super admin can view and delete the enquires of the schools.",
+                    "Super admin can Accept or Reject the enquire of the schools.",
+                    "If super admin accept the enquire then the school will be created and it will shown in the school management section.",
+                    "Super admin can track the all the inquires in the School Inquiries  section."
+                ]
+            }
+        },
+        {
+            "subscription-management": {
+                "information": [
+                    "About subscription management",
+                    "Subscription management is the process of managing the school subscriptions.",
+                    "In this section super admin view all the school subscriptions and related details.",
+                    "Super admin can view all the subscriptions of the schools. Super admin can also view the details of the subscriptions such as subscription status, billing cycle, due date, amount, and more.",
+                    "The subscription system allows super admin to manage the school subscriptions efficiently.",
+                    "Subscriptions can have different statuses: Active, Pending, Overdue, Paid, Unpaid, Failed, Next Billing Cycle, and Bill Not Generated.",
+                    "Each subscription includes details like the subscribed plan, billing cycle, due date, and amount.",
+                    "The super admin can filter subscriptions by status for easy management.",
+                    "Super admin can renew, cancel or update the school subscriptions.",
+                    "Super admin can generate subscription invoices if required.",
+                    "Super admin can downalod the payment receipts of the schools.",
+                    "Admins can send reminders for overdue payments to avoid service disruptions.",
+                    "The subscription system supports both prepaid and postpaid billing models.",
+                    "In case of overdue subscriptions, the super admin can view the details of the subscription and update the billing date."
+                ]
+            }
+        },
+        {
+            "staff-management": {
+                "information": [
+                    "About staff management by super admin",
+                    "Super admin can create the dyamic roles as per the need. Reserved roles include Super Admin, School Admin, Teacher, Guardian, and Student.",
+                    "Super admin can give the permission to the roles.",
+                    "Super admin can create the staff by filling out the staff registration form. Registration form will have First Name,Last name, Role, Email, Mobile, Schools, Profile image and date of birth.",
+                    "Support staff can log in using their email and default password (their phone number).",
+                    "Support staff can be assigned to multiple schools. Schools have access to their support staff details.",
+                    "Super admin can edit, delete or assign the staff",
+                    "Staff will have only role assigned to them. Super admin can assign the role to the staff."
+                ]
+            }
+        },
+        {
+            "send-email-to-schools": {
+                "information": [
+                    "Following details contains about the email sending feature by super admin",
+                    "Super admin can send email to all the schools or selected schools.",
+                    "Super Admin can send customized emails to schools, including updates, notifications, and announcements."
+                ]
+            }
+        },
+        {
+            "saas-website-configuration": {
+                "information": [
+                    "About saas website configuration by super admin",
+                    "In this section super admin can manage the Saas website.",
+                    "Super admin can manage the colors of the Saas website.",
+                    "Super admin can also manage the logo of the Saas website.",
+                    "Super admin can manage here to show the school count in website or not",
+                    "Super admin can manage the about us section of the Saas website.",
+                    "Super admin can determine here whether to show the school package or note",
+                    "Super admin can manage the footer settings",
+                    "Super admin can manage the social media links. It includes Linkedin, Instagram, Facebook and Youtube",
+                    "Super admin can manage the featured section of the Saas website. Featured section will have title, desctiption and images and it will be shwon in Saas website",
+                    "Super admin can manage the faqs.",
+                    "Created questions will be reflected in the Saas website",
+                    "Super admin can add the privacy policy and termns & conditions of the website."
+                ]
+            }
+        },
+        {
+            "app-settings": {
+                "information": [
+                    "About app settings manage by super admin",
+                    "In this section super admin can manage the settings of the Student-Parent and Teacher-Staff mobile applications.",
+                    "Super admin can add the android app link of the both apps in the app settings.",
+                    "Super admin can add the ios app link of the both apps in the app settings.",
+                    "Super admin can add the ios and android version of both apps",
+                    "Super admin can put both apps in the maintainance mode or not.",
+                    "Super admin can enable the forece update feature for both apps.",
+                    "Android version should be like 1.0.0+1 and iOS version should be like 1.0.0+1. Any other version will not be accepted.",
+                    "Super admin has to add the app versions in order to enable the force update feature"
+                ]
+            }
+        },
+        {
+            "general-settings": {
+                "information": [
+                    "Following details contains about the general settings by super admin",
+                    "Super admin can add the system name, email, mobile number, tagline, description and address.",
+                    "Super admin can add the time zone of the system.",
+                    "Super admin can manage the date and time format of the system.",
+                    "Super admin can add the fav icon, horizontal logo, vertical logo and logo that will display on the login page.",
+                    "Super admin can add the color of the system.",
+                    "Super admin can not change the school code, but can add the school code prefix",
+                    "Super admin can put the saas website in maintenance mode or not.",
+                    "Super admin can enable the two factor authentication. If it is enabled then OTP will be sent to the super admin email address at the time of login. Before enabling the two factor authentication, super admin should update the default email address.",
+                    "Super admin can add the limit for the file upload.",
+                    "Super admin can enable the school inquiry field or not. If it is enabled then school can send enquiry to the super admin."
+                ]
+            }
+        },
+        {
+            "subscription-settings": {
+                "information": [
+                    "About the subscription settings manage by super admin",
+                    "Super admin has to add the cron job url in order to enable the subscription feature.",
+                    "Super admin can add the additional billing days and Current plan expiry warning days",
+                    "Super admin can setup the free trail plan",
+                    "In free trail plan, super admin can add the free trail days, Student limit, Staff limit and Description",
+                    "Super admin can enable the free trail feature or not",
+                    "Super admin can highlight the free trail plan if needed. If it is highlighted then it will be shown in the Saas website",
+                    "Super admin can add the number of features in the trail plan"
+                ]
+            }
+        },
+        {
+            "guidance-settings": {
+                "information": [
+                    "About guidance settings manage by super admin",
+                    "Super admin can add the guidance for the users who will use the system.",
+                    "To create the guidance super admin will need to provide the following information. Name and the Link of the guidance.",
+                    "Created guidance will be reflected in the Saas website"
+                ]
+            }
+        },
+        {
+            "language-settings": {
+                "information": [
+                    "About language settings manage by super admin",
+                    "Super admin can manage the language of the system here",
+                    "To add the language super admin will need to provide the following information. Language name, Language code. Language is rtl or not and the translated language json file",
+                    "User can change the languages from the list of languages created by super admin",
+                    "User can switch to the language by clicking on the language button in the top right corner of the screen",
+                    "This languagh will be reflected in the Saas website and only for the Web panel. Apps will not be effected",
+                    "Super admin can add the number of languages in the system",
+                    "Created languages should be part of the google language list",
+                    "If the language is rtl then the translated language json file should be in rtl format",
+                    "If the language is not rtl then the translated language json file should be in ltr format",
+                    "Super admin can set any language as default language",
+                    "Only one language can be set as default language"
+                ]
+            }
+        },
+        {
+            "notification-settings": {
+                "information": [
+                    "About notification settings manage by super admin",
+                    "Super admin has to add the firebase project id in the system",
+                    "Super admin has to add the firebase configuration in the system",
+                    "By adding these two things, notification will work properly",
+                    "If super admin fails to add the firebase configuration, then notification will not work in the mobile applicatons"
+                ]
+            }
+        },
+        {
+            "email-configuration": {
+                "information": [
+                    "About email configuration manage by super admin",
+                    "Super admin can add the smtp setting here",
+                    "Super admin need to select the mailure, host, port, email, password, and encryption and sender form",
+                    "Super admin need to setup the these details in order to send the emails",
+                    "If super admin fails to setup the email configuration, then emails will not be sent to the recepients",
+                    "It is recommended to setup the email configuration before adding any school"
+                ]
+            }
+        },
+        {
+            "email-templates": {
+                "information": [
+                    "About email templates manage by super admin",
+                    "Super admin can prepare the two email templates here",
+                    "First email template is for the School Register Email Template and second email template is for the School Application Reject Email Template",
+                    "Super admin can edit the email template and add the subject, body, and html body"
+                ]
+            }
+        },
+        {
+            "payment-settings": {
+                "information": [
+                    "About payment settings manage by super admin",
+                    "Super admin can add the currency and currency symbol here",
+                    "School will buy the package in the currency that is set here",
+                    "Super admin can have the two payment gateway option, one is stripe and other one is razorpay",
+                    "Only one payment gateway can be set as default payment gateway",
+                    "If super admin fails to setup the payment gateway, then online payment will not be possible",
+                    "If super admin has enable the stripe sdk then need to add the stripe related necessary details in the system",
+                    "If super admin has enable the razorpay sdk then need to add the razorpay related necessary details in the system",
+                    "If super admin has enable the flutterwave sdk then need to add the flutterwave related necessary details in the system",
+                    "If super admin has enable the paystack sdk then need to add the paystack related necessary details in the system"
+                ]
+            }
+        },
+        {
+            "third-party-apis-configuration": {
+                "information": [
+                    "Following details contains about the third party apis configuration in the system by super admin",
+                    "By adding Google reCAPTCHA (V2) to the system, it will prevent the spam registration and application form."
+                ]
+            }
+        },
+        {
+            "student-parent-application-privacy-policy": {
+                "information": [
+                    "About student-parent application privacy policy manage by super admin",
+                    "Super admin need to add the student-parent privacy policy in the system",
+                    "Super admin will get the link of the student-parent privacy policy that needs to add in the play console and app store."
+                ]
+            }
+        },
+        {
+            "teacher-staff-application-privacy-policy": {
+                "information": [
+                    "About teacher-staff application privacy policy manage by super admin",
+                    "Super admin need to add the teacher-staff privacy policy in the system",
+                    "Super admin will get the link of the teacher-staff privacy policy that needs to add in the play console and app store."
+                ]
+            }
+        },
+        {
+            "contact-us": {
+                "information": [
+                    "Super admin can add the contact us information here"
+                ]
+            }
+        },
+        {
+            "about-us": {
+                "information": [
+                    "Super admin can add the about us information here"
+                ]
+            }
+        },
+        {
+            "student-parent-application-terms-conditions": {
+                "information": [
+                    "Super admin need to add the student-parent application terms and conditions in the system",
+                    "This will be reflected in the student-parent application"
+                ]
+            }
+        },
+        {
+            "teacher-staff-application-terms-conditions": {
+                "information": [
+                    "Super admin need to add the teacher-staff application terms and conditions in the system",
+                    "This will be reflected in the teacher-staff application"
+                ]
+            }
+        },
+        {
+            "school-terms-conditions": {
+                "information": [
+                    "Super admin need to add the terms and conditions for the school in the system",
+                    "School admin need to agree the terms and conditions before buying any school package"
+                ]
+            }
+        },
+        {
+            "system-update": {
+                "information": [
+                    "About system update",
+                    "To update the system super admin needs item purchase code",
+                    "Super admin can update the system by uploading the updated zip file. Super admin can download the latest zip file from the codecanyon.",
+                    "In order to update the system, super admin need to add the item purcahse code in the system."
+                ]
+            }
+        },
+        {
+            "data-backup": {
+                "information": [
+                    "About data backup of super admin panel",
+                    "Super admin can take the data backup of the system",
+                    "Super admin can restore the data backup of the system by uploading the backup file",
+                    "By getting the data backup folder, it will backup the only super admin related data. It will not take the data of the schools"
+                ]
+            }
+        }
+    ],
+    "school-admin-features": [
+        {
+            "school-registraiton": {
+                "information": [
+                    "Following details contains about the school registration and how can school admin create the school account in the system",
+                    "School  can register the school by filling out the school registration form. Registration form will have School Name, School Email, School Mobile, School Address, Tagline and Emergency contact",
+                    "By filling this form, school will be created in the system. School admin account will be created along with the school.",
+                    "Default school admin account details are as follows. Email is registered school email, Password is School mobile number.",
+                    "On creating the school account, Verification link will be sent to the registered school email.",
+                    "On creating the school account, Account details of the school admin and school code will be sent to the registered school email.",
+                    "If super admin has enable the enquiry feature then on creating the school account enquiry will be generated.",
+                    "If school enquiry is in progress then school admin can not login in the system. When super admin accept the enquiry then school admin will be able to login in the system.",
+                    "When super admin approves the school enquiry, Verification link will be sent to the registered school email.",
+                    "When super admin approves the school enquiry, Account details of the school admin and school code will be sent to the registered school email.",
+                    "School can create the account and start the free trial.",
+                    "Registered school email will be used as a support email for the school",
+                    "If school admin has seleted the free trial option then on creating the school account free trial will be started."
+                ]
+            }
+        },
+        {
+            "school-admin-authentication": {
+                "information": [
+                    "About school admin authentication and account details",
+                    "School admin can login in the system by school admin email, password and school code.",
+                    "School admin need to verify the registered school email in order to login in the system.",
+                    "If school admin somehow miss the verification email then needs to contact super admin. Super admin can re-send the email verification link.",
+                    "In case of forgot password, school admin can get the password reset link by giving the school code and email",
+                    "After successful login, school admin can access the features of the free trial if school admin has the free trial.",
+                    "If school does not have the free trial then school admin can access the default features of the system.",
+                    "Following features are available for school admin in case of no free trial or any active package. Dashboard, Academics, Custome fields, Students, Teachers,System seteting, Support, Features and Subscription",
+                    "School admin can buy any subsciption package in order to access the features of the system"
+                ]
+            }
+        },
+        {
+            "school-admin-profile": {
+                "information": [
+                    "About school admin profile",
+                    "School admin can update the profile. School admin can update the profile details like First name, Last name, Mobile, Gender, Image, Date of birth, Email Id and Address.",
+                    "School admin can change the current password",
+                    "If school admin updates the email then it will send the verification email to the updated email."
+                ]
+            }
+        },
+        {
+            "dashboard": {
+                "information": [
+                    "About school admin dashboard",
+                    "School admin can view the total teachers, students, guardians, classes and streams",
+                    "School admin can view the leave details of the staffs. Who is absent and when",
+                    "School admin can view the expense of the school.",
+                    "School admin can  view the attendance graph of class and section",
+                    "School admin can view the announcements of the school",
+                    "School admin can view the fee related details",
+                    "School admin can view the result of the exams",
+                    "School admin can view the holidays",
+                    "School admin can view the birthdays of the students"
+                ]
+            }
+        },
+        {
+            "medium-management": {
+                "information": [
+                    "About medium of the school manage by school admin",
+                    "School admin can manage the medium of the school. School admin will go to the Academics menu and click on medium.",
+                    "Medium is the language of the teaching happens in the school. Example Englih medium, French medium, Hindi medium etc.",
+                    "School admin need to add at least one medium. School admin can add multiple medium.",
+                    "School admin can add, delete and edit the medium"
+                ]
+            }
+        },
+        {
+            "section-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the section in the school",
+                    "School admin can manage the section in the school. School admin will go to the Academics menu and click on section.",
+                    "Section is divison of the class. Example Section A,B,C. It divides class into section like 1-A, 1-B and 1-C",
+                    "School admin need to add at least one section. School admin can add multiple section.",
+                    "School admin can add, delete and edit the section"
+                ]
+            }
+        },
+        {
+            "subject-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the subjects in the school",
+                    "School admin can manage the subjects. School admin will go to the Academics menu and click on subject.",
+                    "To create the subject, school admin need to provide the following information. Medium, Subject Name, Code, Type, Image and Background color.",
+                    "Subject Name, Code should be Unique for Medium",
+                    "Subuject type can be either Pratical or Theoretical",
+                    "Subject admin can add, delete and edit the subject",
+                    "Subject creation is mandatory. School admin need to add the minimum one subject for each medium",
+                    "Subject will be created by medium"
+                ]
+            }
+        },
+        {
+            "semester-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the semesters in the school",
+                    "School admin can manage the semesters. School admin will go to the Academics menu and click on semester.",
+                    "To create the semeseter need to provide the following information. Semester Name, Start Month and End Month.",
+                    "Creating the semester is optional",
+                    "Based on the start and end month, system will mark the semester as current semester or not",
+                    "School admin can add, delete and edit the semester"
+                ]
+            }
+        },
+        {
+            "stream-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the streams in the school",
+                    "School admin can manage the streams. School admin will go to the Academics menu and click on stream.",
+                    "To create the stream need to provide the following information. Stream Name",
+                    "Creating the stream is optional",
+                    "School admin can add, delete and edit the stream"
+                ]
+            }
+        },
+        {
+            "shift-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the class shifts in the school",
+                    "School admin can manage the class shifts. School admin will go to the Academics menu and click on class shift.",
+                    "To create the class shift need to provide the following information. Shift Name, Start Time, End Time",
+                    "Creating shift is optional",
+                    "School admin can add, delete and edit the shift"
+                ]
+            }
+        },
+        {
+            "class-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the classes in the school",
+                    "School admin can manage the classes. School admin will go to the Academics menu and click on class.",
+                    "To create the class need to provide the following information. Medium, Name, Shift, Stream, Section, To Include semester",
+                    "Creating the class is mandatory",
+                    "School admin can add, delete and edit the class",
+                    "To create the class, shift and strem are optional",
+                    "If school admin has mark the class as include semester then semester will be added to the class else it will be added",
+                    "School admin has to select at least one section for the class",
+                    "Class can have multiple sections",
+                    "Class can have only one shift and one medium assgined to it",
+                    "Class can have multiple streams assgined to it",
+                    "If class has the multiple streams, school admin can add the multiple section for the stream. Example : Class A has stream Science and Arts. Admin can add the section for Class A Science and Class A Arts"
+                ]
+            }
+        },
+        {
+            "class-subject-management": {
+                "information": [
+                    "Following details contains the information on how can school admin assign the subjects to the class in the school",
+                    "School admin can manage the class subjects. To manage the class subjects, go to the Academics menu and click on class subject.",
+                    "School admin can add, delete and edit the subject to a class.",
+                    "In the class, there will be two type of subjects one is core subjects and other is elective subjects",
+                    "Core subjects are mandatory and elective subjects are optional",
+                    "To enable the elective subjects, school admin need to create the elective subject groups. In the elective subject group school admin can add the subjects and total selections of the subjects",
+                    "If the class has semester enabled then school admin need to add the subjects by semester",
+                    "School admin can add the multiple core and elective subjects to the class"
+                ]
+            }
+        },
+        {
+            "class-group-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the class groups in the school",
+                    "School admin can manage the class groups. School admin will go to the Academics menu and click on class group.",
+                    "Class group divides the class into different groups. Example Prinary, Secondary, Higher Secondary etc.",
+                    "To create the class group, school admin need to provide the following information. Name, Description, Classes and Image"
+                ]
+            }
+        },
+        {
+            "class-section-and-teachers-management": {
+                "information": [
+                    "Following details contains the information on how can school admin assign the teachers to the class section in the school",
+                    "School admin can assgin the teachers to the class section.",
+                    "In the class section, there will be two type of teachers one is class teacher and other is subject teacher",
+                    "School admin can add the multiple class teachers to the class section",
+                    "School admin can add the multiple subject teachers to the class section. Means, Multiple teachers can teach the same subject in the class section. Subject can be taught by multiple teachers",
+                    "Class teacher can take the attendance of the class section",
+                    "Class teacher can add the result of the students in the class section",
+                    "Subject teacher can teach the subject"
+                ]
+            }
+        },
+        {
+            "about-subject-teacher": {
+                "information": [
+                    "About subject teacher and its features",
+                    "Subject teacher can teach the subject"
+                ]
+            }
+        },
+        {
+            "about-class-teacher": {
+                "information": [
+                    "About class teacher and its features",
+                    "Class teacher can take the attendance of students in the class section",
+                    "Class teacher can add the exam result of the students in the class section"
+                ]
+            }
+        },
+        {
+            "transfer-student-in-other-section": {
+                "information": [
+                    "Following details contains the information on how can school admin transfer the student from one class section to another class section",
+                    "School admin can transfer the student from one class section to another class section."
+                ]
+            }
+        },
+        {
+            "promote-student-to-next-class": {
+                "information": [
+                    "Following details contains the information on how can school admin promote the student to the next class",
+                    "School admin can promote the student to the other class",
+                    "In order to promote the student to the other class, School admin need to select the current class, Promote In Session year, Promote In Class, Result Of the current class and the promotion status",
+                    "Result of the current class can have pass or fail",
+                    "Promotion status can be continue or leave",
+                    "If school admin select the promotion status as continue then the student will be promoted to the next class in the school.",
+                    "If school admin select the promotion status as leave then the student will not be part of the next class in the school. Student will be considered as ex-student."
+                ]
+            }
+        },
+        {
+            "manage-student-roll-number": {
+                "information": [
+                    "About student roll number management manage by school admin",
+                    "School admin can generate the roll number of the students in the class section.",
+                    "School admin can generate the roll number of the stduents by first name or last name"
+                ]
+            }
+        },
+        {
+            "manage-custom-field": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the custom fields for the registration form",
+                    "School admin can create, delete and edit the custom fields.",
+                    "Added custom fields will be reflected in the student and teacher/staff registration form.",
+                    "To create the custom fields, school admin need to provide the following information. Name, Type, Required or not and User type",
+                    "User type can be either Student or Teacher/Staff",
+                    "Type field has following values. Text, Numeric, Dropdown, Radio Button, Checkbox, Text Area and File Upload.",
+                    "School admin can give the rank to the custom fields. Based on the rank, the custom fields will be displayed in the registration form",
+                    "Creating the custom fields is optional",
+                    "There will be no limit on the creation of the custom fields"
+                ]
+            }
+        },
+        {
+            "student-admission": {
+                "information": [
+                    "Following details contains the information on how can school admin add the student in the school. It explains the student admission process",
+                    "School admin can add the student by filling out the student registration form.",
+                    "Registration form will have GR Number, Class Section, Session year, Admission Date, Status, First Name, Last Name, Gender, Date of Birth,Image, Mobile, Current Address, Permanent Address",
+                    "Registration form will also have the Guardian related fields. It has following fields. Guardian First Name, Guardian Last Name, Guardian Mobile, Guardian Email, Guardian Gender and Image",
+                    "GR Number is the unique student id. It is auto generated and can not be changed.",
+                    "Student status will have active or inactive value. If status is inactive then, student will not be able to login to the system and will not consider in the current subscription cycle.",
+                    "Confirmation email will be sent to the the guardian email on the successful registration, In that email it will have student account details, parent account details and school code. By using this information student and parent can use the mobile application.",
+                    "After registration, student and parent can login in the Student/Parent Mobile application.",
+                    "Default student account details are as follows. GR Number as id and Date of Birth will be used as Password. Example : GR number 1234567890 and Date of Birth 01-12-2000 so the password will be 01122000",
+                    "Default Guardian account details are as follows. Guardian Email as id and Guardian Mobile will be used as Password. Example : Guardian Email is abc@gmail.com and Guardian Mobile is 1234567890 so the password will be 1234567890",
+                    "Student and Parent can change the password anytime.",
+                    "There will be one guardian per student",
+                    "If school admin wants to add more details in the registration form then school admin can add the custom fields in the registration form"
+                ]
+            }
+        },
+        {
+            "student-admission-inquiries": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the student admission inquiries",
+                    "School admin can manage the student admission inquiries. School admin will go to the Student menu and click on admission inquiries.",
+                    "School admin can view the admission inquiry details",
+                    "School admin can accept or reject the admission inquiry",
+                    "In case of acceptance, student will be added to the school and parent will be sent the confirmation email",
+                    "Parent/Guardian can fill the admission form from the school website. After filling the form, it will be sent to the school admin for the approval"
+                ]
+            }
+        },
+        {
+            "student-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the students in the school",
+                    "School admin can manage the students. School admin will go to the Student menu and click on student details.",
+                    "School admin can search the students and filter the students by class section and session year",
+                    "School admin can change the student status to active or inactive",
+                    "School admin can edit the student details",
+                    "School admin can delete the student",
+                    "Active students will be considered in the current subscription cycle.",
+                    "Inactive students will not be considered in the current subscription cycle and will not be able to login to the system."
+                ]
+            }
+        },
+        {
+            "student-reset-password": {
+                "information": [
+                    "Following details contains the information on how can school admin reset the password of the student",
+                    "If student forgets the password, then students will send the password reset request from mobile phone.",
+                    "All the password reset request will be shown in the Students-> Student Reset Password menu",
+                    "School admin can accept or reject the password reset request",
+                    "If school admin accepts the password reset request, then student password will be set to the default password. Default password is Date of Birth of student"
+                ]
+            }
+        },
+        {
+            "student-bulk-upload": {
+                "information": [
+                    "Following details contains the information on how can school admin add the students in the school by using the bulk upload",
+                    "E-school saas supports the bulk upload of the students in the school by using the csv file",
+                    "School admin can bulk upload the students in the school by using the excel file",
+                    "Before starting the bulk upload, school admin need to download the sample csv file from the Students-> Add Bulk Data ",
+                    "After downloading the sample csv file, school admin need to fill the data in the csv file",
+                    "While uploading the csv file, school admin need to select the class section, session year."
+                ]
+            }
+        },
+        {
+            "upload-profile-images-of-students-and-guardians": {
+                "information": [
+                    "Following details contains the information on how can school admin upload the profile images of the students and guardians",
+                    "In this section, school admin can add or change the profile images of the students and guardians"
+                ]
+            }
+        },
+        {
+            "guardian-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the guardians in the school",
+                    "School admin can view all the guardians in the Student-> Guardian menu",
+                    "School admin can edit the guardian details and reset the password of the guardian"
+                ]
+            }
+        },
+        {
+            "teacher-management": {
+                "information": [
+                    "Following details contains the information on how can school admin manage the teachers in the school",
+                    "School admin can add, edit and delete the teachers in the school",
+                    "School admin can add the teachers by filling out the teacher registration form",
+                    "Teacher registration form will have First Name, Last Name, Gender, Date of Birth, Mobile, Email, Address, Image,Qualification, Salary, Joining date, Status(Active or Inactive)",
+                    "While adding the teacher, school admin can add the allowances and deductions if applicable",
+                    "Confirmation email will be sent to the the teacher email on the successful registration, In that email it will have teacher account details and school code.",
+                    "Teacher status will have active or inactive value. If status is inactive then, teacher will not be able to login in the system and will not consider in the current subscription cycle.",
+                    "If teacher stats is active then, teacher will be able to login in the system, will be considered in the current subscription cycle and other education related tasks.",
+                    "Default teacher account details are as follows. Teacher Email as Id and Teacher Mobile will be used as Password. Example : Teacher Email is abc@gmail.com and Teacher Mobile is 1234567890 so the password will be 1234567890",
+                    "School admin can view all the teachers and related details such as salary, allowances, deductions, timetable etc."
+                ]
+            }
+        },
+        {
+            "teacher-bulk-upload": {
+                "information": [
+                    "Following details contains the information on how can school admin add the teachers in the school by using the bulk upload",
+                    "E-school saas supports the bulk upload of the teachers in the school by using the csv file",
+                    "School admin need to download the sample csv file from the Teachers-> Add Bulk Data, fill the data in the csv file and upload the csv file"
+                ]
+            }
+        },
+        {
+            "timetable-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the timetable in the school",
+                    "E-school saas provides an intuitive drag-and-drop interface for creating and managing class timetables",
+                    "School admin can create and manage timetables through the Academics menu under the timetable section",
+                    "The system supports medium-wise timetable creation and management",
+                    "Timetable creation is not automatic. School admin need to create the timetable manually",
+                    "To create a timetable, school admin needs to configure:",
+                    "- School start time and end time",
+                    "- Duration of each lecture/period",
+                    "- Break timings",
+                    "- Class and section selection",
+                    "- Subject and teacher assignment",
+                    "Key features of timetable management:",
+                    "- Drag and drop interface for easy scheduling",
+                    "- Visual color-coding for different subjects",
+                    "- Support for multiple sections and streams",
+                    "- Break period management",
+                    "- Weekly schedule view",
+                    "The timetable interface shows:",
+                    "- Time slots in vertical columns",
+                    "- Days of the week in horizontal rows",
+                    "- Subject names with assigned teachers",
+                    "- Color-coded subjects for better visualization",
+                    "- Break periods in black",
+                    "Teachers and students can view their respective timetables through web panel and mobile applications"
+                ]
+            }
+        },
+        {
+            "holiday-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the holidays in the school",
+                    "School admin can create, edit and delete the holidays in the school",
+                    "School admin can add the holidays by providing the following information. Holiday Name, Date, Description",
+                    "School admin can add the multiple holidays",
+                    "Teachers, students and parents can view the holidays session year wise in the web panel and mobile application"
+                ]
+            }
+        },
+        {
+            "student-assigments": {
+                "information": [
+                    "School admin can view all the submissions of the student assignments"
+                ]
+            }
+        },
+        {
+            "slider-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the sliders in the school",
+                    "School admin can add, edit and delete the sliders in the school",
+                    "School admin can add the slider by providing the following information. Image, Type and the Link",
+                    "Type can have following values. App, Website, Both",
+                    "Created slider will be shown in the school website and in the Student/Parent mobile application",
+                    "If the slider type is web then slider will be shown in the school website",
+                    "If the slider type is app then slider will be shown in the Student/Parent mobile application",
+                    "If the slider type is both then slider will be shown in the school website and in the Student/Parent mobile application",
+                    "When user click on the slider, it will redirect to the provided link"
+                ]
+            }
+        },
+        {
+            "notification-management": {
+                "information": [
+                    "Following details contains the information on how school admin can send the notifications to the users",
+                    "School admin can send the notifications to the users by providing the following information. Title, Message and Image",
+                    "School admin can send the notifications to specific users or all users",
+                    "School admin can send the notifications to the specific user roles. Example : Teachers, Students, Parents etc",
+                    "School admin can send notification to the students who has the pending fee payment",
+                    "Notification will be shown in the Student/Parent mobile application and Teacher/Staff application"
+                ]
+            }
+        },
+        {
+            "student-attendance": {
+                "information": [
+                    "Following details contains the information on how school admin can view the student attendance in the school",
+                    "School admin can view the student attendance but can not take the attendance",
+                    "Only class teacher can take the attendance of the students",
+                    "Student attendance will be day wise. Means, attendance will be taken for each day",
+                    "Subject or Lecture wise student attendance is not supported"
+                ]
+            }
+        },
+        {
+            "announcement-management": {
+                "information": [
+                    "Following details contains the information on how school admin can send the announcements in the school",
+                    "Announcement can be consider as a notice board in the school",
+                    "School admin can send the announcement by providing the following information. Title, Description, Files and Class Section(s), Url",
+                    "Announcement can be sent to specific class section or all the class sections",
+                    "School admin can edit and delete the announcement",
+                    "Announcement will be shown in the Student/Parent mobile application and Teacher/Staff application"
+                ]
+            }
+        },
+        {
+            "offline-exam-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the offline exams and results in the school",
+                    "School admin can create, edit and delete the offline exams in the school",
+                    "School admin can add the offline exam by providing the following information. Exam Name, Classes, Session Year and exam description",
+                    "After creating the exam, admin can create the subject wise time table for the exam",
+                    "To create the time table entry for the exam, admin need to provide the following information. Subject, Total marks, Passing marks, Date, Start Time, End Time",
+                    "Admin can add the multiple time table entries for the exam",
+                    "School admin can specify the Exam result submission date for the class. Means, Teacher can not submit the result after the specified date",
+                    "It is recommended to create the time table for the exam before the exam date",
+                    "Teacher can add the result only after exam is conducted",
+                    "By default, result will be in unpublished state. Once the teacher submit the result, school admin need to publish the result",
+                    "Published result will be shown in the Student/Parent mobile application and Teacher/Staff application",
+                    "School admin can view the class section wise mark submission. Means, School admin can view if the teacher has submitted the subject wise mark of student in given class section",
+                    "School admin can view the published result of the students",
+                    "School admin can add the grade details for the exam. Example : 90-100 is A+, 80-89 is A, 70-79 is B+, 60-69 is B, 50-59 is C+, 40-49 is C, 30-39 is D, 0-29 is F",
+                    "It is recommended to add the grade details for the exam before creating the exam or publishing the result"
+                ]
+            }
+        },
+        {
+            "online-exam-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the online exams in the school",
+                    "School admin can create, edit and delete the online exams in the school",
+                    "To create the online exam, school admin need to provide the following information. Class section(s), Subject, Title, Duration, Start Date and End date",
+                    "Every online exam will have the exam key. Which is auto generated and can not be changed",
+                    "Online exam will have multiple choice questions",
+                    "School admin can add the multiple choice questions to the online exam. Online exam supports multiple choice questions with image. It supports Equation based questions",
+                    "School admin need to add at least one question in the online exam, if fails to add the question then exam will not be shown to the students"
+                ]
+            }
+        },
+        {
+            "fee-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the fees in the school",
+                    "School admin can manage the class wise fee",
+                    "School admin can manage the fee session year wise",
+                    "School admin can create, edit and delete the fee type in the school. Such as Education fee, Transport fee, Hostel fee, etc",
+                    "Fee type can be assigned to the class. Class can have the optional and compulsory fee type",
+                    "School admin can add the due date,due charges for the compulsory fee type.Optional fee type will not have the due date and due charges",
+                    "School admin create the installment plan. Installment plan can have the following information. Installment name, Installment amount, Installment due date and due charges. Installment will be applicable for the compulsory fee type.",
+                    "School admin can not add the installment amount while creating the installment plan. Installment will be auto-calculated based on number of installments and total compulsory fee amount.",
+                    "Currently, school admin can not offer any discount to the student for the fee payment",
+                    "Monthly payment of fee is not supported. Student can pay the fee in one go or in installment",
+                    "E-school saas supports the offline fee payment. Means, Parent/Guardian can pay the fee in the school office and school admin can track the fee status in the system",
+                    "School admin can accpet the offline fee payment by cash and cheque",
+                    "Scool admin can download the fee receipt in the system"
+                ]
+            }
+        }
+    ],
+    "school-website-features": [],
+    "upcoming-features": {
+        "information": [
+            "E-school saas will have the following upcoming features",
+            "School branch management",
+            "Transport management",
+            "Hostel management",
+            "Library management",
+            "Fee discount",
+            "Employee attendance"
+        ]
+    }
+}
