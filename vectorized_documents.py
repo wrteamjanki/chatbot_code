@@ -70,7 +70,7 @@ split_start = time.time()
 print("Splitting documents into chunks...")
 
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=2000, chunk_overlap=1000, add_start_index=True
+    chunk_size=600, chunk_overlap=50, add_start_index=True
 )
 text_chunks = text_splitter.split_documents(documents)
 

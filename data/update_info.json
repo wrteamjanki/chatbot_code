@@ -79,7 +79,7 @@
     },
     "technology-used": {
         "information": [
-            "Following Technologies, Framework and Tools are used in this project",
+            "Following Technologies, Framework and Tools are used to develop the e-school-saas",
             "Flutter(Dart) - To build the mobile apps",
             "Laravel(PHP) - To build the web panel and APIs",
             "MySQL - To store the data. It is a relational database",
@@ -209,7 +209,8 @@
             "At a time, user can not run the script on localhost and live server both. User need to choose one server at a time.",
             "User can change the domain of the script. For that user need to contact the WRTeam Support Team.",
             "E-school saas does not have school branch management. User can not create the branch of the school. It will be added in future updates.",
-            "In order to have the dedicated school website, super admin need to enable the wildcard domain in the server."
+            "In order to have the dedicated school website, super admin need to enable the wildcard domain in the server.",
+            "License upgrade is not allowed from regular license to extended license. If user has the regular license and want to have extended license, user need to purchase the extended license on codecanyon."
         ]
     },
     "saas-website-features": {
@@ -346,7 +347,8 @@
                     "Support staff can log in using their email and default password (their phone number).",
                     "Support staff can be assigned to multiple schools. Schools have access to their support staff details.",
                     "Super admin can edit, delete or assign the staff",
-                    "Staff will have only role assigned to them. Super admin can assign the role to the staff."
+                    "Staff will have only role assigned to them. Super admin can assign the role to the staff.",
+                    "Currently, Staff attendance is not supported. It will be added in the future"
                 ]
             }
         },
@@ -414,6 +416,7 @@
             "subscription-settings": {
                 "information": [
                     "About the subscription settings manage by super admin",
+                    "Super admin can create the subscription plan and charge the school based on the plan with both regular and extended license",
                     "Super admin has to add the cron job url in order to enable the subscription feature.",
                     "Super admin can add the additional billing days and Current plan expiry warning days",
                     "Super admin can setup the free trail plan",
@@ -932,7 +935,8 @@
                     "Teacher status will have active or inactive value. If status is inactive then, teacher will not be able to login in the system and will not consider in the current subscription cycle.",
                     "If teacher stats is active then, teacher will be able to login in the system, will be considered in the current subscription cycle and other education related tasks.",
                     "Default teacher account details are as follows. Teacher Email as Id and Teacher Mobile will be used as Password. Example : Teacher Email is abc@gmail.com and Teacher Mobile is 1234567890 so the password will be 1234567890",
-                    "School admin can view all the teachers and related details such as salary, allowances, deductions, timetable etc."
+                    "School admin can view all the teachers and related details such as salary, allowances, deductions, timetable etc.",
+                    "Currently, Teacher attendance is not supported. It will be added in the future"
                 ]
             }
         },
@@ -1027,7 +1031,8 @@
                     "School admin can view the student attendance but can not take the attendance",
                     "Only class teacher can take the attendance of the students",
                     "Student attendance will be day wise. Means, attendance will be taken for each day",
-                    "Subject or Lecture wise student attendance is not supported"
+                    "Subject or Lecture wise student attendance is not supported",
+                    "Currently, RFID, QR code or Biometric based attendance is not supported. It will be added in the future"
                 ]
             }
         },
@@ -1095,9 +1100,445 @@
                     "Scool admin can download the fee receipt in the system"
                 ]
             }
+        },
+        {
+            "expense-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the expenses in the school",
+                    "School admin can create the expense category. Example : Transport, Hostel, Library, etc",
+                    "School admin can add, edit and delete the expense.",
+                    "To add the expense, school admin need to provide the following information. Expense category, Expense title, Reference number, Amount, Date, Description, Session year",
+                    "School admin can add the multiple expenses",
+                    "School admin can view the expense details by category wise, month wise, year wise and session year wise",
+                    "Currently, school admin can not generate the expense report, will be added in the future",
+                    "By default, salary of the staffs will be added automatically as expense in the system"
+                ]
+            }
+        },
+        {
+            "payroll-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the payroll in the school",
+                    "School admin can create, edit and delete the payroll setting.",
+                    "School admin can add the payroll setting by providing the following information. Payroll setting type, Name, Fixed amount or Percentage",
+                    "Payroll setting type can have following values. Allowance, Deduction",
+                    "If Payroll seeting has Percentage then it will be applied on the basic salary of the staff",
+                    "White adding the staff/teacher, school admin can add the payroll setting for the staff/teacher. Example : Basic Allowance or Any deduction",
+                    "Currently, school admin can not add the other staff details like bank details, PF number, etc",
+                    "Currently, automatic salary payroll generation is not supported. School admin need to manually generate the salary payroll",
+                    "School admin can pay the monthly salary of the staff/teacher. Salary payment will be done out side of the system. In the system, school admin can mark the salary payment as paid or unpaid and generate the salary slip"
+                ]
+            }
+        },
+        {
+            "school-gallery-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the gallery in the school",
+                    "School admin can add, edit and delete the gallery in the school",
+                    "School admin can add the school gallery by providing the following information. Title, Description, Thumbnail Image, Session year, Images and Youtube links",
+                    "School admin can add the multiple gallery",
+                    "School admin can the images or youtube links in the gallery",
+                    "Currently, school admin can only add the youtube links in the gallery",
+                    "Gallery will be shown in the school website and in the Student/Parent mobile application"
+                ]
+            }
+        },
+        {
+            "certificate-id-card-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the certificate and id card in the school",
+                    "School admin can create, edit and delete the certificate and id card for the staffs and students",
+                    "School admin needs to create the certificate template first. Certificate template can be created by providing the following information. Certificate name, Certificate type (Staff or Student), Page layout (A4 Landscape, A4 Portrait and Custom), Height, Width, User image shape (Rounded or Square), Image Size in PX, Background image and Description",
+                    "In certificate template, school admin can add the multiple fields. Example : Name, Father Name, Mother Name, Date of Birth, Gender, Address, Mobile, Email, etc",
+                    "School admin can add the multiple certificate templates",
+                    "School admin can select the staffs or students and issue the certificate based on the certificate template",
+                    "School admin can issue the varioues type of certificates. Example : Transfer certificate, Experience certificate, Leaving certificate, Bonafide certificate, etc",
+                    "School admin can generathe the id card for the students and staffs",
+                    "School admin need to configure the id card settings such as Type (Student or Staff), Header colour, Footer colour, Header footer text colour, Layout (Horizontal or Vertical), Profile image style (Rounded or Square), Background image, Page width, Page height, Signature image and Information fields. Information fields can have the following values. Name, Father Name, Mother Name, Date of Birth, Gender, Address, Mobile, Email, etc",
+                    "Afther configuring the id card settings, school admin can generate the id card for the students and staffs"
+                ]
+            }
+        },
+        {
+            "staff-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the staffs in the school",
+                    "School admin can add, edit and delete the staffs in the school",
+                    "Before adding the staff members, School admin need to create the role first. Role can be created by providing the following information. Role name and permissions",
+                    "Default roles are as follows. Admin, Teacher, Student, Parent, Staff. It is recommended to create the custom roles based on the school requirements",
+                    "After creating the role, school admin can add the staff members by providing the following information. Role, First Name, Last Name, Mobile, Email, Address, Image,Salary, Joining date, Status(Active or Inactive), Allowances and Deductions",
+                    "Default staff account details are as follows. Staff Email as Id and Staff Mobile will be used as Password. Example : Staff Email is abc@gmail.com and Staff Mobile is 1234567890 so the password will be 1234567890",
+                    "School admin can add the multiple staff members in the same role",
+                    "School admin can not take the attendance of the staff members",
+                    "School admin can edit or delete the staff members",
+                    "School admin can add the staff using the bulk upload. To add the staff using the bulk upload, school admin need to download the sample csv file from the Staff-> Add Bulk Data, fill the data in the csv file and upload the csv file",
+                    "As of now, staff attendance is not supported but will be added in the future"
+                ]
+            }
+        },
+        {
+            "staff-leave-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the staff leave in the school",
+                    "School admin can accept or reject and delete the staff leave request in the school",
+                    "School admin can view the staff leave details by staff wise, start date wise, end date wise and session year wise",
+                    "School admin can view the leave report of the staffs"
+                ]
+            }
+        },
+        {
+            "school-subscription-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the school subscription in the school",
+                    "Initially school admin will not have any subscription. School admin need to buy the subscription",
+                    "School admin can subscibe to any prepaid or postpaid package",
+                    "Subsctiption amount will be calculated based on the number of active students and active staffs",
+                    "By default, active subscription package will be set as upcoming subscription package. School admin can change the upcoming subsription package if needed",
+                    "Subscription package will be active from the date of purchase and it will be auto renewed",
+                    "School admin can not cancel the subscription once subscribed. School admin can only update the current subscription package",
+                    "School admin can cancel the upcoming subscription package if needed.",
+                    "School admin can have only one active subscription at a time. School admin can have ony one upcoming subscription at a time",
+                    "School admin can add the add-on for the current subscription. Add-on will be active for the current subscription. Once the current subscription is expired, add-on will be expired",
+                    "School admin can add the multiple add-ons for the current subscription. Add-ons will be automatically added to the upcoming subscription",
+                    "School admin can edit the add-on for the current and upcoming subscription",
+                    "While paying the subscription amount, school admin will pay the full amount. No installment is supported for the school subscription",
+                    "School admin will get the extra days to pay the subscription amount. Number of the extra days will be determined by the super admin. Means, school admin will get the extra days to pay the subscription amount after the subscription is expired",
+                    "School admin can pay the subscription amount by cash, cheque or online payment.",
+                    "If school admin faield to pay the subscription amount with in given days then all the features will be disabled until school admin pay the subscription amount",
+                    "If school admin update the current subscription package before the current subscription is expired, New package will be started immediately and current package will be terminated immediately. School admin need to pay the clear the pending amount of the previous package",
+                    "Postpaid subscription example : One school has 50 students and 50 staffs. Out of 50 students only 10 students are active and out of 50 staffs only 10 staffs are active. School admin subcribe to one postpaid package that is 30 days long. It has Rs.1 per active students and Rs.1 per active staffs. Super admin has set the extra billing days as 5 days. So the subscription bill will be 10(active students) * 1(per active student) + 10(active staffs) * 1(per active staffs) = Rs.20. School admin need to pay Rs.20. School admin will get the extra 5 days to pay the subscription amount. Means, school admin will get 5 more days after the current subscription is expired to pay the subscription amount. If school admin failed to pay the subscription amount with in 5 days then all the features will be disabled until school admin pay the subscription amount",
+                    "Prepaid subscription example : One school has 50 students and 50 staffs. There is one prepaid package that is 30 days long. It has Rs.300 and 50 active students limit and 50 active staffs limit. School admin will pay the Rs.300 amount then subscription will be active for 30 days"
+                ]
+            }
+        },
+        {
+            "school-support": {
+                "information": [
+                    "Following details contains the information on how school admin can get the support from the super admin",
+                    "School admin will get the contact details such as email and phone number of the super admin and support team in the support section"
+                ]
+            }
+        },
+        {
+            "school-website-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the school website.",
+                    "School admin can change the school website theme",
+                    "School admin can manage the about us page, about education program details, Announcements, Events, Gallery, Notice board, Contact us page, etc",
+                    "School admin can manage the FAQs that will be shown in the school website"
+                ]
+            }
+        },
+        {
+            "school-data-backup": {
+                "information": [
+                    "Following details contains the information on how school admin can backup the school data",
+                    "School admin can backup the school data by clicking on the generate backup button it will be download latest whole school data in the zip file",
+                    "School admin can restore the school data by uploading the backup file in the restore section"
+                ]
+            }
+        },
+        {
+            "-general-settings-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the necessary settings in the school",
+                    "School admin can add the school related details such as school name, school email, phone number, address, favicon, logo, etc",
+                    "School admin set the custom domain for the school website or keep using the default domain provided by the super admin",
+                    "School admin can set the default roll number setting for the school. Based on this settings, roll number will be generated in the class section wise. Roll number settings has following values - First Name (Assending, Descending), Last Name (Assending, Descending)"
+                ]
+            }
+        },
+        {
+            "session-year-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the session year in the school",
+                    "Session year will works as education year or academic year",
+                    "To create the session year, school admin need to provide the following information. Session year name, Start date, End date",
+                    "School admin can add, edit and delete the session year in the school",
+                    "School admin can only mark the session year as current session year. Other session years will be inactive. Only one session year can be active at a time"
+                ]
+            }
+        },
+        {
+            "leave-settings": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the leave related settings in the school",
+                    "School admin can add the number of leaves staff can take in a given session year",
+                    "If staff has taken the leave more than the allowed number of leaves then school admin can not accept the leave request or salary may be deducted",
+                    "School admin can add the holiday days in the school in a given session year. Here, holidays will be considered as non-working days in weekly off and will not be counted in the total number of leaves",
+                    "School admin can add the multiple holiday days in the school"
+                ]
+            }
+        },
+        {
+            "online-exam-terms-and-conditions": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the online exam terms and conditions in the school",
+                    "School admin can add the terms and conditions for the online exam.",
+                    "These terms and conditions will be shown to the students before taking the online exam"
+                ]
+            }
+        },
+        {
+            "email-template-management": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the email templates in the school",
+                    "School admin can manage the following email templates in the school. Staff email template, Parent email template and Application reject email template",
+                    "When the staff member added in the school by school admin, Based on the staff email template content, staff will receive the email",
+                    "When the parent added in the school by school admin, Based on the parent email template content, parent will receive the email",
+                    "When the application is rejected by school admin, Based on the application reject email template content, applicant will receive the email"
+                ]
+            }
+        },
+        {
+            "fee-payment-settings": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the fee payment settings in the school",
+                    "School admin can set the fee currency in the school. Parent will the fee in the set currency",
+                    "School admin can set the payment gateway realted details. School admin can add the Stripe, Razorpay, Flutterwave or Paystack payment gateway details. Only one payment gateway will be active at a time",
+                    "School admin should add the at least one payment gateway details before accepting the online fee payment"
+                ]
+            }
+        },
+        {
+            "third-party-apis-integration": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the third party APIs in the school",
+                    "School admin can add Google reCAPTCHA(V2) details. It will be in the school website to prevent the spamming of the website"
+                ]
+            }
+        },
+        {
+            "school-terms-and-conditions": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the terms and conditions in the school",
+                    "School admin can add the terms and conditions for the school",
+                    "Terms and conditions will be shown in the school website"
+                ]
+            }
+        },
+        {
+            "school-privacy-policy": {
+                "information": [
+                    "Following details contains the information on how school admin can manage the privacy policy in the school",
+                    "School admin can add the privacy policy for the school",
+                    "Privacy policy will be shown in the school website"
+                ]
+            }
         }
     ],
-    "school-website-features": [],
+    "school-website-features": {
+        "information": [
+            "School website will have the following features",
+            "School website has the abouts us, contact us, FAQ.",
+            "School gallery will be displayed in the school website. It has the photo gallery and youtube video gallery",
+            "All the school realted announcements will be displayed in the school website",
+            "Total number of students, staffs, teachers, etc will be displayed in the school website",
+            "User can contact the school by filling the contact us form. User can send the message to the school by filling the contact us form",
+            "Parent can apply for the school admission by filling the application form. Application form will be displayed in the school website",
+            "Social media links of the schools will be displayed in the school website",
+            "School admin, Teachers and Staffs can login in the system using the school website",
+            "School webstite will manage by the school admin and permissable staffs only"
+        ]
+    },
+    "school-teacher-features": [
+        {
+            "authentication": {
+                "information": [
+                    "Following details contains the information on how teacher can login in the system",
+                    "Teacher can login in the web panel and Staff/Teacher mobile application.",
+                    "Default teacher account details are as follows. Teacher Email as Id and Teacher Mobile will be used as Password. Teacher will get the school code in the email after the account is created by the school admin",
+                    "Teacher can not create the account by self. Teacher account will be created by the school admin",
+                    "If teacher forgot the password then teacher can reset the password by clicking on the forgot password link in the login page. By providing the email address and school code, teacher will get the reset password link in the email"
+                ]
+            }
+        },
+        {
+            "profile-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the profile in the web panel and Staff/Teacher mobile application",
+                    "Teacher can update the profile details such First name, last name, email, mobile number, profile image etc",
+                    "Teacher can change the password"
+                ]
+            }
+        },
+        {
+            "assigned-classes-and-sections": {
+                "information": [
+                    "Following details contains the information on how teacher can view the assigned classes and sections in the system",
+                    "Teacher can view the assigned classes and sections in the web panel and Staff/Teacher mobile application",
+                    "Teacher can view the here if teacher is class teacher of the class section or not",
+                    "Teacher can view the here which subject he/she is teaching in the assigned classes and sections"
+                ]
+            }
+        },
+        {
+            "student-details": {
+                "information": [
+                    "Following details contains the information on how teacher can view the student details in web panel and Staff/Teacher mobile application",
+                    "Teacher can view the assigned class section wise students"
+                ]
+            }
+        },
+        {
+            "teacher-timetable": {
+                "information": [
+                    "Following details contains the information on how teacher can view the timetable in web panel and Staff/Teacher mobile application",
+                    "Teacher can view the day wise timetable. Means, teacher can view the timetable for each day"
+                ]
+            }
+        },
+        {
+            "holiday-list": {
+                "information": [
+                    "Following details contains the information on how teacher can view the holiday list in web panel and Staff/Teacher mobile application",
+                    "Teacher can view the holidays added by school admin in the school"
+                ]
+            }
+        },
+        {
+            "subject-study-material-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the subject wise study material in web panel and Staff/Teacher mobile application",
+                    "Subject will have lesson, lesson will have topics. Example : Subject is Maths, Lesson is Algebra, Topic is Quadratic Equations",
+                    "Teacher can mange the lesson for assigned class section wise subject. Teacher can add the lesson, edit the lesson and delete the lesson",
+                    "To create the lesson, teacher need to provide the following information. Class section, Subject, Lesson Name, Lesson Description and Files",
+                    "Lesson Files can be any document, video, youtube link etc",
+                    "Teacher can add the multiple lessons for the subject",
+                    "Lesson can have multiple files",
+                    "Teacher can manage the topic for the lesson. Teacher can add the topic, edit the topic and delete the topic",
+                    "To create the topic, teacher need to provide the following information. Class section, Subject, Lesson, Topic Name, Topic Description and Files",
+                    "Topic Files can be any document, video, youtube link etc",
+                    "Teacher can add the multiple topics for the lesson",
+                    "Topic can have multiple files"
+                ]
+            }
+        },
+        {
+            "assignment-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the assignment in web panel and Staff/Teacher mobile application",
+                    "Teacher can manage the subject wise assignment.",
+                    "Teacher can add the assignment by providing the following information. Class section, Subject, Assignment Name, Assignment Instruction, Files, Submission date, Points, Resumission allowed or not",
+                    "On assignment creation, student will get the assignment notification in the mobile application",
+                    "Student can submit the assignment in the mobile application",
+                    "Teacher can view the student assignment submission details by class section and subject wise",
+                    "Teacher can accept or reject the student assignment submission. Teacher can also add the remarks for the assignment submission",
+                    "If the assginment has point then teacher can add the point to the student assignment submission",
+                    "If teacher has rejected the assignment submission then student can resubmit the assignment within the submission date, if resubmission is allowed"
+                ]
+            }
+        },
+        {
+            "student-attendance-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the student attendance in web panel and Staff/Teacher mobile application",
+                    "Teacher can take the day wise student attendance only if teacher is class teacher of the class section. Attendance will be taken manually by teacher",
+                    "Teacher can view the student attendance details by class section wise and date wise",
+                    "Teacher can view the monthly student attendance details by class section wise"
+                ]
+            }
+        },
+        {
+            "subject-announcement-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the subject announcement in web panel and Staff/Teacher mobile application",
+                    "Teacher can manage the subject wise announcement. Teacher can add the announcement by providing the following information. Title, Description, File(Image or document), Url(Youtube link or any other link), Session year, Class section, Subject",
+                    "Student will get the announcement notification in the mobile application on successful creation of the announcement"
+                ]
+            }
+        },
+        {
+            "exam-timetable": {
+                "information": [
+                    "Teacher can view the created exam timetable in web panel and Staff/Teacher mobile application",
+                    "In the exam timetable teacher can view exam date, exam time, exam subject, passing marks and total marks"
+                ]
+            }
+        },
+        {
+            "exam-result-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the exam result in web panel and Staff/Teacher mobile application",
+                    "Teacher can add the subject wise exam mark for the students. Example : Exam is final year exam. Subject is Maths. Teacher can add the subject wise exam mark for the students",
+                    "Teacher can bulk upload the subject wise exam mark by uploading the csv file. To upload the csv file, teacher need to download the sample csv file from the Offline exam -> Bulk upload exam result, fill the data in the csv file and upload the csv file",
+                    "Teacher can view the published exam result in the web panel and Staff/Teacher mobile application"
+                ]
+            }
+        },
+        {
+            "online-exam-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the online exam in web panel",
+                    "Teacher can create, edit and delete the online exams.",
+                    "To create the online exam, teacher need to provide the following information. Class section(s), Subject, Title, Duration, Start Date and End date",
+                    "Every online exam will have the exam key. Which is auto generated and can not be changed",
+                    "Online exam will have multiple choice questions",
+                    "Teacher can add the multiple choice questions to the online exam. Online exam supports multiple choice questions with image. It supports Equation based questions",
+                    "Teacher need to add at least one question in the online exam, if fails to add the question then exam will not be shown to the students"
+                ]
+            }
+        },
+        {
+            "leave-management": {
+                "information": [
+                    "Following details contains the information on how teacher can manage the leave in web panel and Staff/Teacher mobile application",
+                    "Teacher can apply for the leave by providing the following information. Leave reason, Start date, End date, Reason, Attachments, Day wise leave type (Half day or Full day)",
+                    "Teacher can view leave the applied leave details",
+                    "If teacher takes more than the allowed number of leaves in the month then salary may be deducted",
+                    "School admin will get the notification for the leave request. School admin can accept or reject the leave request",
+                    "Teacher will get the leave status notification in the mobile application",
+                    "Teacher can not cancel the leave request once applied",
+                    "Teacher can view the monthly leave report in the web panel. Report includes the Used leaves, Remaining leaves, Total leaves, Leave status, etc"
+                ]
+            }
+        },
+        {
+            "payroll-slip-management": {
+                "information": [
+                    "Following details contains the information on how teacher can view the payroll slip in web panel and Staff/Teacher mobile application",
+                    "Teacher can view and download the session year wise payroll slip.",
+                    "Only paid month salary will be shown in the payroll slip"
+                ]
+            }
+        },
+        {
+            "student-id-card-management": {
+                "information": [
+                    "Teacher can generate the student id card for the students in web panel. Teacher can not change the student id card settings"
+                ]
+            }
+        }
+    ],
+    "school-staff-features": [
+        {
+            "authentication": {
+                "information": [
+                    "Following details contains the information on how staff can login in the web panel and Staff/Teacher mobile application",
+                    "Default staff account details are as follows. Staff Email as Id and Staff Mobile will be used as Password. Staff will get the school code in the email after the account is created by the school admin",
+                    "Staff can not create the account by self. Staff account will be created by the school admin",
+                    "If staff forgot the password then staff can reset the password by clicking on the forgot password link in the login page. By providing the email address and school code, staff will get the reset password link in the email"
+                ]
+            }
+        },
+        {
+            "profile-management": {
+                "information": [
+                    "Following details contains the information on how staff can manage the profile in the web panel and Staff/Teacher mobile application",
+                    "Staff can update the profile details such First name, last name, email, mobile number, profile image etc",
+                    "Staff can change the password"
+                ]
+            }
+        },
+        {
+            "other-staff-features": {
+                "information": [
+                    "Following details contains the information on other staff features in web panel and Staff/Teacher mobile application",
+                    "Based on the staff role and permission, staff can access the various features in the system"
+                ]
+            }
+        }
+    ],
     "upcoming-features": {
         "information": [
             "E-school saas will have the following upcoming features",
