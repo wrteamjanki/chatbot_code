@@ -1,0 +1,219 @@
+{
+    "questions": [
+        {
+            "question": "1.  What is the name given to the functions that could possibly have a given function as their derivative?",
+            "mark": 1,
+            "type": "short_answer"
+        },
+        {
+            "question": "(Anti derivatives or primitives)",
+            "mark": 1,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Question:**",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "Explain the concept of an antiderivative and its connection to integration, providing at least one example to illustrate the non-uniqueness of antiderivatives.  (2 marks)",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Mark Allocation:**",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Correct explanation of antiderivative as a function whose derivative is the given function.",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:**  Correct illustration of non-uniqueness (e.g., showing that sin x + 1 and sin x + 5 are both antiderivatives of cos x).",
+            "mark": 2,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Question:**",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "Explain the concept of integration as the inverse process of differentiation, highlighting the significance of the constant of integration.  Use examples from the text to support your explanation and comment on the uniqueness (or lack thereof) of antiderivatives. (3 marks)",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Marking Scheme:**",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Correctly defines integration as the inverse of differentiation, mentioning that it involves finding a function whose derivative is known.",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Clearly explains the role of the constant of integration (C), stating that it accounts for the non-uniqueness of antiderivatives and represents a family of curves.",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Provides relevant examples (e.g., those involving sin x, x\u00b3/3, e\u02e3) from the text to illustrate the concept and the presence of infinitely many antiderivatives for a given function, differing only by a constant.",
+            "mark": 3,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Question:**",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "Explain the concept of integration as the inverse process of differentiation, illustrating with suitable examples.  Further, demonstrate how the concept of the indefinite integral differs from the definite integral, highlighting the role of the constant of integration and the fundamental theorem of calculus in this distinction. (4 marks)",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Marking Scheme:**",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:**  Clear explanation of integration as the reverse of differentiation, stating that it involves finding a function whose derivative is known.  Example(s) should be provided (e.g., finding the integral of cos x as sin x + C).",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:**  Correctly defining indefinite and definite integrals, contrasting their notation (\u222b f(x) dx vs. \u222b<sub>a</sub><sup>b</sup> f(x) dx).",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:**  Explaining the significance of the constant of integration (C) in indefinite integrals, highlighting that it represents a family of antiderivatives, whereas the definite integral has a unique numerical value.",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:**  Clearly stating the Fundamental Theorem of Calculus (either version is acceptable) and showing how it links indefinite and definite integrals, allowing the calculation of definite integrals without resorting to limits of sums.",
+            "mark": 4,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Question:**",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "Explain the concept of integration as the inverse process of differentiation,  providing examples from the text to illustrate the concept of antiderivatives and the non-uniqueness of antiderivatives.  Further, explain the significance of the constant of integration and the Fundamental Theorem of Calculus in connecting indefinite and definite integrals.  (5 marks)",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "**Marking Scheme:**",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Correctly defines integration as the inverse of differentiation and explains what an antiderivative is with at least one example from the text (e.g.,  cos x being the derivative of sin x, thus sin x being an antiderivative of cos x).",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:**  Clearly explains the non-uniqueness of antiderivatives by referencing the constant of integration (C) and providing at least one example (e.g., sin x + C represents a family of antiderivatives for cos x).",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Explains the significance of the constant of integration (C) as a parameter that creates different antiderivatives of a given function and indicates an understanding of its arbitrary nature.",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Mentions the Fundamental Theorem of Calculus (without needing to recite the theorem formally) and explains its role in connecting indefinite and definite integrals, highlighting its practical applications (e.g., the definite integral is a practical tool for science and engineering).",
+            "mark": 5,
+            "type": "short_answer"
+        },
+        {
+            "question": "* **1 mark:** Overall clarity, coherence, and use of appropriate mathematical terminology in the explanation.",
+            "mark": 5,
+            "type": "short_answer"
+        }
+    ]
+}
