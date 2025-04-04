@@ -53,7 +53,7 @@ st.markdown("# 👻 WRTeam AI Assistant")
 if 'GEMINI_API_KEY' not in st.secrets:
     st.error('GEMINI_API_KEY not found or secrets.toml is missing. Please check your secrets.toml file.')
     st.stop()
-api_key = st.secrets['GEMINI_API_KEY']
+api_key = st.secrets[ganeral]['GEMINI_API_KEY']
 
 # Function to clean text output
 def clean_text(text: str) -> str:
