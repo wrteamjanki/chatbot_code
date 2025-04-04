@@ -1,198 +1,159 @@
-# Check for required packages before proceeding
 try:
     import pysqlite3
     import sys
+
     sys.modules["sqlite3"] = pysqlite3
 except ImportError:
     import sqlite3
-    try:
-        from packaging import version
-    except ImportError:
-        raise ImportError("Missing required 'packaging' package. Install with: pip install packaging")
-    
-    if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
-        raise RuntimeError(f"System sqlite3 version {sqlite3.sqlite_version} is too old. Install pysqlite3-binary with: pip install pysqlite3-binary")
+    from packaging import version
 
+    if version.parse(sqlite3.sqlite_version) < version.parse("3.35.0"):
+        raise RuntimeError(
+            "Your system sqlite3 version is too old. Please install pysqlite3-binary."
+        )
 import os
 import streamlit as st
-import gemini_api
-from langchain_google_genai import ChatGoogleGenerativeAI
+import google.generativeai as genai
 from langchain_chroma import Chroma
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferWindowMemory
 from vectorized_documents import embeddings
+from typing import List, Dict, Callable
+from packaging import version
+# import pysqlite3
+import sys
+# Setup constants
+SUPPORT_NUMBER: str = "+91 8849493106"
+SUPPORT_EMAIL: str = "support@wrteam.in"
+DATA_DIR: str = "data"
+VECTOR_DB_DIR: str = "vectordb"
 
-# Configuration constants
-CONFIG = {
-    "SUPPORT_NUMBER": "+91-8849493106",
-    "SUPPORT_EMAIL": "wrteam.priyansh@gmail.com",
-    "VECTOR_DB_DIR": "vectordb",
-    "MODEL_NAME": "gemini-1.5-flash-002",
-    "REQUIRED_SQLITE_VERSION": "3.35.0",
-    "SUPPORT_MESSAGE": f"\n\nFor further assistance, contact our support team:\n📞 +91-8849493106\n📧 wrteam.priyansh@gmail.com"
-}
+# Ensure necessary directories exist
+os.makedirs(DATA_DIR, exist_ok=True)
 
-# Validate environment variables
-if "GEMINI_API_KEY" not in os.environ:
-    raise EnvironmentError("GEMINI_API_KEY environment variable not set.")
+# Initialize the page with Streamlit
+st.set_page_config(page_title="WRTeam AI Assistant Chatbot", page_icon="💬", layout="centered")
 
-# VectorDB initialization with error handling
-@st.cache_resource(show_spinner="Initializing knowledge base...")
-def setup_vectorstore():
-    if not os.path.exists(CONFIG["VECTOR_DB_DIR"]):
-        raise FileNotFoundError(f"Vector database directory {CONFIG['VECTOR_DB_DIR']} not found")
-    
-    try:
-        return Chroma(
-            persist_directory=CONFIG["VECTOR_DB_DIR"],
-            embedding_function=embeddings
-        )
-    except Exception as e:
-        raise RuntimeError(f"Failed to initialize Chroma vector store: {str(e)}")
-
-# System initialization
-def initialize_system():
-    # Initialize session states
-    session_defaults = {
-        "chat_history": [],
-        "pending_question": None,
-        "show_general_prompt": False,
-        "vectorstore": None,
-        "conversational_chain": None
+# Custom CSS for styling
+st.markdown(
+    """
+    <style>
+    body { background-color: #1E1E1E; color: white; }
+    .stChatInput > div > div > textarea:focus {
+        border-color: #4A90E2 !important;
+        box-shadow: 0 0 5px #4A90E2 !important;
     }
-    
-    for key, value in session_defaults.items():
-        if key not in st.session_state:
-            st.session_state[key] = value
+    </style>
+    """, unsafe_allow_html=True
+)
 
-    # Initialize vectorstore and conversation chain
-    if st.session_state.vectorstore is None:
-        try:
-            st.session_state.vectorstore = setup_vectorstore()
-        except Exception as e:
-            st.error(f"Initialization error: {str(e)}")
-            st.stop()
+# Display Title
+st.markdown("# 👻 WRTeam AI Assistant")
 
-    if st.session_state.conversational_chain is None:
-        try:
-            llm = ChatGoogleGenerativeAI(
-                model=CONFIG["MODEL_NAME"],
-                google_api_key=os.environ["GEMINI_API_KEY"],
-                temperature=0.3
-            )
-            memory = ConversationBufferMemory(
-                memory_key="chat_history",
-                return_messages=True,
-                output_key="answer"
-            )
-            st.session_state.conversational_chain = ConversationalRetrievalChain.from_llm(
-                llm=llm,
-                retriever=st.session_state.vectorstore.as_retriever(),
-                memory=memory,
-                return_source_documents=True,
-                verbose=True
-            )
-        except Exception as e:
-            st.error(f"Failed to create conversation chain: {str(e)}")
-            st.stop()
+# API Key setup (From Streamlit secrets)
+if 'GEMINI_API_KEY' not in st.secrets:
+    st.error('GEMINI_API_KEY not found or secrets.toml is missing. Please check your secrets.toml file.')
+    st.stop()
+api_key = st.secrets['GEMINI_API_KEY']
 
-# Streamlit UI configuration
-def configure_ui():
-    st.set_page_config(
-        page_title="WRTeam AI Assistant",
-        page_icon="💬",
-        layout="centered",
-        initial_sidebar_state="collapsed"
-    )
-    st.markdown("# 👻 WRTeam AI Assistant")
-    st.caption("Powered by Gemini 1.5 Flash and ChromaDB")
+# Function to clean text output
+def clean_text(text: str) -> str:
+    return text.encode("utf-16", "surrogatepass").decode("utf-16")
 
-# Chat history management
-def display_chat_history():
-    for message in st.session_state.chat_history:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+# Function to setup and cache the vector store
+@st.cache_resource
+def setup_vectorstore() -> Chroma:
+    return Chroma(persist_directory=VECTOR_DB_DIR, embedding_function=embeddings)
 
-# Response handlers
-def handle_knowledgebase_response(response):
-    """Handle responses when knowledge base documents are found"""
-    assistant_response = f"{response['answer']}{CONFIG['SUPPORT_MESSAGE']}"
-    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
-    st.rerun()
-
-def handle_general_response():
-    """Handle generation of general response when requested"""
+# Function to initialize conversation chain with model API
+def chat_chain(vectorstore: Chroma) -> Callable[[str, List[Dict[str, str]]], Dict[str, str]]:
     try:
-        with st.spinner("Generating general response..."):
-            response = st.session_state.conversational_chain.invoke({
-                "question": f"Provide a general explanation about {st.session_state.pending_question}"
-            })
-        assistant_response = f"{response['answer']}{CONFIG['SUPPORT_MESSAGE']}"
-        st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-1.5-flash-002")
     except Exception as e:
-        error_message = f"Failed to generate response: {str(e)}{CONFIG['SUPPORT_MESSAGE']}"
-        st.session_state.chat_history.append({"role": "assistant", "content": error_message})
-    finally:
-        st.session_state.show_general_prompt = False
-        st.session_state.pending_question = None
-        st.rerun()
+        st.error(f"API key error: {e}")
+        return lambda question, chat_history: {"answer": "API key error. Please check your API key."}
 
-def handle_support_redirect():
-    """Handle case when user declines general response"""
-    support_message = (
-        f"No problem! Feel free to reach out to our support team for specialized help:"
-        f"{CONFIG['SUPPORT_MESSAGE']}"
-    )
-    st.session_state.chat_history.append({"role": "assistant", "content": support_message})
-    st.session_state.show_general_prompt = False
-    st.session_state.pending_question = None
-    st.rerun()
+    def custom_chain(question: str, chat_history: List[Dict[str, str]]) -> Dict[str, str]:
+        history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
 
-# Main processing function
-def process_user_query(user_input: str):
+        retriever = st.session_state.vectorstore.as_retriever()
+        relevant_docs = retriever.get_relevant_documents(question)
+        context = "\n".join([doc.page_content for doc in relevant_docs])
+
+        system_prompt = f"""
+            You are an AI assistant for WRTeam's eSchoolSaaS, responsible for answering user queries based on the provided data.
+            Use the provided context to answer the questions.
+            Prioritize accuracy and provide detailed, relevant, and well-structured responses. Use bullet points, numbered lists, or tables when appropriate.
+
+            If a query is related to eSchoolSaaS and you have relevant data in the context, provide a detailed, accurate, and well-structured response.
+            If the query is about eSchoolSaaS but the answer is not in the context, inform the user and suggest contacting WRTeam support at +91 8849493106 or emailing support@wrteam.in.
+            If the query is unrelated to WRTeam, do not redirect to support. Instead, respond naturally with as much relevant detail as possible based on general knowledge,
+            maintaining a helpful and professional tone, or state that you lack sufficient information.
+
+            When providing answers, please consider the user's role, and give role-specific information.
+
+            Example 1:
+            User: 'What are the available user roles?'
+            Assistant: 'The available user roles are Super Admin, School Admin, Teacher, Staff, Parent, and Student. This is the detailed info of them...'
+
+            Example 2:
+            User: 'How do I reset my password?'
+            Assistant: 'I do not have that information. Please contact WRTeam support at +91 8849493106 or email support@wrteam.in.'
+
+            Context:
+            {context}
+        """
+        
+        prompt = f"{system_prompt}\n{history_text}\nUser: {question}"
+
+        response = model.generate_content([prompt])
+        cleaned_response = clean_text(response.text)
+
+        # Handle uncertain answers
+        if "I don't know" in cleaned_response.lower() or not cleaned_response.strip():
+            wrteam_keywords = ["wrteam", "eschoolsaas", "your product", "support", "customer service"]
+            if any(keyword in question.lower() for keyword in wrteam_keywords):
+                return {
+                    "answer": (
+                        f"I'm sorry, but I couldn't find relevant information for your WRTeam-related query. "
+                        f"Please contact WRTeam support at +91 8849493106 or email support@wrteam.in for assistance."
+                    )
+                }
+            else:
+                return {"answer": "I'm not sure about that. You might want to check online for more details!"}
+
+        return {"answer": cleaned_response}
+
+    return custom_chain
+
+# Initialize session state
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+if "vectorstore" not in st.session_state:
+    st.session_state.vectorstore = setup_vectorstore()
+
+if "conversational_chain" not in st.session_state:
+    st.session_state.conversational_chain = chat_chain(st.session_state.vectorstore)
+
+# Display chat history
+for message in st.session_state.chat_history:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+# User input for chat
+user_input = st.chat_input("Ask me anything...")
+
+if user_input:
+    st.session_state.chat_history.append({"role": "user", "content": user_input})
+    with st.chat_message("user"):
+        st.markdown(user_input)
+
     try:
-        # Add user message to history
-        st.session_state.chat_history.append({"role": "user", "content": user_input})
-        
-        # Process query through conversation chain
-        with st.spinner("Analyzing your query..."):
-            response = st.session_state.conversational_chain.invoke({"question": user_input})
-        
-        # Handle response based on source documents
-        if not response["source_documents"]:
-            st.session_state.pending_question = user_input
-            st.session_state.show_general_prompt = True
-        else:
-            handle_knowledgebase_response(response)
-            
-    except Exception as e:
-        error_message = f"Error processing your request: {str(e)}{CONFIG['SUPPORT_MESSAGE']}"
-        st.session_state.chat_history.append({"role": "assistant", "content": error_message})
-        st.rerun()
-
-# Main application flow
-def main():
-    configure_ui()
-    initialize_system()
-    display_chat_history()
-
-    # Handle general response prompt
-    if st.session_state.show_general_prompt:
         with st.chat_message("assistant"):
-            st.warning("I couldn't find specific documentation for your query. Would you like a general answer?")
-            
-            col1, col2 = st.columns(2)
-            with col1:
-                if st.button("Yes, please", key="general_yes"):
-                    handle_general_response()
-            with col2:
-                if st.button("No, thank you", key="general_no"):
-                    handle_support_redirect()
-        return
-
-    # Process new user input
-    if user_input := st.chat_input("Ask me anything about WRTeam products..."):
-        process_user_query(user_input)
-
-if __name__ == "__main__":
-    main()
+            response = st.session_state.conversational_chain(user_input, st.session_state.chat_history)
+            assistant_response = response["answer"]
+            st.markdown(assistant_response)
+            st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
